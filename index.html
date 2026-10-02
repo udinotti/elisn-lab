@@ -1,0 +1,1691 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="ELISN 승강기 검사기준 길잡이: 건축허가일로 적용 기준과 근거 원문을 찾는 참고용 검색 서비스">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ELISN LAB">
+<meta name="theme-color" content="#f2f4f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101013" media="(prefers-color-scheme: dark)">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>[LAB] ELISN 승강기 검사기준 길잡이</title>
+<!-- 화면 모드(자동·밝게·어둡게): 고른 값을 글자 그리기 전에 먼저 적용해 깜빡이지 않게 -->
+<script>try{var m=localStorage.getItem("elisn-lab-theme");if(m==="light"||m==="dark")document.documentElement.dataset.theme=m;var z=+localStorage.getItem("elisn-lab-fz");if(z>=0.8&&z<=1.6)document.documentElement.style.setProperty("--fz",z)}catch(e){}</script>
+<!-- 탭 아이콘: 연하늘 바탕에 파란 승강기 문, 가운데 노란 빛, 위에 파란 ▲ (토스 느낌) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23e8f3ff'/><rect x='11' y='13' width='42' height='41' rx='10' fill='%23ffe08a'/><rect x='11' y='13' width='18' height='41' rx='8' fill='%233182f6'/><rect x='35' y='13' width='18' height='41' rx='8' fill='%233182f6'/><path d='M32 4l5 5h-10z' fill='%233182f6'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+/* 토스 느낌: 회색 바탕 + 흰 카드, 굵고 큰 글씨, 파란 포인트 하나, 테두리 대신 여백 */
+:root{
+  --bg:#f2f4f6; --surface:#ffffff; --fill:#f2f4f6;--chip:#ffffff; --track:#e5e8eb; --line:#e5e8eb;
+  --ink:#191f28; --sub:#4e5968; --muted:#8b95a1;
+  --accent:#3182f6; --accent-press:#1b64da; --accent-soft:#e8f3ff; --on-accent:#ffffff;
+  --now:#0a9c5d; --now-soft:#e5f8ef; --old:#6b7684; --old-soft:#f2f4f6;
+  --warn:#c26a00; --warn-soft:#fff3e0; --mark:rgba(255,196,0,.34);
+  --del:#e5484d; --star:#d98a00; --star-soft:#fff4d6;
+  --edge:transparent; --lift:0 1px 2px rgba(0,27,55,.04);
+  color-scheme:light;
+  --sans:"Pretendard","Pretendard Variable","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --bg:#101013; --surface:#1d1d22; --fill:#2a2a31;--chip:#2a2a31; --track:#2a2a31; --line:#2e2e36;
+  --ink:#f2f2f5; --sub:#c4c4cc; --muted:#8a8a95;
+  --accent:#4c9aff; --accent-press:#3182f6; --accent-soft:#18263d; --on-accent:#ffffff;
+  --now:#41d392; --now-soft:#143023; --old:#a0a0aa; --old-soft:#2a2a31;
+  --warn:#ffb547; --warn-soft:#3a2a12; --mark:rgba(255,196,0,.26);
+  --del:#ff7a7f; --star:#ffc53d; --star-soft:#3a2f12;
+  --edge:rgba(255,255,255,.06); --lift:none;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#101013; --surface:#1d1d22; --fill:#2a2a31;--chip:#2a2a31; --track:#2a2a31; --line:#2e2e36;
+  --ink:#f2f2f5; --sub:#c4c4cc; --muted:#8a8a95;
+  --accent:#4c9aff; --accent-press:#3182f6; --accent-soft:#18263d; --on-accent:#ffffff;
+  --now:#41d392; --now-soft:#143023; --old:#a0a0aa; --old-soft:#2a2a31;
+  --warn:#ffb547; --warn-soft:#3a2a12; --mark:rgba(255,196,0,.26);
+  --del:#ff7a7f; --star:#ffc53d; --star-soft:#3a2f12;
+  --edge:rgba(255,255,255,.06); --lift:none;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;letter-spacing:-.01em;padding-inline:16px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding-block:8px 56px}
+/* 목록은 한 줄이 너무 길지 않게 좁게, 시기별 나란히는 세 칸이 들어가게 넓게 */
+/* 시기별 나란히: 위쪽(제목·검색·버튼)은 폭을 그대로 두고 결과 칸만 넓힌다 — 페이지 전체가 넓어졌다 좁아졌다 하지 않게 (2026-09-29). 결과 칸은 글자 크기(zoom)로 커지니 넓힌 폭은 그 배율로 나눠 화면 밖으로 안 나가게 */
+body.era #out{--ew:max(100%,calc(min(1120px,100vw - 48px)/var(--fz,1)));width:var(--ew);margin-left:calc((100% - var(--ew))/2)}
+/* 위에 붙는 머리(검색·버튼)의 바탕도 결과 칸 폭만큼 넓혀, 스크롤할 때 양옆으로 넓은 결과가 비쳐 보이지 않게 */
+body.era header::before{content:"";position:absolute;top:0;bottom:0;--ew:max(100%,min(1120px,calc(100vw - 48px)));left:calc((100% - var(--ew))/2);right:calc((100% - var(--ew))/2);background:var(--bg);z-index:-1}
+/* 시기별 칸은 좁아 카드 버튼이 두 줄로 떨어지니 폰처럼 간결하게: 즐겨찾기는 별만, 버튼 조금 작게 */
+body.era .acts .favl{display:none}
+body.era .acts .fav{min-width:40px;padding-inline:12px}
+body.era .acts .chipbtn{font-size:13px;padding:7px 10px}
+body.era .acts .linkbtn{font-size:13px}
+body.era article{padding-inline:15px}
+body.era .acts,body.era .acts-r{gap:6px}
+[hidden]{display:none!important} /* 배포본 머리글에도 있지만, 원본 파일만 열어도 숨김이 먹게 */
+button{-webkit-tap-highlight-color:transparent}
+button:active{transform:scale(.97)}
+button{transition:transform .12s ease,background-color .15s ease,color .15s ease}
+
+/* 머리 */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:16px 14px}
+@media (max-width:560px){header{position:static}}
+/* PC: 위에 붙는 머리가 스크롤 첫 8px 동안 따라 올라가던 것 — 감싼 칸의 위 여백을 머리 안쪽으로 옮겨 처음부터 딱 고정 (보이는 모양은 같음, 2026-09-30) */
+@media (min-width:561px){.wrap{padding-top:0}header{padding-top:24px}}
+.brand{margin-bottom:16px;display:flex;align-items:flex-start;gap:12px}
+.brand>.bt{flex:1;min-width:0}
+.brand .mark{flex:none;width:56px;height:56px;align-self:center} /* 제목 앞 아이콘 (탭 아이콘과 같은 그림): 제목·영문 두 줄 높이에 맞춰 가운데 */
+.brand .home{color:inherit;text-decoration:none;cursor:pointer} /* 제목·아이콘을 누르면 처음 화면으로 */
+/* 화면 모드 버튼: 누르면 자동·밝게·어둡게 중에 고르는 메뉴가 열린다 */
+.tm{position:relative;flex:none}
+.tmenu{position:absolute;right:0;top:calc(100% + 6px);z-index:30;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px;min-width:216px;width:max-content;max-width:calc(100vw - 24px);box-shadow:0 12px 32px rgba(0,0,0,.18)}
+.tmenu button{display:flex;align-items:center;gap:10px;width:100%;font:inherit;font-size:14.5px;font-weight:700;color:var(--ink);background:none;border:0;border-radius:10px;padding:10px 12px;cursor:pointer;text-align:left}
+/* 마우스를 올렸을 때 색 바뀜은 마우스가 있는 기기에서만 (S펜 지원 갤럭시처럼 hover만 되는 터치 기기도 빼려고 pointer:fine까지): 폰에서는 누른 뒤 호버 상태가 남아 선택을 풀어도 파랗게 남던 것 */
+@media (hover:hover) and (pointer:fine){.tmenu button:hover{background:var(--fill)}}
+.tmenu button:active{transform:none}
+.tmenu svg{width:18px;height:18px;flex:none;color:var(--muted)}
+/* 밝게·어둡게 줄: 그림이 글자보다 1px 높아 보여서(실측) 1px 내림. 자동 줄은 두 줄 글 가운데에 맞춰 둔다 */
+.tmenu [data-theme=light]>svg:first-child,.tmenu [data-theme=dark]>svg:first-child{position:relative;top:1px}
+.tmenu small{display:block;white-space:nowrap;font-size:12px;font-weight:500;color:var(--muted);line-height:1.3}
+.tmenu .ck{margin-left:auto;color:var(--accent);opacity:0}
+/* 글자 크기: 조항 글(결과 칸)만 키운다 */
+#out{zoom:var(--fz,1)}
+.tmenu .fz{display:flex;align-items:center;gap:6px;border-top:1px solid var(--line);margin-top:6px;padding:10px 6px 4px 12px;font-size:14.5px;font-weight:700;color:var(--ink)}
+.tmenu .fz span{flex:1;white-space:nowrap}
+.tmenu .fz output{min-width:3.2em;text-align:center;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tmenu .fz button{width:auto;flex:none;justify-content:center;padding:6px 10px;background:var(--fill);font-size:14px}
+.tmenu .fz button:disabled{opacity:.4;cursor:default}
+.tmenu [aria-checked=true]{color:var(--accent)}
+.tmenu [aria-checked=true] svg{color:var(--accent)}
+.tmenu [aria-checked=true] .ck{opacity:1}
+/* 왼쪽 여백·그림과 글자 사이는 그림 안 빈 칸까지 쳐서 오른쪽 여백과 맞춤(실측) */
+.theme{flex:none;display:inline-flex;align-items:center;gap:4px;font:inherit;font-size:13.5px;font-weight:700;border:1px solid var(--edge);background:var(--surface);color:var(--sub);border-radius:999px;padding:7px 12px 7px 9px;cursor:pointer;box-shadow:var(--lift);margin-top:2px;white-space:nowrap}
+/* 가운데 맞춤만 하면 그림이 '화면·글자' 글자보다 1px 높아 보여서(실측) 1px 내림
+   누를 때 찌그러져 보이던 것(2026-10-02): 그림을 top 대신 transform으로 내리고, 버튼을 한 장으로 줄어들게(will-change) */
+.theme{will-change:transform}
+.theme svg{width:18px;height:18px;transform:translateY(1px)}
+.theme .aa{display:none;font-size:16px;font-weight:800;line-height:1} /* 글씨(화면·글자)가 안 보이는 폰에서만 "가"를 보인다 */
+@media (hover:hover) and (pointer:fine){.theme:hover{color:var(--accent)}}
+.brand h1{word-break:keep-all;font-size:26px;line-height:1.3;margin:0;font-weight:800;letter-spacing:-.035em}
+.brand small{display:block;color:var(--muted);font-size:13.5px;margin-top:4px;letter-spacing:.01em}
+.brand small b{color:var(--accent);font-weight:800}
+.brand small i{font-style:italic;font-weight:500}
+.logo{color:var(--accent);letter-spacing:-.02em;font-weight:800;margin-right:4px}
+.intro{margin:-4px 0 16px;font-size:14px;color:var(--sub);line-height:1.65}
+/* 글자처럼 보이는 가벼운 버튼 (의견 남기기) */
+.linkbtn{font:inherit;font-size:13.5px;font-weight:600;border:0;background:none;color:var(--muted);padding:8px 6px;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+@media (hover:hover) and (pointer:fine){.linkbtn:hover{color:var(--accent);text-decoration-color:currentColor}}
+/* 맨 위 의견 남기기: 화면 모드 버튼 옆에 같은 모양으로 (폰에서는 말풍선만). 안내 글 끝에 붙어 있으면 그 문장에 대한 의견처럼 보여서 옮김 */
+/* 의견 보내기: 위쪽 도구 줄 버튼 + 결과가 없을 때·결과 맨 끝 안내 줄 */
+.endfb{text-align:center;color:var(--muted);font-size:14px;margin:24px 0 8px}
+.endfb .linkbtn{padding:4px 2px;font-size:14px;color:var(--accent);font-weight:700;text-decoration-color:currentColor}
+.nofbl{display:inline-block;margin-top:10px;font-size:14px}
+.nofbl .linkbtn{padding:4px 2px;font-size:14px;color:var(--accent);font-weight:700;text-decoration-color:currentColor}
+.chipbtn.primary{background:var(--accent-soft);color:var(--accent);font-weight:700}
+/* 맨 위로 */
+.totop{position:fixed;right:16px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:15;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.16)}
+.totop svg{width:22px;height:22px}
+.totop[hidden]{display:none}
+/* 카드 아래 오른쪽 묶음(의견 남기기·원문 보기): 자리가 모자라면 둘이 함께 다음 줄 오른쪽으로 내려가 '원문 보기'만 혼자 떨어지지 않게 */
+.acts-r{margin-left:auto;display:flex;align-items:center;gap:8px}
+a.chipbtn{text-decoration:none;display:inline-flex;align-items:center}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:14px;font-weight:600;padding:12px 18px;border-radius:14px;max-width:calc(100vw - 32px);z-index:20;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.toast[hidden]{display:none}
+.controls{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px}
+@media (max-width:640px){.controls{grid-template-columns:minmax(0,1fr)}}
+.q{position:relative}
+.qgo{position:absolute;left:6px;top:50%;transform:translateY(-50%);width:38px;height:38px;display:grid;place-items:center;border:0;border-radius:12px;background:transparent;color:var(--muted);cursor:pointer;padding:0}
+@media (hover:hover) and (pointer:fine){.qgo:hover{color:var(--accent)}}
+/* 누를 때: 제자리에서 살짝 줄고 연한 바탕이 깔린다 (모든 버튼 공통 눌림 효과가 위치 잡기를 덮어써 아래로 튀던 것 바로잡음) */
+.qgo:active{transform:translateY(-50%) scale(.88);background:var(--fill);color:var(--accent)}
+.qgo svg{width:20px;height:20px;pointer-events:none}
+/* 검색어 지우기: 검색어가 있으면 커서가 없어도 늘 보인다 (브라우저 기본 ×는 포커스 때만 보여서 숨김) */
+.qclear{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:30px;height:30px;display:grid;place-items:center;border:0;border-radius:50%;background:var(--fill);color:var(--sub);cursor:pointer;padding:0}
+@media (hover:hover) and (pointer:fine){.qclear:hover{color:var(--ink)}}
+.qclear:active{transform:translateY(-50%) scale(.88)}
+.qclear svg{width:14px;height:14px;pointer-events:none}
+input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;display:none}
+input#q{padding-right:46px}
+input[type=search],input[type=text]{width:100%;font:inherit;font-size:16px;font-weight:500;color:var(--ink);background:var(--surface);border:1px solid var(--edge);border-radius:16px;padding:14px 16px;box-shadow:var(--lift);outline:0;transition:box-shadow .15s ease}
+input[type=search]{padding-left:46px}
+input::placeholder{color:var(--muted);font-weight:400}
+input:focus{box-shadow:0 0 0 2px var(--accent)}
+/* 체크칸(빠진 말도 보기 등)은 눌렀을 때 파란 네모가 생기지 않게: 키보드로 옮겨 갈 때만 보인다 */
+input[type=checkbox]:focus{box-shadow:none}
+input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.date{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--edge);border-radius:16px;padding:4px 6px 4px 16px;box-shadow:var(--lift)}
+.date:focus-within{box-shadow:0 0 0 2px var(--accent)}
+.date label{font-size:14px;font-weight:700;color:var(--sub);white-space:nowrap}
+.date input{border:0;box-shadow:none!important;background:transparent;padding:10px 4px;width:12.5em;font-variant-numeric:tabular-nums}
+.date input::placeholder{font-size:14px}
+@media (max-width:640px){.date input{flex:1;width:auto;min-width:0}}
+.quick{display:flex;gap:8px;align-items:center;margin-top:12px}
+.quick.kinds{margin:0 0 12px} /* 승강기 종류 줄: 검색창 위 */
+/* 라벨(바로 고르기·연관 검색어)은 제자리에 두고, 옆 버튼들만 옆으로 민다 */
+.qs{display:flex;gap:inherit;align-items:center;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.qs::-webkit-scrollbar{display:none}
+.qs.drag,.qs.drag *{cursor:grabbing;user-select:none}
+/* 옆에 버튼이 더 있으면 그쪽 끝을 흐리게 해서 밀 수 있다는 걸 알린다 */
+.qs.fr{-webkit-mask-image:linear-gradient(to right,#000 80%,transparent);mask-image:linear-gradient(to right,#000 80%,transparent)}
+.qs.fl{-webkit-mask-image:linear-gradient(to left,#000 80%,transparent);mask-image:linear-gradient(to left,#000 80%,transparent)}
+.qs.fl.fr{-webkit-mask-image:linear-gradient(to right,transparent,#000 15%,#000 80%,transparent);mask-image:linear-gradient(to right,transparent,#000 15%,#000 80%,transparent)}
+/* 폰에서 아래로 내려가면 위에 붙는 얇은 검색줄: 누르면 맨 위 검색창·날짜 칸으로 */
+.minibar{display:none}
+@media (max-width:560px){
+  .minibar{position:fixed;left:0;right:0;top:0;z-index:12;display:flex;gap:8px;align-items:center;padding:calc(8px + env(safe-area-inset-top,0px)) 12px 8px;background:var(--bg);box-shadow:0 1px 0 var(--line);transform:translateY(-110%);visibility:hidden;transition:transform .2s ease,visibility .2s}
+  .minibar.on{transform:none;visibility:visible}
+}
+.mq{flex:1;min-width:0;display:flex;align-items:center;gap:8px;font:inherit;font-size:15px;font-weight:600;color:var(--ink);background:var(--surface);border:1px solid var(--edge);border-radius:12px;padding:9px 12px;box-shadow:var(--lift);text-align:left;cursor:pointer}
+.mq svg{width:18px;height:18px;flex:none;color:var(--muted)}
+.mq span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mq span.ph{color:var(--muted);font-weight:500}
+.md{flex:none;font:inherit;font-size:13.5px;font-weight:700;border:0;border-radius:12px;padding:10px 12px;background:var(--accent-soft);color:var(--accent);font-variant-numeric:tabular-nums;cursor:pointer;white-space:nowrap}
+.md.none{background:var(--fill);color:var(--muted)}
+.qlabel{flex:none;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap;margin-right:2px}
+.qd{font:inherit;font-size:14px;font-weight:600;white-space:nowrap;border:1px solid var(--edge);background:var(--surface);color:var(--sub);border-radius:999px;padding:8px 14px;cursor:pointer;font-variant-numeric:tabular-nums;box-shadow:var(--lift)}
+@media (hover:hover) and (pointer:fine){.qd:hover{color:var(--accent)}}
+.qd[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.dmsg{margin:10px 2px 0;font-size:14px;font-weight:600;color:var(--accent);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.dmsg.bad{color:var(--warn)}
+.dmsg.off{color:var(--muted);font-weight:500} /* 표준화 자료를 볼 때 */
+body.stdmode .date,body.stdmode .quick:not(.kinds){opacity:.45;transition:opacity .15s}
+.dmsg[hidden]{display:none}
+.row2{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+.seg[hidden]{display:none}
+.seg{display:inline-flex;gap:2px;background:var(--track);border-radius:12px;padding:3px}
+.seg.off{opacity:.4}
+.seg.off button{cursor:default}
+.seg button{font:inherit;font-size:14px;font-weight:600;border:0;background:none;color:var(--muted);padding:7px 14px;border-radius:9px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--surface);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.chipbtn{font:inherit;font-size:13.5px;font-weight:600;border:0;background:var(--fill);color:var(--sub);border-radius:10px;padding:8px 12px;cursor:pointer}
+/* 위쪽 도구 버튼(즐겨찾기만·인쇄·결과 공유): 밝은 모드에선 --fill이 페이지 바탕과 같아 박스가 안 보여 흰 바탕으로 */
+#favonly,#print,#share,#qrbtn,#fbtool,#note [data-act=favclear]{background:var(--chip)}
+/* 폰으로 보기: 글 앞에 작은 폰 그림. [hidden]일 땐(폰 화면) 그대로 숨게 :not([hidden])에만 flex */
+#qrbtn:not([hidden]){display:inline-flex;align-items:center;gap:3px}
+/* 가운데 맞춤만 하면 폰 그림이 글자보다 1px 높아 보여서(실측) 1px 내림.
+   폰 그림 양옆에 빈 칸이 있어 왼쪽 여백이 2.5px 넓어 보여서(실측) 왼쪽으로 당기고, 글자와 사이(gap)도 줄임 */
+#qrbtn svg{width:16px;height:16px;flex:none;position:relative;top:1px;margin-left:-2.5px}
+/* 창의 닫기 버튼: 제목이 길어도 줄어들거나 '닫/기'로 꺾이지 않게 */
+#lawclose,#cmpclose,#repclose{flex:none;white-space:nowrap}
+@media (hover:hover) and (pointer:fine){.chipbtn:hover{color:var(--accent)}}
+#dclear{background:transparent;color:var(--muted)}
+/* 결과 건수: '즐겨찾기만' 옆에 있으면 즐겨찾기 개수로 읽혀서, 결과 안내 줄 맨 앞으로 옮김 */
+.resline{font-size:13px;color:var(--muted);margin:10px 2px 0;line-height:1.6}
+.resline .note{margin:0}
+.status{font-variant-numeric:tabular-nums;margin-right:4px}
+.status b{color:var(--ink);font-weight:800}
+@media (max-width:560px){.status .st-of{display:none}}
+
+/* 요약 띠 */
+.banner{margin:6px 0 0;padding:16px 20px;border-radius:20px;background:var(--accent-soft);color:var(--sub);font-size:14px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;font-variant-numeric:tabular-nums}
+.banner .bdate{width:100%;font-weight:600}
+.banner .big{font-size:22px;font-weight:800;color:var(--accent);letter-spacing:-.03em}
+.banner .small{font-size:15px;font-weight:700;color:var(--muted)}
+/* 적용 안 됨 N건: 누르면 맨 아래 적용 안 되는 조항 목록을 펼치고 그 첫 조항으로 */
+.banner .bx{font-family:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+@media (hover:hover) and (pointer:fine){.banner .bx:hover{color:var(--accent)}}
+.banner .sub{width:100%;color:var(--muted);font-size:13px}
+.banner .legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:8px;padding-top:10px;border-top:1px solid color-mix(in srgb,var(--muted) 25%,transparent)}
+.banner .legend .li{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.banner .legend .pill{font-size:11.5px;padding:2px 7px}
+.banner[hidden]{display:none}
+.note{font-size:13px;color:var(--muted);margin:10px 2px 0}
+.note .chipbtn{font-size:12.5px;padding:3px 9px;margin-left:4px}
+.relq{display:flex;gap:6px;align-items:center;margin:10px 0 0}
+.relq[hidden]{display:none}
+.relq .qd{font-size:13.5px;padding:6px 12px;box-shadow:none}
+.relq .qd::before{content:"+ ";color:var(--muted)}
+
+/* 목록·시기별 칸 */
+.list{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px;align-items:start}
+@media (max-width:860px){.cols{grid-template-columns:1fr}}
+.col h2{font-size:15px;margin:0 0 10px;padding:0 4px;color:var(--ink);font-weight:800;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.col h2>span:last-child{color:var(--muted);font-weight:600;font-size:14px}
+.col .list{margin-top:0}
+.col.empty{opacity:.6}
+.col.here h2{color:var(--accent)}
+.col h2 em{font-style:normal;font-size:12px;font-weight:700;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:2px 9px;margin-left:6px;vertical-align:2px;display:inline-block;white-space:nowrap}
+/* 글자를 키워 한 줄에 안 들어가면 "허가일 시기" 표시는 통째로 다음 줄로, 건수는 오른쪽에 한 줄로 */
+.col h2>span:last-child{flex:none;white-space:nowrap}
+/* 폰에서 허가일 시기가 아닌 칸은 접어 둔다: 제목에 ▸/▾, 누르면 펼침 */
+.col.shut .list{display:none}
+.col.shut h2,.col.fold-ok h2{cursor:pointer;background:var(--fill);border-radius:12px;padding:10px 12px}
+.col.shut h2>span:first-child::before{content:"▸ ";color:var(--muted)}
+.col.fold-ok:not(.shut) h2>span:first-child::before{content:"▾ ";color:var(--muted)}
+
+/* 조항 카드 */
+article{background:var(--surface);border:1px solid var(--edge);border-radius:22px;padding:20px 20px 18px;box-shadow:var(--lift)}
+article.warn{box-shadow:inset 0 0 0 1.5px var(--warn)}
+.head{display:flex;flex-direction:column;gap:2px}
+.label{font-size:14px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:0}
+.title{font-weight:800;font-size:17.5px;line-height:1.45;letter-spacing:-.03em}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pill{font-size:12.5px;font-weight:700;border-radius:8px;padding:3px 8px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill.now{background:var(--now-soft);color:var(--now)}
+.pill.old{background:var(--old-soft);color:var(--old)}
+.pill.warn{background:color-mix(in srgb,var(--del) 14%,transparent);color:var(--del)} /* 날짜 자료 이상: 빨강 (주황은 개정·신설 표시에만) */
+.pill.kw{background:var(--accent-soft);color:var(--accent)}
+.pill.hit{background:var(--accent);color:var(--on-accent)} /* 넣은 건축허가일에 적용되는 기간 */
+/* 허가일 직전 개정일에 바뀐 조항 표시 (누르면 시기별 비교) */
+.pill.rev{background:var(--warn-soft);color:var(--warn);border:0;font:inherit;font-size:12.5px;font-weight:800;cursor:pointer}
+span.pill.rev{cursor:default}
+/* 허가일 칸의 개정일 목록: 누르면 그 날 개정만 */
+.banner .revs{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:4px}
+.banner .revs .rl{flex-basis:100%;display:flex;align-items:center;gap:8px;min-height:28px;font-size:13px;font-weight:700;color:var(--muted)} /* 제목은 한 줄 따로, 개정일 버튼은 그 아래 한데 모아 */
+.banner .rvb{font:inherit;font-size:13px;font-weight:700;border:0;border-radius:999px;padding:5px 11px;background:var(--warn-soft);color:var(--warn);cursor:pointer;font-variant-numeric:tabular-nums}
+.banner .rvb.on{background:var(--warn);color:#fff}
+.banner .rvb.all{background:var(--fill);color:var(--sub);padding:4px 10px}
+.banner .rvb.all.off{visibility:hidden} /* "전체 보기"는 늘 자리를 잡아 두고 개정일을 골랐을 때만 보임: 생겼다 없어지며 줄 높이가 1px 남짓 바뀌어 아래 칸이 위아래로 떨리던 것 */
+@media (max-width:430px){.banner .revs{gap:5px}.banner .rvb{font-size:12.5px;padding:5px 8px}} /* 폰: 개정일 버튼 셋이 한 줄에 들어가게 */
+.text{white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;margin-top:14px;font-size:15.5px;line-height:1.75;color:var(--sub)}
+.text.fold{cursor:pointer} /* 긴 본문은 눌러서 펼치고 접는다 */
+.text .ln{padding-left:calc(var(--lv,0)*1.4em)} /* 목록 단계만큼 들여쓰기 */
+.text.clip{max-height:16em;overflow:hidden;-webkit-mask-image:linear-gradient(#000 65%,transparent);mask-image:linear-gradient(#000 65%,transparent)}
+mark{background:var(--mark);color:var(--ink);border-radius:4px;padding:0 2px;font-weight:600}
+.acts{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px}
+.imgs{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.imgs button{border:0;border-radius:14px;padding:0;background:#fff;cursor:zoom-in;max-width:100%;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line)}
+.imgs img{display:block;max-height:150px;max-width:100%}
+.rel{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.rel article{background:var(--fill);border:0;box-shadow:none;border-radius:16px;padding:16px}
+/* 안쪽 카드 바탕(--fill)과 버튼 바탕이 같아 즐겨찾기 등이 상자 없이 떠 보여서, 안쪽 카드의 버튼은 바깥 카드 색으로 (2026-10-02) */
+.rel .chipbtn:not(.primary){background:var(--surface)}
+.rel .title{font-size:15.5px}
+.why{font-size:13px;font-weight:700;color:var(--warn);margin-bottom:8px}
+article.off{opacity:.75}
+/* 새로 고칠 때 자료를 불러오는 사이 결과 칸이 비면 바닥글이 검색창 밑까지 올라와 번쩍인다 → 빈 동안은 화면 높이만큼 자리를 잡아 둔다 */
+#out:empty{min-height:100vh}
+.excl{margin-top:28px}
+.excl>.chipbtn{width:100%;padding:14px;border-radius:16px;font-size:14.5px;background:var(--surface);box-shadow:var(--lift);border:1px solid var(--edge)}
+.excl .list{margin-top:12px}
+.excl.part{margin-top:20px}
+.excl.part .note{margin:0 2px}
+/* 항목으로 찾기 (검색어가 비었을 때) */
+.topics{margin-top:14px;background:var(--surface);border:1px solid var(--edge);border-radius:16px;padding:12px 14px;box-shadow:var(--lift)}
+.topics summary{font-size:14.5px;font-weight:700;color:var(--ink);cursor:pointer}
+.topics summary .ts{margin-left:6px;font-size:12.5px;font-weight:500;color:var(--muted)}
+.tg{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px}
+.tg .qlabel{flex-basis:100%;margin-bottom:-2px}
+.tg .qd{font-size:13.5px;padding:6px 12px;box-shadow:none;background:var(--fill)} /* 흰 상자 안이라 버튼도 흰색이면 밝은 화면에서 글자만 떠 보여서 회색 바탕으로 */
+.tg .tn{margin-left:6px;font-size:12px;font-weight:600;color:var(--muted)}
+.empty-msg{color:var(--muted);font-size:15px;padding:24px 4px;text-align:center}
+.more{margin:18px auto 0;display:block;padding:12px 20px;border-radius:14px;background:var(--surface);box-shadow:var(--lift);border:1px solid var(--edge)}
+
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh}
+/* 창(원문·시기별 비교·의견·그림)을 끝까지 내린 뒤 더 내려도 뒤 페이지가 따라 내려가지 않게: 창 안에서 스크롤을 멈추고, 창이 열린 동안 뒤 페이지를 고정 */
+.sh-body,.cmp-body,.rep-body,.vbox{overscroll-behavior:contain}
+html:has(dialog[open]){overflow:hidden;scrollbar-gutter:stable} /* 창이 뜰 때 스크롤바가 사라진 폭만큼 뒤 화면이 좌우로 움직이지 않게 자리는 남김 */
+#lawdlg{width:min(760px,calc(100vw - 24px));max-height:88vh}
+.sheet{background:var(--surface);color:var(--ink);border-radius:24px;display:flex;flex-direction:column;max-height:88vh;overflow:hidden;border:1px solid var(--edge)}
+.sh-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:20px 20px 12px}
+.sh-src{font-size:12.5px;font-weight:700;color:var(--muted);line-height:1.5}
+.sh-head h2{margin:4px 0 0;font-size:20px;font-weight:800;letter-spacing:-.03em;color:var(--accent);font-variant-numeric:tabular-nums}
+.sh-warn{margin:0 20px 8px;padding:10px 12px;border-radius:12px;background:var(--warn-soft);color:var(--warn);font-size:13px;font-weight:600;line-height:1.55}
+.sh-warn[hidden]{display:none}
+.sh-body{padding:4px 20px 16px;overflow:auto;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-size:15px;line-height:1.8;color:var(--sub)}
+.sh-foot{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 20px 18px;border-top:1px solid var(--line)}
+.sh-note{font-size:12.5px;color:var(--muted)}
+#repdlg{width:min(520px,calc(100vw - 24px))}
+/* 폰으로 이어 보기(PC에서만): 지금 화면 주소를 QR로. QR은 어두운 화면에서도 읽히게 흰 바탕 */
+#qrdlg{width:min(380px,calc(100vw - 24px))}
+.qr-body{padding:4px 20px 22px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.qr-box{background:#fff;border-radius:16px;padding:10px;line-height:0;min-height:120px;min-width:120px;display:flex;align-items:center;justify-content:center}
+.qr-box img{image-rendering:pixelated;border-radius:0;max-width:none;max-height:none}
+.qr-say{font-size:14px;line-height:1.65;color:var(--sub);text-align:center;word-break:keep-all}
+.qr-say b{color:var(--ink)}
+/* 시기별 비교 창: 옛 판부터 차례로, 앞 판보다 새로 생긴 말은 초록 밑줄, 빠진 말은 빨간 줄 */
+#cmpdlg{width:min(760px,calc(100vw - 24px));max-height:88vh}
+.cmp-body{padding:4px 20px 16px;overflow:auto;display:flex;flex-direction:column;gap:12px}
+.cmp-legend{margin:0 20px 8px;font-size:13px;color:var(--muted);line-height:1.6}
+.cmp-v{background:var(--fill);border-radius:16px;padding:14px 16px}
+.cmp-v.me{box-shadow:inset 0 0 0 2px var(--accent)}
+.cmp-top{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--ink)}
+.cmp-top em{font-style:normal;font-size:12px;font-weight:700;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:2px 9px}
+.cmp-text{margin-top:8px;white-space:pre-line;word-break:keep-all;overflow-wrap:anywhere;font-size:15px;line-height:1.75;color:var(--sub)}
+/* pre-line: 줄 끝에 걸린 빈칸까지 밑줄이 그어져 낱말 뒤로 삐져나오던 것(폰, 2026-10-02). 줄 앞 들여쓰기는 ind()가 &nbsp;로 지킨다 */
+.cmp-text ins{text-decoration:underline;text-decoration-color:var(--now);text-decoration-thickness:2px;text-underline-offset:4px;color:inherit;background:none} /* 새로 생긴 말: 글자는 그대로, 얇은 초록 밑줄만 */
+.cmp-text del{display:none;color:var(--muted);text-decoration:line-through;opacity:.8} /* 빠진 말: 평소 숨김 */
+.cmp-showdel .cmp-text del{display:inline}
+/* 체크칸은 설명 글 다음 줄에 따로: 글 줄 사이에 끼면 칸 높이 때문에 위아래가 어긋나 보였다 (2026-10-02) */
+.cmp-legend label{display:flex;width:max-content;max-width:100%;align-items:center;gap:6px;margin-top:4px;cursor:pointer;color:var(--sub)}
+.cmp-legend input{width:16px;height:16px;margin:0;flex:none;accent-color:var(--accent)}
+.cmp-same{margin-top:6px;font-size:13px;color:var(--muted)}
+/* 즐겨찾기 */
+.chipbtn.fav[aria-pressed=true]{background:var(--star-soft);color:var(--star);font-weight:800;box-shadow:inset 0 0 0 1.5px var(--star)} /* 즐겨찾기됨: 노란 바탕 + 테두리로 한눈에 */
+/* 조항의 '표준화 자료 N건': 닫힘 ▾ / 열림 ▴ + 파란 바탕 */
+.relbtn::after{content:" ▾";font-size:.85em}
+.relbtn[aria-expanded=true]{background:var(--accent-soft);color:var(--accent)}
+.relbtn[aria-expanded=true]::after{content:" ▴"}
+#favonly[aria-pressed=true]{background:var(--star-soft);color:var(--star)}
+/* 최근 검색어: 빈 검색창을 누르면 아래에 뜬다 */
+.recent{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:25;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px;box-shadow:0 12px 32px rgba(0,0,0,.18)}
+.recent[hidden]{display:none}
+.recent .rh{display:flex;justify-content:space-between;align-items:center;padding:4px 8px 6px;font-size:12.5px;font-weight:700;color:var(--muted)}
+.recent .rh button{font:inherit;font-size:12.5px;border:0;background:none;color:var(--muted);cursor:pointer;padding:2px 4px;text-decoration:underline}
+.recent .ri{display:flex;align-items:center;gap:10px;width:100%;font:inherit;font-size:15px;font-weight:600;color:var(--ink);background:none;border:0;border-radius:10px;padding:10px 10px;cursor:pointer;text-align:left}
+@media (hover:hover) and (pointer:fine){.recent .ri:hover{background:var(--fill)}}
+.recent .ri svg{width:16px;height:16px;flex:none;color:var(--muted)}
+.recent .rrow{display:flex;align-items:center}
+.recent .rrow .ri{flex:1;min-width:0}
+.recent .rrow .ri span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.recent .rx{flex:none;width:36px;height:36px;display:grid;place-items:center;border:0;border-radius:10px;background:none;color:var(--muted);cursor:pointer}
+@media (hover:hover) and (pointer:fine){.recent .rx:hover{background:var(--fill);color:var(--ink)}}
+.recent .rx svg{width:15px;height:15px}
+.recent mark{background:none;color:var(--accent);font-weight:800} /* 치는 글자와 맞는 부분 */
+.phead{display:none}
+.rep-body{padding:4px 20px 12px;display:flex;flex-direction:column;gap:16px;overflow:auto}
+.rep-step{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--sub);line-height:1.6;text-align:left;word-break:keep-all}
+.rep-step>div{flex:1;min-width:0}
+.rep-step b{display:block;color:var(--ink);font-size:15.5px;font-weight:800;line-height:26px}
+.rep-step p{margin:4px 0 0}
+.rep-step ul{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}
+.rep-step li{position:relative;padding-left:14px}
+.rep-step li::before{content:"";position:absolute;left:2px;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--muted)}
+.rep-step em{font-style:normal;font-weight:700;color:var(--accent)}
+.rep-no{flex:none;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:13.5px;display:grid;place-items:center;margin-top:1px}
+.rep-box{margin-top:8px;display:flex;gap:8px;align-items:center;background:var(--fill);border-radius:12px;padding:10px 10px 10px 12px}
+#repclause{flex:1;min-width:0;font-size:14px;font-weight:600;color:var(--ink);user-select:all;overflow-wrap:anywhere}
+.sheet{text-align:left}
+.rep-state{text-align:left;margin:6px 0 0;font-size:13.5px;font-weight:700;min-height:1.2em}
+.rep-state.ok{color:var(--now)}
+.rep-state.bad{color:var(--warn)}
+.rep-go{display:block;width:100%;text-align:center;background:var(--accent);color:var(--on-accent);font-weight:800;font-size:16px;padding:14px;border-radius:14px;text-decoration:none}
+.rep-go:active{transform:scale(.98)}
+dialog::backdrop{background:rgba(0,0,0,.78)}
+dialog img{max-width:96vw;max-height:88vh;background:#fff;border-radius:16px;display:block}
+dialog p{color:#fff;text-align:center;font-size:13px;margin:10px 0 0;opacity:.8}
+/* 그림 크게 보기: 화면 가득. 위 줄(제목·2배·닫기), 아래는 그림 칸(넘치면 끌어서 옮김) */
+dialog.viewer{width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;background:rgba(10,10,14,.94);color:#fff}
+dialog.viewer[open]{display:flex;flex-direction:column}
+dialog.viewer::backdrop{background:rgba(0,0,0,.6)}
+.vbar{display:flex;align-items:center;gap:8px;padding:calc(10px + env(safe-area-inset-top,0px)) 12px 10px}
+.vbar span{flex:1;min-width:0;font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;opacity:.92}
+.vbar button{flex:none;font:inherit;font-size:14px;font-weight:700;border:0;border-radius:999px;padding:8px 14px;background:rgba(255,255,255,.14);color:#fff;cursor:pointer}
+.vbox{flex:1;min-height:0;overflow:auto;display:grid;place-items:center;padding:12px 12px calc(16px + env(safe-area-inset-bottom,0px));-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom}
+.vbox img{max-width:100%;max-height:100%;border-radius:10px;background:#fff;cursor:zoom-in;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.vbox.big{place-items:start}
+.vbox.big img{max-width:none;max-height:none;cursor:zoom-out}
+/* 카드 그림 밑 제목 */
+.imgs figure{margin:0;max-width:100%}
+.imgs figcaption{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.4;max-width:260px}
+footer{word-break:keep-all;margin-top:48px;padding:28px 24px;border-radius:24px;background:var(--fill);font-size:13.5px;color:var(--muted);line-height:1.75}
+.ft-brand{font-size:16px;color:var(--ink);font-weight:700;letter-spacing:-.02em}
+.ft-brand b{color:var(--accent);font-weight:800}
+.ft-brand span{display:block;font-size:12.5px;font-weight:500;color:var(--muted);letter-spacing:.01em;margin-top:2px}
+.ft-lead{margin:10px 0 20px;color:var(--sub);font-size:14px}
+.ft-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px}
+@media (max-width:640px){.ft-grid{grid-template-columns:1fr}}
+.ft-grid h3{margin:0 0 4px;font-size:13.5px;font-weight:800;color:var(--ink)}
+.ft-grid p{margin:0;color:var(--sub)} /* 본문은 한 단계 진하게: 어두운 화면에서도 잘 읽히게 */
+.ft-btn{margin-top:12px;display:inline-flex;align-items:center;gap:6px;padding:9px 16px} /* 바닥글의 의견 버튼: 제목과 겹쳐 보이지 않게 색 있는 버튼으로 */
+.installhow{margin-top:10px;font-size:13.5px;line-height:1.6;color:var(--sub)}
+.installhow .ico{display:inline-flex;align-items:center;gap:2px}
+.installhow .ico svg{width:15px;height:15px;vertical-align:-2px}
+.ft-grid .wide{grid-column:1/-1}
+/* 인터넷 없이 보는 중 알림, 업데이트 알림 */
+.offline{margin:6px 0 0;padding:12px 16px;border-radius:16px;background:var(--warn-soft);color:var(--warn);font-size:13.5px;font-weight:600;line-height:1.55;word-break:keep-all}
+.offline[hidden]{display:none}
+.upd{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:21;font:inherit;font-size:14px;font-weight:700;border:0;border-radius:14px;padding:12px 18px;background:var(--accent);color:var(--on-accent);box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;white-space:nowrap}
+.upd:active{transform:translateX(-50%) scale(.97)} /* 가운데 맞춤(translateX)을 유지한 채 눌림 효과 */
+.upd[hidden]{display:none}
+.ft-meta{margin:22px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;font-variant-numeric:tabular-nums}
+.ft-copy{margin:6px 0 0;font-size:12px;color:var(--sub);word-break:keep-all} /* 저작권 표시 (2026-10-02 운영자) */
+footer a{color:var(--accent)}
+/* 인쇄: 검색창·버튼·꼬리말은 빼고 조항만 A4에 차례로. 잘린 글은 다 펼친다 */
+.printonly{display:none}
+@media print{
+  /* 인쇄물에선 누를 수 없는 "적용 안 됨 N건 ›" 대신 안 뽑았다는 안내만 (2026-09-30) */
+  [data-act="toexcl"]{display:none!important}
+  .printonly{display:inline!important}
+  @page{size:A4;margin:14mm 12mm}
+  /* 기기가 어두운 모드여도 흰 종이에 검은 글씨로 (어두운 색 규칙이 더 강해서 선택자를 같이 적는다) */
+  :root,:root[data-theme="dark"],:root:not([data-theme="light"]){color-scheme:light;--bg:#fff;--surface:#fff;--fill:#f2f4f6;--chip:#ffffff;--ink:#000;--sub:#222;--muted:#555;--edge:transparent;--lift:none;--accent:#1b64da;--accent-soft:#e8f3ff;--now:#0a7a48;--now-soft:#e5f8ef;--old:#444;--old-soft:#f2f4f6;--warn:#a35800;--warn-soft:#fff3e0;--mark:rgba(255,196,0,.34)}
+  body{background:#fff;padding:0;font-size:12pt}
+  .wrap{max-width:none;padding:0}
+  header,footer,.relq,.acts,.excl,.topics,.more,.minibar,.totop,.toast,.upd,.offline,.note,.resline,.endfb,dialog,#note,.noprint{display:none!important}
+  /* 페이지 본문(.wrap) 밖은 모두 빼기: 브라우저 확장 프로그램이 화면 가장자리에 붙이는 아이콘(흐린 빨간 그림)이 쪽마다 찍혔다 (2026-09-30) */
+  body>:not(.wrap){display:none!important}
+  .phead{display:block;margin:0 0 10px;padding-bottom:8px;border-bottom:1.5px solid #000;font-size:10pt;color:#333}
+  .phead b{font-size:14pt;color:#000}
+  .banner{margin:0 0 10px}
+  .cols{display:block}.col{margin-bottom:12px}
+  /* 인쇄는 모서리를 각지게, 그림자·반투명 없이: "Microsoft Print to PDF"가 둥근 모서리를 그림 조각으로 바꾸며 투명한 곳을 분홍으로 칠했다(쪽마다 빨간 네모) */
+  *,*::before,*::after{box-shadow:none!important;text-shadow:none!important;filter:none!important}
+  article{border:0;border-top:1.5px solid #999;border-radius:0;background:#fff;padding:12px 2px;break-inside:avoid;margin-bottom:0}
+  .list>article:last-child{border-bottom:1.5px solid #999}
+  #dateBanner[hidden]~#out>div.list>article:first-child{border-top:0} /* 허가일 안내가 없으면 머리글 밑줄 바로 아래라, 첫 카드 윗줄까지 두 줄로 찍혔다 */
+  .pill,.label,mark,.imgs button,.imgs img,.banner{border-radius:0!important}
+  .pill.hit{background:none;color:#000;border:1.5px solid #000} /* 배경색이 안 찍혀도 보이게 */
+  .rvb{background:none!important;color:#555!important;border:1px solid #bbb!important} /* 바탕색이 안 찍혀 흰 글씨가 사라지던 것 */
+  .rvb.on{color:#000!important;border:2px solid #000!important;font-weight:800} /* 고른 개정일이 가장 눈에 띄게 (2026-10-01) */
+  .rvb.all{display:none!important} /* "전체 보기"는 인쇄물에서 누를 일이 없어 뺌 */
+  .banner .legend .li{align-items:baseline} /* 테두리 생긴 "✓ 기간"과 옆 설명 글자를 기준선끼리 맞춤(가운데 맞춤이면 인쇄에서 어긋나 보임) */
+  article.off{display:none}
+  .text{font-size:11pt;line-height:1.6;margin-top:6px}
+  .text.clip{max-height:none;-webkit-mask-image:none;mask-image:none}
+  .imgs img{max-height:60mm}
+  mark{background:none;font-weight:700;text-decoration:underline}
+  /* 일부만 맞는 결과가 펼쳐져 있으면(모두 맞는 조항이 없을 때) 그 목록을 찍는다. 접힌 칸은 버튼·안내 없이 비어 있음 */
+  .excl.part{display:block!important;margin:0}.excl.part>.chipbtn,.excl.part .note{display:none!important}
+  .col.shut .list{display:flex!important} /* 폰에서 접어 둔 시기 칸도 인쇄는 펼쳐서 */
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}button:active{transform:none}}
+@media (max-width:370px){.brand h1{font-size:17px!important}.brand .mark{width:38px!important;height:38px!important}} /* 더 좁은 폰: 제목이 한 줄에 들어가게 */
+/* 좁은 폰 화면(폴드 앞화면 등): 머리를 줄여 첫 조항이 빨리 보이게, 카드 여백·글씨를 조금 줄임 */
+@media (max-width:480px){
+  body{font-size:14.5px;padding-inline:12px}
+  header{background:transparent;padding-block:10px 6px}
+  .brand{margin-bottom:8px;gap:8px}
+  .theme{padding:8px 10px 8px 8px;font-size:0;gap:3px}
+  .theme .aa{display:inline}
+  .acts .linkbtn{font-size:13px} /* 폰에서는 아이콘만: 제목이 중간에 끊기지 않게 */
+  .theme svg{width:20px;height:20px}
+  .brand h1{font-size:18px}
+  .brand .mark{width:42px;height:42px} /* 휴대폰: 아이콘은 제목·영문 두 줄 높이, 제목은 한 줄에 들어가게 */
+  .brand small{font-size:11px;letter-spacing:0;margin-top:2px} /* 영문 풀이가 한 줄에 */
+  .intro{font-size:13px;line-height:1.55;margin:0 0 12px}
+  input[type=search],input[type=text]{padding:12px 14px}
+  input[type=search]{padding-left:42px}
+  .qgo{left:4px}
+  .date{padding-left:14px}
+  .quick{margin-top:10px;gap:6px}
+  .qd{font-size:13.5px;padding:6px 12px}
+  .row2{margin-top:10px;gap:6px}
+  .seg button{font-size:13.5px;padding:6px 11px}
+  .note{margin-top:6px}
+  .resline{margin-top:6px}
+  .list{gap:10px;margin-top:10px}
+  article{padding:16px 16px 14px;border-radius:18px}
+  .title{font-size:16.5px}
+  .meta{margin-top:8px}
+  .text{font-size:15px;line-height:1.7;margin-top:10px}
+  .acts{margin-top:10px}
+  .acts .favl{display:none}
+  .acts .fav{min-width:42px;padding-inline:13px}
+}
+</style>
+
+<div class="wrap">
+<style>@media print{.labbar{display:none!important}}</style><div class="labbar" style="margin:0 0 12px;padding:8px 12px;border-radius:12px;background:#fff3cd;color:#664d03;font-size:13.5px;font-weight:700">🧪 테스트용 페이지예요. 기능을 시험하는 곳이라 바뀌거나 틀릴 수 있어요 · <a href="https://udinotti.github.io/elisn/" style="color:inherit">운영 사이트로 가기</a><details id="labchg" style="margin-top:6px;font-weight:500"><summary style="cursor:pointer;font-weight:700">📋 패치 내역 펼치기</summary><div style="margin-top:8px;max-height:65vh;overflow:auto;font-size:13px;line-height:1.55"><div style="margin:10px 0 2px;font-weight:800">2026.10.2</div><ul style="margin:0;padding-left:18px"><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>허가일 칸에서 개정일 버튼을 누를 때마다 아래 색 설명이 위아래로 살짝 떨리던 것, 시기별 비교 창을 열 때 뒤 화면이 좌우로 움직이던 것 고침</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>맨 위 '화면·글자' 버튼을 누를 때 찌그러져 보이던 것 고침 (다른 버튼처럼 한 번에 살짝 작아지게)</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>원문 보기: 허가일을 넣으면 그날 시행 중이던 고시 판으로 보여 줌 (예: 허가일 2019.3.28 → 2019년 판, 2013~2019년 카드는 2013·2014·2015·2017·2018년 판 중 그때 판)</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>시기별 비교 창의 &quot;없어진 말도 보기&quot; 체크칸이 설명 글과 위아래가 어긋나 보이던 것 고침 (다음 줄로 따로)</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>원문 보기·시기별 비교·그림 크게 보기 같은 창이 떠 있을 때 폰 뒤로가기를 누르면 앱이 꺼지지 않고 그 창만 닫히게</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>옛 기준(2009 이전) 카드와 원문 보기에서 가운뎃점(·)이 마침표(.)나 물음표(?)로 보이던 것 고침 (예: 공조설비·급배수설비, 제어반·TV공청분배기)</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>글자를 크게 하면 시기별 나란히 칸 제목의 &quot;허가일 시기&quot; 표시가 두 줄로 쪼개져 잘리던 것 고침, 화면 모드·글자 크기 메뉴가 스크롤하면 닫히게</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>폰에서 글자 크기를 키우면 &quot;시기별 나란히&quot; 화면이 옆으로 넘쳐 잘리던 것 고침</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>문 조항 8건(문 닫힘 힘·운동에너지·문닫힘 안전장치 등)이 2017.1.28 시작으로 한 장 더 나오던 중복 뺌 — 고시 원문은 2013.9.15부터 2019.3.27까지 글이 같음</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>시기별 비교 밑줄: 줄 끝 빈칸까지 그어져 낱말 뒤로 삐져나오던 것, 쉼표와 이어진 새 말이 짧은 줄·긴 줄로 갈려 보이던 것 고침</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>맨 아래에 저작권 표시, 저장소에 LICENSE 추가</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>원문 보기: 7.1 승강장문 일반사항(2014·2018판)이 표 속 숫자 &quot;7.1&quot;을 잘못 잡아 번호만 나오던 것 고침</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>원문 보기 정리: 다른 조항 번호가 줄 첫머리에 온 곳에서 원문이 잘리던 것(5.3.3 천장 강도 등) 고침, 2013·2015 전기식과 2013~2017 유압식 판 추가, 날짜 보정에 맞춰 판 다시 고름, 제목만 있는 카드는 그 절 전체 대신 제목 부분만</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>글 정리: 판마다 섞인 전각 부등호(＜ ＞)를 보통 부등호로, 숫자와 단위가 줄 끝에서 갈리지 않게(1⏎m), 항목 사이 빈 줄 빼기, 시기별 비교에서 들여쓰기·띄어쓰기만 다른 곳은 밑줄 안 침</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>다른 종류(에스컬레이터·덤웨이터·휠체어리프트 등) 원문의 수식 기호가 빠져 &quot;공칭속도()&quot;·&quot;스텝 높이 은&quot;처럼 남던 34개 조항에 기호 되살림(v, z₁, x₁, l₁ 등)</li><li><b style="font-size:11px;background:#fde7c7;color:#8a4b00;border-radius:6px;padding:0 5px;margin-right:4px">lab만</b>lab 맨 위 패치 내역을 쉬운 말 변경 기록으로 바꿈</li></ul><div style="margin:10px 0 2px;font-weight:800">2026.10.1</div><ul style="margin:0;padding-left:18px"><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>PC 인쇄: 인쇄 창 열기 전에 ‘PDF로 저장’ 고르는 법과 쪽 아래 주소 줄 끄는 법 안내(처음 세 번만)</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>인쇄: 고른 개정일이 흐리게 찍히던 것 고침</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>방문 수·검색어 익명 집계(쿠키·개인정보 없이)</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>원래 자료 글에서 낱말·문장 중간에 끊긴 줄 307곳 이어 붙임</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>즐겨찾기만 볼 때 '모두 지우기'(지금 종류·자료의 별표만, 확인 창), '폰으로 보기'·'화면·글자' 버튼과 화면 메뉴 밝게·어둡게 그림 1px 내려 글자 높이와 맞춤, '폰으로 보기'·'화면·글자' 버튼 안 좌우 여백 맞춤</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>PC '폰으로 보기' QR 버튼, 버튼 앞에 작은 폰 그림</li></ul><div style="margin:10px 0 2px;font-weight:800">2026.9.30</div><ul style="margin:0;padding-left:18px"><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>PC: 위에 붙는 검색·버튼 영역이 스크롤 처음에 살짝 따라 움직이던 것 고침</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>조항 글 목록 들여쓰기(① 가) 1) a. 순서대로), *·※ 주석 정리</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>맨 아래 버전 표시(v날짜.번호), 의견 남기기로 복사하는 글에도 버전</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>인쇄 정리: 조항 사이를 가로선 하나로, &quot;✓ 기간&quot; 글자 높이 맞춤, 적용 안 되는 조항은 &quot;인쇄하지 않았어요&quot; 안내</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>PDF 저장: 카카오톡 등 앱 안에서는 바깥 브라우저로 열기, PDF 파일 이름을 검색어·허가일로, 인쇄에 브라우저 확장 아이콘이 찍히던 것 없앰</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>적용되는 카드 기간 표시를 파란 바탕 ✓로, 적용 안 되는 조항은 회색, 날짜 배너 색 설명·개정일 정리, 머리 아이콘 크기 조정</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>PC: &quot;적용 안 됨 N건&quot;을 누르면 첫 조항이 위 검색·버튼 영역에 가려지던 것 고침</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>검색어 지우기(×) 뒤 커서만 남기고 최근 검색어 목록은 안 띄움(빈 칸 한 번 더 누르면 뜸), 최근 검색어 창은 조금만 끌어도 닫힘(폰 손가락 끌기 포함)</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>PC 시기별 나란히: 결과 칸만 넓히고 위쪽 폭은 고정, 위에 붙는 영역 바탕을 넓혀 양옆 비침 없앰, 좁은 칸 카드 버튼 간결하게</li></ul><div style="margin:10px 0 2px;font-weight:800">2026.9.29</div><ul style="margin:0;padding-left:18px"><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>표준화 자료를 볼 때 목록·시기별 버튼을 숨기지 않고 흐리게(버튼 줄 안 밀림), 폰에서 &quot;인쇄&quot; → &quot;PDF 저장&quot;(처음 한 번 저장 방법 안내)</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>첫 화면·버튼 정리: 의견 보내기를 도구 줄로, 카드 아래 버튼 줄(폰은 즐겨찾기 별만), 추천 검색어 종류별 116개, '항목으로 찾기' 5종에도, 종류 바꾸면 검색어 비움</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>화면 손보기: 글자 크기 메뉴 잘림, 밝은 모드 버튼 박스, 맨 위 조항 수 삭제, 날짜만 적힌 번호 칸 정리, 시기별 비교 문구(&quot;없어진 말도 보기&quot;)</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>원본 첨부파일(HWP)로 확인한 수식·표: 허용 응력 10.1.2.1 카드, 11.4.5 기호·단위·표 14, 완충기 거리 표 7</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>개정 이력 자료 대조로 적용 기간 55건 바로잡기, 빠진 시기 판 13장 보충, 피난용 4개 조항 당시 원문으로, 중복 카드 정리</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>2013년 전 옛 기준 146건은 2013.9.14까지, 에스컬레이터·덤웨이터 옛 기준 날짜를 원문 표시대로 나눔, 종류 자료에서 검사 항목 아닌 조항 뺌</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>옛 판(2013~2018) 끝 날짜 정리(2019.3.28 뒤에 옛 기준이 함께 뜨던 것), 2019 글만 있던 조항 58건에 옛 판 원문 보충</li></ul><div style="margin:10px 0 2px;font-weight:800">2026.9.28</div><ul style="margin:0;padding-left:18px"><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>검사기준 수치 원문대로: 문턱 아래 탄성변형(2019~ 15 mm, 2013~2019 10 mm), 대형 유리문 어린이 손 끼임 문장 등</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>승강기 종류 5가지 추가(에스컬레이터·무빙워크, 수직형·경사형 휠체어리프트, 소형화물용, 경사형 엘리베이터), 그림 크게 보기, 개정일 표시</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>법령 원문 대조로 날짜 48건 보정, 인쇄 개선(전부 그린 뒤 인쇄, 각진 모서리), &quot;적용 안 됨 N건 ›&quot; 누르면 해당 조항으로</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>새 기능: 시기별 비교, 즐겨찾기, 최근 검색어, 인쇄, 연관 검색어, 결과 공유 링크, 인터넷 없이 보기, 폰 얇은 검색줄</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>아래 안내에 &quot;최근 업데이트&quot; 날짜 표시 추가 (사이트 만들 때 자동으로 그날 날짜)</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>화면 모드(자동·밝게·어둡게) 고르기 추가</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>브라우저 탭 아이콘 확정 (연하늘 바탕, 파란 승강기 문, 가운데 노란 빛)</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>제보·제안 문구를 모두 &quot;의견 남기기&quot;로 통일, 노션 &quot;ELISN 의견함&quot; 폼 연결</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>옛 아이폰(iOS 16.4 이전)에서 목록이 안 뜨던 문제 고침</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>휴대폰에서 검색창·건축허가일 칸이 삐져나가던 것 고침</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>검색창에 무작위 예시 문구, 소개 문구를 공개 서비스 말투로</li><li><b style="font-size:11px;background:#e7f5ec;color:#1b7a3d;border-radius:6px;padding:0 5px;margin-right:4px">운영</b>첫 공개: 조항 2,018개 검색, 건축허가일 거르기, 시기별 보기, 근거 원문 보기(1,832개)</li></ul></div></details></div>
+<header>
+  <div class="brand"><svg class="mark home" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#e8f3ff"/><rect x="11" y="13" width="42" height="41" rx="10" fill="#ffe08a"/><rect x="11" y="13" width="18" height="41" rx="8" fill="#3182f6"/><rect x="35" y="13" width="18" height="41" rx="8" fill="#3182f6"/><path d="M32 4l5 5h-10z" fill="#3182f6"/></svg><div class="bt"><h1><a class="home" href="./" title="처음 화면으로"><span class="logo">ELISN</span> 승강기 검사기준 길잡이</a></h1><small><b>EL</b>evator <b>I</b>nspection <b>S</b>tandards <b>N</b>avigator</small></div><div class="tm"><button type="button" class="theme" id="theme" aria-haspopup="menu" aria-expanded="false" aria-controls="tmenu"></button><div class="tmenu" id="tmenu" role="menu" aria-label="화면 모드와 글자 크기" hidden></div></div></div>
+  <p class="intro">건축허가일을 넣으면 그 승강기에 맞는 기준만 골라 보여 줘요. 낱말이나 조항 번호로 찾고, 근거 고시 원문도 바로 볼 수 있어요.</p>
+  <div class="quick kinds" role="group" aria-label="승강기 종류">
+    <span class="qlabel">종류</span>
+    <div class="qs">
+    <button type="button" class="qd" data-kind="elev" aria-pressed="true">엘리베이터</button>
+    <button type="button" class="qd" data-kind="esc" aria-pressed="false">에스컬레이터·무빙워크</button>
+    <button type="button" class="qd" data-kind="wlv" aria-pressed="false">수직형 휠체어리프트</button>
+    <button type="button" class="qd" data-kind="wli" aria-pressed="false">경사형 휠체어리프트</button>
+    <button type="button" class="qd" data-kind="dumb" aria-pressed="false">소형화물용 엘리베이터</button>
+    <button type="button" class="qd" data-kind="ince" aria-pressed="false">경사형 엘리베이터</button>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="q"><button class="qgo" id="qgo" type="button" aria-label="찾기 (비어 있으면 보이는 예시로 찾기)" title="찾기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button><input id="q" type="search" placeholder="낱말이나 조항 번호" autocomplete="off" aria-label="검색어"><button class="qclear" id="qclear" type="button" aria-label="검색어 지우기" title="검색어 지우기" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button><div class="recent" id="recent" hidden></div></div>
+    <div class="date"><label for="d">건축허가일</label><input id="d" type="text" inputmode="decimal" placeholder="예: 240612, 2013.9" autocomplete="off" aria-label="건축허가일, 아무 모양으로 적어도 됨"><button class="chipbtn" id="dclear" type="button">지우기</button></div>
+  </div>
+  <div class="quick" role="group" aria-label="기준 바뀌는 날 바로 고르기">
+    <span class="qlabel">바로 고르기</span>
+    <div class="qs">
+    <button type="button" class="qd" data-d="2013-09-14">~2013.9.14</button>
+    <button type="button" class="qd" data-d="2013-09-15">2013.9.15</button>
+    <button type="button" class="qd" data-d="2015-05-13">2015.5.13</button>
+    <button type="button" class="qd" data-d="2017-01-28">2017.1.28</button>
+    <button type="button" class="qd" data-d="2019-03-28">2019.3.28</button>
+    <button type="button" class="qd" data-d="today">오늘</button>
+    </div>
+  </div>
+  <p class="dmsg" id="dmsg" hidden></p>
+  <div class="row2">
+    <div class="seg" role="group" aria-label="자료">
+      <button type="button" data-src="c" aria-pressed="true">검사기준</button>
+      <button type="button" data-src="s" aria-pressed="false">표준화 자료</button>
+    </div>
+    <div class="seg" id="viewseg" role="group" aria-label="보기">
+      <button type="button" data-view="list" aria-pressed="true">목록</button>
+      <button type="button" data-view="era" aria-pressed="false">시기별 나란히</button>
+    </div>
+    <button type="button" class="chipbtn" id="favonly" aria-pressed="false">★ 즐겨찾기만</button>
+    <button type="button" class="chipbtn" id="print">인쇄</button>
+    <button type="button" class="chipbtn" id="share">결과 공유</button>
+    <button type="button" class="chipbtn" id="qrbtn" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="3.5"/><path d="M10.5 5.5h3"/><circle cx="12" cy="17.5" r=".8" fill="currentColor" stroke="none"/></svg>폰으로 보기</button>
+    <button type="button" class="chipbtn" id="fbtool" data-act="feedback">의견 보내기</button>
+  </div>
+</header>
+<p class="offline" id="offline" hidden>인터넷 없이 보는 중이에요. 기기에 저장된 자료(최근 업데이트 2026.10.02)로 보여 드려요. 고시 전체 보기·의견 남기기는 인터넷이 있을 때 돼요.</p>
+<div class="phead" id="phead"></div>
+<p class="banner" id="dateBanner" hidden></p>
+<p class="resline"><span class="status" id="status">자료 불러오는 중…</span> <span class="note" id="note"></span></p>
+<div class="relq" id="relq" role="group" aria-label="연관 검색어" hidden></div>
+<main id="out"></main>
+<footer>
+  <div class="ft-brand"><b>ELISN</b> 승강기 검사기준 길잡이 <span>ELevator Inspection Standards Navigator</span></div>
+  <p class="ft-lead">승강기 검사 현장에서 건축허가일에 맞는 검사기준 조항과 근거 고시 원문을 빠르게 찾기 위한 참고용 검색 서비스입니다.</p>
+  <div class="ft-grid">
+    <section><h3>이용 안내</h3><p>이 서비스는 참고용이며 법적 효력이 없습니다. 실제 판단과 결정은 반드시 해당 고시 원문을 기준으로 하세요.</p></section>
+    <section><h3>적용 기간</h3><p>건축허가일(또는 시행일) 기준입니다. 끝 날짜가 없는 조항은 현재까지 적용되는 것으로 봅니다. 허가일을 넣으면 적용되지 않는 조항은 맨 아래에 이유와 함께 따로 모아 보여 줍니다.</p></section>
+    <section><h3>자료 출처</h3><p>근거 원문: <a href="https://www.law.go.kr/행정규칙/승강기안전부품안전기준및승강기안전기준" target="_blank" rel="noopener">국가법령정보센터 행정안전부 고시</a></p></section>
+    <section><h3>의견 남기기</h3><p>고쳤으면 하는 조항이나 바라는 기능이 있으면 편하게 알려 주세요. 조항마다 있는 ‘의견 남기기’로도 보낼 수 있어요.</p><button type="button" class="chipbtn primary ft-btn" data-act="feedback">의견 보내기 →</button></section>
+    <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p>한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실·피트처럼 신호가 없는 곳에서도 검색과 원문 보기가 돼요. 그림은 한 번 본 것만 저장돼요. 홈 화면에 두면 앱처럼 바로 열려요.<br>아이폰: 사파리 아래 <b>공유</b> 버튼 → <b>홈 화면에 추가</b> · 안드로이드: 크롬 <b>⋮</b> 메뉴 → <b>홈 화면에 추가</b></p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
+  </div>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.02.2"</script>버전 v2026.10.02.2 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-copy">© 2026 ELISN. All rights reserved.</p>
+</footer>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<button type="button" class="upd" id="upd" hidden>업데이트가 있어요 · 눌러서 적용</button>
+<div class="minibar" id="minibar"><button type="button" class="mq" id="mq" aria-label="검색창으로 가기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span id="mqt"></span></button><button type="button" class="md" id="md" aria-label="건축허가일 칸으로 가기"></button></div>
+<button type="button" class="totop" id="totop" aria-label="맨 위로" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<dialog id="repdlg" aria-labelledby="repttl">
+  <div class="sheet rep">
+    <div class="sh-head"><div><div class="sh-src">ELISN</div><h2 id="repttl">의견 남기기</h2></div><button type="button" class="chipbtn" id="repclose" aria-label="닫기">닫기</button></div>
+    <div class="rep-body">
+      <div class="rep-step"><span class="rep-no">1</span><div><b>조항 정보 복사</b><div class="rep-box"><div id="repclause"></div><button type="button" class="chipbtn" id="repcopy">다시 복사</button></div><p class="rep-state" id="repstate" role="status"></p></div></div>
+      <div class="rep-step"><span class="rep-no">2</span><div><b>폼에 붙여 넣기</b><ul><li><em>조항 (번호·제목)</em> 칸에 붙여 넣으세요</li><li>폰은 칸을 길게 눌러 <em>붙여넣기</em></li></ul></div></div>
+      <div class="rep-step"><span class="rep-no">3</span><div><b>내용 적고 제출</b><ul><li>종류를 고르고 고쳤으면 하는 내용을 적어 주세요</li><li>근거가 있으면 함께 적어 주세요</li></ul></div></div>
+    </div>
+    <div class="sh-foot"><a class="rep-go" id="repopen" target="_blank" rel="noopener">의견 폼 열기</a></div>
+  </div>
+</dialog>
+<dialog id="lawdlg" aria-labelledby="lawttl">
+  <div class="sheet">
+    <div class="sh-head"><div><div class="sh-src" id="lawsrc"></div><h2 id="lawttl"></h2></div><button type="button" class="chipbtn" id="lawclose" aria-label="닫기">닫기</button></div>
+    <p class="sh-warn" id="lawwarn" hidden></p>
+    <div class="sh-body" id="lawbody"></div>
+    <div class="sh-foot"><a class="chipbtn" id="lawfull" target="_blank" rel="noopener">고시 전체 보기</a><span class="sh-note">국가법령정보센터 고시 원문에서 옮긴 글이에요. 표·그림은 고시 전체 보기에서 확인하세요.</span></div>
+  </div>
+</dialog>
+<dialog id="qrdlg" aria-labelledby="qrttl">
+  <div class="sheet">
+    <div class="sh-head"><div><div class="sh-src">ELISN</div><h2 id="qrttl">폰으로 이어 보기</h2></div><button type="button" class="chipbtn" id="qrclose" aria-label="닫기">닫기</button></div>
+    <div class="qr-body"><div class="qr-box" id="qrbox"></div><div class="qr-say" id="qrsay"></div></div>
+  </div>
+</dialog>
+<dialog id="cmpdlg" aria-labelledby="cmpttl">
+  <div class="sheet">
+    <div class="sh-head"><div><div class="sh-src">시기별 비교</div><h2 id="cmpttl"></h2></div><button type="button" class="chipbtn" id="cmpclose" aria-label="닫기">닫기</button></div>
+    <div class="cmp-legend">옛 기준부터 차례로 보여 줘요.<span id="cmpmark"> 바로 앞 시기에 비해 새로 생긴 말에 <span style="text-decoration:underline;text-decoration-color:var(--now);text-decoration-thickness:2px;text-underline-offset:4px">밑줄</span>을 쳐요.</span><label id="cmpdelw"><input type="checkbox" id="cmpdel"><span>앞 시기에서 <span style="text-decoration:line-through;color:var(--muted)">없어진 말</span>도 보기</span></label></div>
+    <div class="cmp-body" id="cmpbody"></div>
+  </div>
+</dialog>
+<dialog id="dlg" class="viewer" aria-label="그림 크게 보기"><div class="vbar"><span id="dlgcap"></span><button type="button" id="dlgzoom">2배 확대</button><button type="button" id="dlgx" aria-label="닫기">✕</button></div><div class="vbox" id="dlgbox"><img id="dlgimg" alt=""></div></dialog>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s);
+// 새로 고칠 때 브라우저가 옛 스크롤 위치를 되살리면, 자료가 아직 안 불러와져 짧은 페이지의 맨 아래(바닥글)로 떨어진다
+// → 되살리지 않고 늘 맨 위에서 시작 (검색어·허가일은 주소에 남아 그대로 복원된다)
+if("scrollRestoration" in history) history.scrollRestoration="manual";
+const ERA=[{k:"e0",name:"2013.9.14 이전",from:"0000-01-01",to:"2013-09-14"},
+           {k:"e1",name:"2013.9.15 ~ 2019.3.27",from:"2013-09-15",to:"2019-03-27"},
+           {k:"e2",name:"2019.3.28 이후 (현행)",from:"2019-03-28",to:"9999-12-31"}];
+// 같은 뜻 다른 말: 검색어 하나가 이 중 무엇과도 맞으면 찾은 것으로 본다
+const SYN=[["카지붕","카상부"],["조명","조도","lx","㏓","룩스","작업등","전등","전구"],["비상등","비상조명","예비조명"],
+  ["피트","핏"],["기계실","기계류공간"],["인터폰","비상통화"],["문닫힘","도어닫힘"],
+  ["브레이크","제동기"],["과속조절기","조속기"]]; // 2019 기준에서 이름이 바뀐 말 (옛 조항은 제동기·조속기)
+const isDate=v=>typeof v==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(v);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const rxEsc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+// 글자 사이 띄어쓰기를 무시하는 정규식: "카지붕"이 "카 지붕"과도 맞게
+const loose=w=>[...w.replace(/\s+/g,"")].map(rxEsc).join("\\s*");
+
+const BASE_TITLE=document.title; // 검색이 없을 때의 탭 제목
+let C=[],CV=[],S=[],src="c",view="list",limit=40,exQ="",loaded=false,lastHits=0,kind="elev",K=null,KP=null,revSel="",revSet=new Set(),hitD=""; // hitD: 넣은 건축허가일(이 날짜에 적용되는 카드는 기간 표시를 파랗게 ✓) // // revSet: 허가일이 속한 기준 체계가 시작된 뒤 개정(글이 바뀌거나 새로 생김)된 조항(카드 표시용), revSel: 고른 개정일(그 날 개정만 보기) // kind: 승강기 종류, K: 엘리베이터 밖 종류 자료(처음 고를 때 불러옴)
+// 카드의 즐겨찾기 버튼 글: 폰에서는 별만 보여 버튼들이 한 줄에 들어가게 (글자는 .favl로 숨김)
+const favLbl=on=>(on?"★":"☆")+`<span class="favl"> 즐겨찾기${on?"됨":""}</span>`;
+const KIND={elev:"엘리베이터",esc:"에스컬레이터·무빙워크",wlv:"수직형 휠체어리프트",wli:"경사형 휠체어리프트",dumb:"소형화물용 엘리베이터",ince:"경사형 엘리베이터"};
+// 표준화 자료는 대부분 엘리베이터 것이라, 다른 종류는 이름이 들어간 것만
+const KIND_STD={esc:/에스컬레이터|무빙워크/,wlv:/휠체어\s*리프트/,wli:/휠체어\s*리프트/,dumb:/소형\s*화물|덤웨이터/,ince:/경사형\s*엘리베이터/};
+// CV: 중복 카드(보정 fixes의 dup)를 뺀 엘리베이터 조항. C는 순번(__i)으로 찾아야 해서 그대로 둔다 (2026-10-02)
+const KS={}, cur=()=>kind==="elev"?CV:(KS[kind]||(KS[kind]=(K||[]).filter(x=>x.kind===kind)));
+const curS=()=>kind==="elev"?S:S.filter(x=>KIND_STD[kind].test((x.title||"")+" "+(x.keyword||"")+" "+(x.text||"")));
+const byI=i=>i<=C.length?C[i-1]:K[i-C.length-1]; // 카드의 번호(__i)로 조항 찾기: 엘리베이터 다음에 종류 자료가 이어진다 // lastHits: 마지막 검색에서 찾은 조항 수(일부만 맞는 것 포함). 0건 오타는 최근 검색어에 안 남긴다 // exQ: 돋보기로 넣은 예시 검색어 (직접 친 말과 구분해 안내하려고)
+const st={}; try{Object.assign(st,JSON.parse(localStorage.getItem("elisn-lab-find")||"{}"))}catch(e){}
+// 즐겨찾기: 이 기기에만 저장 (로그인 없음). 자료가 새로 올라와도 같은 조항을 가리키게 번호 대신 제목·이름·기간으로 기억한다
+// 키는 불러올 때 원래 자료 값(보정·글 다듬기 전)에 본문 지문을 더해 한 번 만든다(__k): 제목·번호·기간이 같고 글만 다른 조항이 함께 켜지지 않게,
+// 나중에 날짜 보정을 더해도 즐겨찾기가 풀리지 않게
+// (본문은 앞부분이 같고 뒤만 다른 조항이 있어 전체로 짧은 지문을 만든다)
+const textSig=t=>{let h=5381; for(const ch of (t||"").replace(/\s+/g,"")) h=(h*33+ch.charCodeAt(0))>>>0; return h.toString(36);};
+const keyOf=(x,isStd)=>x.__k||((isStd?"s|":"c|")+[x.title,x.label,x.from,x.to,textSig(x.text)].join("|"));
+const favs=new Set(); try{JSON.parse(localStorage.getItem("elisn-lab-fav")||"[]").forEach(k=>favs.add(k))}catch(e){}
+const saveFavs=()=>{try{localStorage.setItem("elisn-lab-fav",JSON.stringify([...favs]))}catch(e){}};
+let favOnly=false;
+const favCount=()=>new Set((src==="s"?curS():cur()).map(x=>keyOf(x,src==="s")).filter(k=>favs.has(k))).size; // 지금 자료(검사기준/표준화)에서 별표한 수
+const favLabel=()=>{const n=favCount(),b=document.getElementById("favonly");b.textContent=favOnly?`★ 즐겨찾기만 보는 중 · ${n}`:`☆ 즐겨찾기만${n?" · "+n:""}`;b.setAttribute("aria-pressed",favOnly)};
+// 최근 검색어: 이 기기에 5개까지
+let recent=[]; try{recent=JSON.parse(localStorage.getItem("elisn-lab-recent")||"[]").filter(s=>typeof s==="string").slice(0,5)}catch(e){}
+// 검색 집계(2026-10-01 운영자): 검색어가 최근 검색어로 저장될 때(치다 2초 멈춤·결과 있는 채 검색창 떠남) GoatCounter에 "이벤트"로 한 번 센다.
+// 방문 수와 따로 잡히고(부풀지 않음), 같은 말이 연달아 저장되면 한 번만. 운영에만 집계 코드가 있어 lab에선 아무 일 안 함
+let gcLast="";
+const countSearch=s=>{ try{ if(s===gcLast||!window.goatcounter||!goatcounter.count) return; gcLast=s; goatcounter.count({path:"검색: "+s, title:(KIND[kind]||"")+" 검색", event:true}); }catch(_){} };
+const addRecent=s=>{s=(s||"").trim(); if(s.length<2) return; countSearch(s); recent=[s,...recent.filter(r=>r!==s)].slice(0,5); try{localStorage.setItem("elisn-lab-recent",JSON.stringify(recent))}catch(e){}};
+const save=()=>{try{localStorage.setItem("elisn-lab-find",JSON.stringify({q:$("#q").value,draw:$("#d").value,src,view,kind}))}catch(e){}};
+// 주소에 지금 검색 상태를 담는다 (?q=카 지붕&d=2016.5.1&src=s&view=era). 이 주소를 보내면 같은 화면이 열린다
+const syncUrl=()=>{try{
+  const u=new URLSearchParams(), q=$("#q").value.trim(), d=$("#d").value.trim();
+  if(q)u.set("q",q); if(d)u.set("d",d); if(kind!=="elev")u.set("k",kind); if(src==="s")u.set("src","s"); if(view==="era")u.set("view","era");
+  const s=u.toString(); history.replaceState(null,"",location.pathname+(s?"?"+s:""));
+}catch(e){}};
+const fmt=iso=>iso?iso.replace(/-/g,"."):"";
+const dot=iso=>{const [y,m,d]=iso.split("-");return `${y}.${+m}.${+d}`}; // 화면에 보이는 날짜: 2019.3.28
+const dotAll=t=>t.replace(/\d{4}-\d{2}-\d{2}/g,dot); // 글 속 2013-09-15 → 2013.9.15
+const kor=iso=>{const [y,m,d]=iso.split("-").map(Number);return `${y}년 ${m}월 ${d}일`};
+const todayIso=()=>{const n=new Date();return new Date(n.getTime()-n.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
+const pad=n=>String(n).padStart(2,"0");
+const validIso=(y,m,d)=>{const iso=`${y}-${pad(m)}-${pad(d)}`;const t=new Date(iso+"T00:00:00Z");return !isNaN(t)&&t.toISOString().slice(0,10)===iso?iso:""};
+const lastDay=(y,m)=>new Date(Date.UTC(y,m,0)).getUTCDate();
+const fullYear=y=>{if(y>=100)return y;const cy=+todayIso().slice(2,4);return y<=cy+1?2000+y:1900+y}; // 24→2024, 97→1997
+const okYear=y=>y>=1900&&y<=2100;
+// 날짜를 아무렇게나 적어도 읽는다: 240612, 20240612, 2024.6.12, 24-6-12, 2024년 6월 12일, 2024.6(달만), 2016(해만)
+// 돌려주는 값: {from,to} 날짜 범위. 하루면 from=to
+function parseLoose(raw){
+  const s=(raw||"").trim(); if(!s) return null;
+  if(/^(오늘|today)$/i.test(s)){const t=todayIso();return {from:t,to:t};}
+  const g=s.split(/\D+/).filter(Boolean);
+  const day=(y,m,d)=>{y=fullYear(y);const iso=okYear(y)&&validIso(y,m,d);return iso?{from:iso,to:iso}:null};
+  const month=(y,m)=>{y=fullYear(y);if(!okYear(y)||m<1||m>12)return null;return {from:`${y}-${pad(m)}-01`,to:`${y}-${pad(m)}-${pad(lastDay(y,m))}`,m:true}};
+  const year=y=>{y=fullYear(y);return okYear(y)?{from:`${y}-01-01`,to:`${y}-12-31`,y:true}:null};
+  if(g.length>=3) return day(+g[0],+g[1],+g[2]);
+  if(g.length===2) return month(+g[0],+g[1]);
+  const n=g[0]||"";
+  if(n.length===8) return day(+n.slice(0,4),+n.slice(4,6),+n.slice(6));
+  if(n.length===6){ // 240612 먼저, 안 되면 202406. 둘 다 말이 되면(201205 = 2020.12.5 또는 2012년 5월) 다른 뜻도 골라 쓰게 alt로 알려 준다
+    const a=day(+n.slice(0,2),+n.slice(2,4),+n.slice(4)), b=month(+n.slice(0,4),+n.slice(4));
+    const bOk=b&&+n.slice(0,4)>=1950&&+n.slice(0,4)<=+todayIso().slice(0,4);
+    if(a&&bOk) a.alt=b; return a||b;
+  }
+  if(n.length===4) return year(+n);
+  if(n.length===2) return year(+n);
+  return null;
+}
+// 해나 달만 적었을 때: 그 기간 안에서 지금 검색 결과가 달라지는 날(기준 바뀌는 날)을 찾는다
+function changeDays(arr,from,to){
+  const b=new Set();
+  const next=iso=>{const t=new Date(iso+"T00:00:00Z");t.setUTCDate(t.getUTCDate()+1);return t.toISOString().slice(0,10)};
+  for(const o of arr){const r=range(o.x); if(r.bad) continue;
+    if(r.f&&r.f>from&&r.f<=to) b.add(r.f);
+    if(r.t){const n=next(r.t); if(n>from&&n<=to) b.add(n);} }
+  return [...b].sort();
+}
+function markQuick(v){document.querySelectorAll(".quick .qd[data-d]").forEach(b=>b.setAttribute("aria-pressed",(b.dataset.d==="today"?todayIso():b.dataset.d)===v))}
+
+function range(x){
+  const f=isDate(x.from)?x.from:null,t=isDate(x.to)?x.to:null;
+  return {f,t,bad:!!(f&&t&&f>t)};
+}
+function applies(x,d){ // 건축허가일 d에 적용되는가
+  const r=range(x); if(r.bad) return true;
+  return (!r.f||r.f<=d)&&(!r.t||d<=r.t);
+}
+// 끝 날짜가 없으면 현재까지 적용으로 본다 (운영자 결정, 2026-09-27)
+function overlaps(x,e){
+  const r=range(x); if(r.bad) return false;
+  return (r.f||"0000-01-01")<=e.to&&(r.t||"9999-12-31")>=e.from;
+}
+// 허가일이 적용 안 되는 까닭 한 줄
+function whyNot(x,d){
+  const r=range(x);
+  if(r.f&&d<r.f) return `${dot(r.f)} 이후 허가분부터 적용`;
+  if(r.t&&d>r.t) return `${dot(r.t)}까지 허가분에만 적용`;
+  return "";
+}
+function periodPills(x,isStd){
+  if(isStd){
+    const a=[]; if(x.keyword)a.push(`<span class="pill kw">${esc(x.keyword)}</span>`);
+    if(x.from)a.push(`<span class="pill old">${isDate(x.from)?dot(x.from)+" 시행":esc(x.from)+" 안내"}</span>`);
+    return a.join("");
+  }
+  const r=range(x);
+  if(r.bad) return `<span class="pill warn">날짜 확인 필요 · 원래 자료 ${esc(x.from)} ~ ${esc(x.to)}</span>`;
+  if(!r.f&&!r.t) return `<span class="pill ${hitD?"hit":"now"}">${hitD?"✓ ":""}처음부터 현재까지</span>`;
+  const txt=r.f?`${dot(r.f)} ~ ${r.t?dot(r.t):"현재"}`:`~ ${dot(r.t)}까지`;
+  if(hitD&&applies(x,hitD)) return `<span class="pill hit" title="건축허가일 ${dot(hitD)}에 적용">✓ ${txt}</span>`;
+  if(hitD) return `<span class="pill old" title="건축허가일 ${dot(hitD)}에 적용 안 됨">${txt}</span>`; // 적용 안 되는 조항은 끝났든 현재까지든 회색(초록이 "해당"으로 읽히지 않게)
+  return `<span class="pill ${r.t?"old":"now"}">${txt}</span>`;
+}
+function terms(q){
+  // "카 지붕", "카 상부", "카 위"는 한 낱말로 묶어 서로 같은 말로 찾는다 (옛 기준은 "카 위"라고 씀)
+  q=q.replace(/카\s*(지붕|상부|위(?![치험]))/g,"카지붕");
+  return q.trim().split(/\s+/).filter(Boolean).map(w=>{
+    const n=w.replace(/\s+/g,"");
+    const g=SYN.find(g=>g.some(v=>v.replace(/\s+/g,"")===n));
+    const alts=(g?g:[w]).map(loose);
+    if(g&&g[0]==="카지붕") alts.push("카\\s*위(?![치험])");
+    const r=new RegExp(alts.join("|"),"gi");
+    if(g&&g[0]!=="카지붕") r.lit=new RegExp(loose(w),"i"); // 친 말 그대로(작업등)가 같은 뜻 다른 말(조명)보다 앞에 오게
+    return r;
+  });
+}
+// 숫자와 단위 사이 빈칸은 줄 안 바꿈 빈칸으로 (2026-10-02, 화면 끝에서 "1⏎m 이상"처럼 갈리던 것). 검색용 글은 그대로
+const UNIT_NB=/(\d) (?=(?:m\/s|mm|cm|km|m|㎜|㎝|㎞|㎧|㎨|㎏|kg|kN|N|MPa|㎫|Pa|V|kV|A|W|kW|Hz|㎐|lx|%|°|㎡|㎥|m²|m³|s|min|t|ℓ|L)(?![A-Za-z]))/g;
+const nb=h=>h.replace(UNIT_NB,"$1&nbsp;");
+function hl(text,rxs){
+  if(!rxs.length) return nb(esc(text));
+  const big=new RegExp(rxs.map(r=>r.source).join("|"),"gi");
+  let out="",i=0,m; big.lastIndex=0;
+  while((m=big.exec(text))){ if(!m[0]){big.lastIndex++;continue}
+    out+=esc(text.slice(i,m.index))+"<mark>"+esc(m[0])+"</mark>"; i=m.index+m[0].length; }
+  return nb(out+esc(text.slice(i)));
+}
+function hay(x){return [x.label||"",x.title||"",x.keyword||"",x.text||""].join("\n")}
+function search(arr,q){
+  const rxs=terms(q);
+  if(!rxs.length) return {rxs,res:arr.map((x,i)=>({x,i,s:0})),part:[]};
+  const res=[], part=[]; // part: 낱말 몇 개만 맞는 조항 (모두 맞는 조항만 보이면 "작업등"만 적힌 옛 조항처럼 꼭 봐야 할 게 빠질 수 있어서)
+  arr.forEach((x,i)=>{
+    const h=hay(x), head=(x.label||"")+" "+(x.title||"")+" "+(x.keyword||""); let s=0, m=0;
+    for(const r of rxs){ r.lastIndex=0; if(!r.test(h)) continue; m++;
+      r.lastIndex=0; if(r.test(head)) s+=10;
+      if(r.lit) s+=r.lit.test(head)?8:r.lit.test(h)?3:0;
+      r.lastIndex=0; s+=Math.min((h.match(r)||[]).length,5); }
+    if(!m) return;
+    // 조항 번호로 찾을 때 그 번호로 시작하는 조항을 맨 위로
+    const lq=q.trim(); if(/^[\d.()]+$/.test(lq)&&((x.label||"").startsWith(lq)||(x.text||"").startsWith(lq))) s+=100;
+    (m===rxs.length?res:part).push({x,i,s,m});
+  });
+  res.sort((a,b)=>b.s-a.s||a.i-b.i);
+  part.sort((a,b)=>b.m-a.m||b.s-a.s||a.i-b.i); // 더 많은 낱말이 맞고, 제목에 든 조항부터
+  return {rxs,res,part};
+}
+// 검사기준 조항 번호로 표준화 자료 찾기
+// 표준화 자료는 2019-03-28 기준 번호로 달려 있어서, 2019-03-28 이후 조항에만 붙인다
+// (2013 기준도 같은 번호를 다른 뜻으로 써서 섞이면 엉뚱한 해석이 붙는다)
+function relStd(x){
+  if(x.kind) return []; // 표준화 자료 번호는 엘리베이터 조항 번호라 다른 종류엔 붙이지 않는다
+  if(!(isDate(x.from)&&x.from>="2019-03-28")) return [];
+  const lm=(x.label||"").match(/^\d+(?:\.\d+)+/), tm=(x.text||"").match(/^\s*(\d+(?:\.\d+)+)/);
+  const n=lm?lm[0]:tm?tm[1]:null;
+  if(!n) return [];
+  const hit=k=>{const re=new RegExp("(^|[^\\d.])"+rxEsc(k)+"(?!\\.?\\d)");return s=>re.test(s.label||"")};
+  const own=S.filter(hit(n));
+  // 한 단계 위 번호(예: 6.1.2.1 → 6.1.2)의 해석도 "상위 조항 해석"으로 붙인다. 너무 넓은 두 단계 번호(6.1)는 빼기
+  const parts=n.split("."); let up=[];
+  if(parts.length>=4){const p=parts.slice(0,-1).join("."); up=S.filter(s=>hit(p)(s)&&!own.includes(s));}
+  return [...own.map(s=>({s,up:false})),...up.map(s=>({s,up:true}))];
+}
+// 원문 보기: 조항 시기에 맞는 국가법령정보센터 고시 (2019 이후는 최신 판, 2013~2019는 2018 판, 그 전은 2009 판)
+function lawUrl(x){
+  const f=isDate(x.from)?x.from:"";
+  if(f>="2019-03-28") return "https://www.law.go.kr/행정규칙/승강기안전부품안전기준및승강기안전기준";
+  if(f>="2013-09-15") return "https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000117932";
+  return "https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2000000057076";
+}
+// 그림 10.7.5.PNG와 10.7.5.png는 대소문자만 달라 윈도우·깃허브에 함께 못 둔다 → 작은 쪽은 다른 이름으로 올려 둠
+const imgSrc=p=>p==="images/10.7.5.png"?"images/10.7.5_small.png":p;
+// 본문이 조항 번호로 시작하면(위 번호와 같으면) 한 번만 보이게 뺀다
+// 원래 자료는 문서에서 옮기며 문장 중간에 줄이 바뀐 곳이 많다. 줄 끝이 띄어쓰기·쉼표·가운뎃점이면 문장 중간으로 보고 잇는다
+// (낱말 중간이나 제목 뒤에서 끊긴 곳은 구별이 안 돼 그대로 둔다. 다음 줄이 가) ① 1. - 비고 등 목록이면 잇지 않는다)
+// a. b. 같은 영문 소문자 목록과 "*" 주석 줄도 목록으로 본다 (표준화 자료 "①…⏎ a. …⏎ b. …"가 한 줄로 이어 붙던 것, 2026-09-30)
+const LIST=/^\s*([가-하]\)|[가-하]\.\s|[a-z][.)]|[①-⑳]|\(?\d+[.)]|\d+(\.\d+)+\s|[-※<\[*]|비고|표\s?\d|그림)/;
+// 2단계(한글로 끝나고 한글로 시작하는 줄): 확실한 경우만 잇는다
+//  - 다음 줄 첫 낱말이 끝맺는 말(되어야·하여야·한다·으로·는·을 …)이면 낱말 중간에서 끊긴 것 → 붙여 잇기 ("설치⏎되어야" → "설치되어야")
+//  - 윗줄이 조사(를·을·는·의·에 …)로 끝나면 낱말이 끝난 것 → 띄어 잇기 ("장치를⏎설치하여야" → "장치를 설치하여야")
+//  - 그 밖(제목 뒤 줄바꿈 "환기⏎승강로는" 같은 곳)은 구별이 안 돼 그대로 둔다
+const PART=/^(어|어야|는|은|을|를|의|에|에서|에서도|에는|에게|으로|으로서|으로써|로|로서|로써|와|과|도|만|까지|부터|적인|적으로|야)$/; // 혼자 쓰일 수 없는 말: 늘 붙인다
+const VERB=/^(되어야|하여야|이어야|있어야|없어야|않아야|하여|되어|한다|된다|하는|되는|하고|되고|하며|되며|하지|되지|하기|되기|하도록|되도록|해야|돼야|할|될|함|됨|하게|되게)$/; // 붙일 수도 띄울 수도 있는 말
+const PEND=/[을를은는에로야록며의와과고여서]$/; // 윗줄이 이미 조사·어미로 끝났으면 VERB는 띄운다 ("위치에⏎있어야" → "위치에 있어야")
+const WEND=/[를을는은의에고며서와과도면]$/;
+const HEADING=/^\s*(\d+(\.\d+)*|\(\d+\))\s/; // "6.5.4 환기"처럼 번호로 시작하는 짧은 줄은 제목일 수 있다
+function joinLines(t){
+  t=t.replace(/ \n (?=\S)/g," \n"); // 원래 자료가 줄마다 " ⏎ "로 나눠 둔 곳: 다음 줄 앞 빈칸 하나는 들여쓰기가 아니라 옮기며 생긴 것 → 빼서 ①② 줄 머리를 맞춘다
+  const L=t.split("\n"); let out=L[0];
+  for(let i=1;i<L.length;i++){
+    const prev=out.replace(/[ \t]+$/,""), spaced=/[ \t]$/.test(out), next=L[i];
+    const soft=/[·,]$/.test(prev)||(spaced&&!/[.:)\]]$/.test(prev));
+    if(soft&&next.trim()&&!LIST.test(next)){ out=prev+(prev.endsWith("·")?"":" ")+next.trimStart(); continue; }
+    if(!spaced&&/[가-힣]$/.test(prev)&&/^[가-힣]/.test(next)&&!LIST.test(next)){
+      const w=next.split(/\s/)[0].replace(/[.,)·]+$/,"");
+      const line=prev.slice(prev.lastIndexOf("\n")+1);
+      const lastW=line.split(/\s/).pop(); // 윗줄 마지막 낱말. 한 글자면("고⏎정판") 낱말 중간일 수 있어 띄워 잇지 않는다
+      if(PART.test(w)||(VERB.test(w)&&!PEND.test(prev))){ out=prev+next; continue; }
+      if((VERB.test(w)||WEND.test(prev))&&lastW.length>=2&&!(HEADING.test(line)&&line.length<=40)){ out=prev+" "+next; continue; }
+    }
+    out+="\n"+next;
+  }
+  return out;
+}
+// 목록 들여쓰기: 줄 머리 표시(① 가) 1. a. - …)의 종류가 처음 나온 순서대로 한 단씩 안으로 (문서마다 쓰는 순서가 달라 순서로 정한다)
+//  같은 종류가 다시 나오면 그 단으로 돌아가고, 표시 없는 줄은 바로 윗줄 단을 따르며, * ※ 주석 줄은 윗줄보다 한 단 안으로
+//  "6.4.2 …" 같은 조항 번호 줄·비고·표·그림 줄은 맨 앞으로. 첫 줄부터 목록이면 그 단을 맨 앞으로 친다 (2026-09-30)
+const MKS=[[/^[①-⑳]/,"c"],[/^[가-하]\)/,"kp"],[/^[가-하]\.\s/,"kd"],[/^\(\d+\)/,"np"],[/^\d+\)/,"nr"],[/^\d+\.(?!\d)/,"nd"],[/^[a-z][.)]/,"l"],[/^[-·•]\s/,"d"]];
+const TOP=/^\s*(\d+(\.\d+)+\s|비고|표\s?\d|그림)/;
+function lineLevels(lines){
+  let st=[], cur=0; const lv=lines.map(l=>{
+    const s=l.trimStart(); if(!s) return cur;
+    if(TOP.test(s)){ st=[]; return cur=0; }
+    if(/^[*※]/.test(s)) return cur+1;
+    const m=MKS.find(([r])=>r.test(s)); if(!m) return cur;
+    const i=st.indexOf(m[1]); if(i>=0){ st=st.slice(0,i+1); return cur=i+1; }
+    st.push(m[1]); return cur=st.length; });
+  const f=lines.findIndex(l=>l.trim()), base=f>=0&&lv[f]>0?lv[f]:0;
+  return lv.map(v=>Math.max(0,v-base));
+}
+function textHTML(t,rxs){
+  const L=t.split("\n"), lv=lineLevels(L);
+  if(!lv.some(v=>v>0)) return hl(t,rxs);
+  return L.map((l,i)=>`<div class="ln" style="--lv:${lv[i]}">${l.trim()?hl(l.trimStart(),rxs):"&#8203;"}</div>`).join("");
+}
+// 줄 잇기는 조항 번호를 떼기 전에 한다: 번호가 붙어 있어야 "10.2.1.3 감속도"가 제목 줄로 알아봐져 본문과 붙지 않는다
+// 원래 자료에 글자로 남은 <br>은 줄바꿈으로 바꾼다
+// 원래 자료가 번호 칸에 번호 대신 "1997-08-18 이후(건축허가분)"처럼 날짜 설명만 적은 곳: 기간은 옆에 따로 보이니
+// 글 첫머리의 조항 번호를 대신 보여 주고, 번호도 없으면 비운다 ("탄성변형(종전: …)"처럼 이름이 섞인 칸은 그대로)
+const dateOnly=l=>!!l&&!l.replace(/\d{4}[-.]\d{1,2}[-.]\d{1,2}|\d{4}년|\d{1,2}월|\d{1,2}일|이후|이전|종전|미표기|상단|날짜|기준|건축허가분|시행|부터|적용|까지|전|[()~+\s:·,.\-]/g,"");
+// 원본 조항 이름 끝의 "(2013-09-15+)"(그 날부터라는 뜻)는 화면에서 뺀다: 기간은 아래 기간 표시가 보정까지 반영해 정확히 알려 주고,
+// "+"만 보면 끝난 조항(예: 2013.9.15~2019.3.27)도 지금까지 적용되는 것처럼 읽혀서 (원본 자료는 그대로, 2026-09-30)
+const shownLabel=x=>{const l=(x.label||"").replace(/\s*\([^()]*\d{4}-\d{2}-\d{2}\+\)/g,"").trim(); if(!dateOnly(l)) return l; const m=(x.text||"").match(/^\s*(?:\[[^\]]*\]\s*)?(\d+(?:\.\d+)+(?:\(\d+\))?)(?=[\s(]|$)/); return m?m[1]:"";};
+// (2026-10-02) 줄 잇기를 마친 뒤 빈 줄은 뺀다: 원래 자료가 항목 사이마다 빈 줄을 넣어 둔 곳(5.8 가)·나)… 사이)이 쓸데없이 벌어져 보이던 것
+const bodyText=x=>{let t=joinLines((x.text||"").replace(/<br\s*\/?>/gi,"\n").trim()).replace(/\n[ \t]*(?=\n)/g,"");const l=shownLabel(x);if(l&&t.startsWith(l+" "))t=t.slice(l.length).trim();return t;};
+// ── 시기별 비교 ──
+// 같은 제목 묶음 안에서 "같은 조항의 다른 시기 판"을 찾는다
+// - 날짜뿐인 이름("2013-09-15 이후(건축허가분)")끼리는 제목이 곧 한 조항이라 묶는다
+// - 이름(괄호 앞)이 같으면 묶는다
+// - 그 밖에는 글이 닮아야 묶는다: 흔한 말(있어야·한다·설치 …)과 숫자·조항 번호는 빼고 견준다 (번호 "6.5"나 "있어야"만 겹쳐 다른 조항이 묶이던 것)
+//   짧은 글은 몇 낱말만 겹쳐도 닮아 보여서 더 많이 겹쳐야 묶는다
+// - 기간마다 가장 닮은 판 하나만 (같은 기간의 다른 조항 둘이 앞뒤로 놓여 개정처럼 보이던 것)
+const V_STOP=new Set("있어야 하여야 되어야 한다 된다 있는 있다 없는 없어야 않아야 경우 이상 이하 미만 초과 또는 및 등 각 그 이 해당 의한 따른 대한 위한 관련 설치 사용 기준 요건 다음 같이 것 수 있고 하고 되고 하며 되며 해야 적합 모든".split(" "));
+const vToks=s=>new Set((s.match(/[가-힣A-Za-z]{2,}/g)||[]).map(w=>w.replace(/(은|는|이|가|을|를|의|에|에서|으로|로|와|과|도)$/,"")).filter(w=>w.length>1&&!V_STOP.has(w)));
+const overlap=(a,b)=>{let n=0;for(const t of a)if(b.has(t))n++;return n/(Math.min(a.size,b.size)||1)};
+const lWords=l=>new Set(vName(l).split(/[\s/·,()]+/).filter(w=>w.length>1&&!/\d/.test(w)));
+const dice=(a,b)=>{let n=0;for(const t of a)if(b.has(t))n++;return 2*n/((a.size+b.size)||1)};
+const vName=l=>(l||"").replace(/\s*\([^)]*\)\s*$/,"").trim();
+const dateName=k=>!k||/\d{4}|이후|이전|종전|미표기|^기준$/.test(k);
+function buildVersions(){
+  const g={}; CV.forEach(x=>{x.__t=vToks(bodyText(x));(g[x.title]=g[x.title]||[]).push(x)});
+  for(const x of CV){
+    const k=vName(x.label), named=!dateName(k), best=new Map();
+    for(const y of g[x.title]){ if(y===x||(y.from===x.from&&y.to===x.to)) continue;
+      const nameSame=named?vName(y.label)===k:dateName(vName(y.label));
+      const sc=dice(x.__t,y.__t), short=Math.min(x.__t.size,y.__t.size)<6;
+      if(!(nameSame||(!short&&sc>=0.4)||(short&&sc>=0.7))) continue;
+      // 같은 기간 후보가 여럿이면 이름에 같은 낱말(예: "기계실")이 든 쪽을 먼저
+      const per=y.from+"|"+y.to, score=(nameSame?1:0)+(sc+overlap(x.__t,y.__t))/2+0.5*overlap(lWords(x.label),lWords(y.label));
+      if(!best.has(per)||best.get(per).score<score) best.set(per,{y,score}); }
+    const v=[x,...[...best.values()].map(o=>o.y)];
+    x.__v=v.length>1?v.sort((a,b)=>(a.from||"0000").localeCompare(b.from||"0000")||(a.to||"9999").localeCompare(b.to||"9999")):null;
+  }
+}
+// 낱말 단위로 앞 판과 견줘, 새로 생긴 말은 <ins>, 빠진 말은 <del>로 (가장 긴 공통 부분 찾기)
+// 줄 앞 들여쓰기 빈칸은 &nbsp;로 (비교 글은 pre-line이라 보통 빈칸은 줄 앞에서 사라진다)
+const ind=h=>h.replace(/(^|\n)( +)/g,(m,a,s)=>a+"&nbsp;".repeat(s.length));
+function diffHtml(a,b){
+  const tk=s=>s.replace(/[ \t]+/g," ").match(/\n|\s+|[가-힣A-Za-z0-9.]+|[^\s가-힣A-Za-z0-9.]/g)||[];
+  const A=tk(a),B=tk(b),n=A.length,m=B.length;
+  if(n*m>900000) return {html:esc(b),long:true}; // 너무 긴 글은 비교하지 않고 그대로 (창에 안내)
+  const L=Array.from({length:n+1},()=>new Uint16Array(m+1));
+  for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--)L[i][j]=A[i]===B[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+  const out=[]; const put=(t,s)=>{const l=out[out.length-1]; if(l&&l.t===t)l.s+=s; else out.push({t,s})};
+  let i=0,j=0;
+  while(i<n&&j<m){ if(A[i]===B[j]){put("=",A[i]);i++;j++} else if(L[i+1][j]>=L[i][j+1]) put("-",A[i++]); else put("+",B[j++]); }
+  while(i<n)put("-",A[i++]); while(j<m)put("+",B[j++]);
+  // 새 말 둘 사이에 빈칸 하나만 있으면 한 밑줄로 ("때<ins>,</ins> <ins>그 열린</ins>"이 쉼표 밑 짧은 줄과 긴 줄로 갈려 보이던 것, 2026-10-02)
+  for(let k=out.length-2;k>0;k--) if(out[k].t==="="&&/^ +$/.test(out[k].s)&&out[k-1].t==="+"&&out[k+1].t==="+"){ out[k-1].s+=out[k].s+out[k+1].s; out.splice(k,2); }
+  // 새 글에서 앞 판과 같은 낱말의 비율. 절반도 안 되면 거의 새로 쓴 글이라 낱말마다 표시하면 오히려 못 읽는다 → 표시 없이 새 글만
+  const words=s=>s.split(/\s+/).filter(Boolean).length;
+  // 옛 글 쪽도 본다: 옛 글의 절반 넘게 사라졌으면 새 말·없어진 말이 뒤섞여 못 읽으니 같은 처리 (2026-09-29)
+  const kept=out.filter(o=>o.t==="=").reduce((a,o)=>a+words(o.s),0), total=Math.max(1,words(b)), before=Math.max(1,words(a));
+  if(kept/total<0.5||kept/before<0.5) return {html:esc(b),rewritten:true};
+  // 띄어쓰기만 바뀐 것은 표시하지 않는다. 빠진 말(<del>)은 넣어 두되 평소엔 숨기고 "없어진 말도 보기"를 켜야 보인다
+  // 바뀐 말 앞뒤의 빈칸·줄바꿈은 밑줄 밖에 둔다 (줄 앞 들여쓰기까지 밑줄이 그어지던 것, 2026-10-02)
+  const mark=(tag,s)=>{const m=s.match(/^(\s*)([\s\S]*?)(\s*)$/); if(tag==="del") return `<del>${esc(s)}</del>`; return esc(m[1])+`<ins>${esc(m[2])}</ins>`+esc(m[3]);};
+  return {html:nb(out.map(o=>o.t==="="||!o.s.trim()?(o.t==="-"?"":esc(o.s)):o.t==="+"?mark("ins",o.s):mark("del",o.s)).join("")),rewritten:false};
+}
+function showCompare(i){
+  const x=byI(i), v=x.__v||[x];
+  $("#cmpttl").textContent=x.title||"";
+  let prev=null;
+  $("#cmpbody").innerHTML=v.map(y=>{
+    const t=bodyText(y), same=prev!==null&&prev===t;
+    const d=prev===null||same?{html:nb(esc(t))}:diffHtml(prev,t); prev=t;
+    return `<div class="cmp-v${y===x?" me":""}"><div class="cmp-top">${periodPills(y,false)}${shownLabel(y)?`<span>${esc(dotAll(shownLabel(y)))}</span>`:""}${y===x?"<em>지금 보는 조항</em>":""}</div>`+
+      (same?`<div class="cmp-same">앞 시기와 글이 같아요</div>`:d.rewritten?`<div class="cmp-same">앞 시기와 글이 많이 바뀌어 새 글만 보여 줘요</div>`:d.long?`<div class="cmp-same">글이 길어 바뀐 곳 표시 없이 새 글만 보여 줘요</div>`:"")+`<div class="cmp-text">${ind(d.html)}</div></div>`;
+  }).join("");
+  // 밑줄 설명·"빠진 말도 보기"는 이 조항에 실제로 표시할 게 있을 때만 (글이 많이 바뀌었거나 같으면 숨김)
+  $("#cmpmark").hidden=!$("#cmpbody ins"); $("#cmpdelw").hidden=!$("#cmpbody del");
+  $("#cmpdlg").showModal(); $("#cmpbody").scrollTop=0;
+}
+// 긴 본문 펼치기·접기. 접을 때 조항 머리가 화면 위로 넘어가 있으면 머리로 돌아가 읽던 자리를 잃지 않게
+function foldText(art){
+  const t=art.querySelector(".text.fold"), b=art.querySelector('[data-act="open"]'); if(!t) return;
+  const closing=!t.classList.contains("clip");
+  t.classList.toggle("clip",closing);
+  if(b){b.textContent=closing?"전체 보기":"접기"; b.setAttribute("aria-expanded",!closing);}
+  if(closing&&art.getBoundingClientRect().top<0) art.scrollIntoView({block:"start",behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});
+}
+function card(x,rxs,isStd,upNote,why){
+  const r=!isStd&&range(x);
+  const rel=isStd?[]:relStd(x);
+  const imgs=[].concat(x.image||[]);
+  const long=(x.text||"").length>600;
+  const k=keyOf(x,isStd), faved=favs.has(k), nv=isStd?0:(x.__v||[]).length;
+  return `<article class="${r&&r.bad?"warn":""}${why?" off":""}" data-k="${esc(k)}">
+    ${why?`<div class="why">적용 안 됨 · ${esc(why)}</div>`:""}
+    <div class="head">${shownLabel(x)||!x.label?`<span class="label">${esc(dotAll(shownLabel(x)||"번호 없음"))}</span>`:""}<span class="title">${hl(x.title||"",rxs)}</span></div>
+    <div class="meta">${upNote?`<span class="pill kw">상위 조항 해석</span>`:""}${periodPills(x,isStd)}${revSet.has(x)?((x.__v||[]).some(y=>y!==x&&y.to&&y.to<x.from)?`<button type="button" class="pill rev" data-act="cmp" data-i="${x.__i}" title="옛 글과 비교">${dot(x.from)} 개정 ›</button>`:`<span class="pill rev">${dot(x.from)} 신설</span>`):""}</div>
+    <div class="text${long?" clip fold":""}">${textHTML(bodyText(x),rxs)}</div>
+    ${imgs.length?`<div class="imgs">${imgs.map((p,n)=>{const cap=(x.imageCap||[])[n]||"";p=imgSrc(p);return `<figure><button type="button" data-img="${esc(p)}" data-cap="${esc(cap||x.title||"")}" aria-label="그림 크게 보기"><img loading="lazy" src="${esc(p)}" alt="${esc(cap||x.title||"그림")}"></button>${cap?`<figcaption>${esc(cap)}</figcaption>`:""}</figure>`}).join("")}</div>`:""}
+    <div class="acts"><button class="chipbtn fav" type="button" data-act="fav" aria-pressed="${faved}" aria-label="즐겨찾기">${favLbl(faved)}</button>${long?`<button class="chipbtn" type="button" data-act="open" aria-expanded="false">전체 보기</button>`:""}${nv>1?`<button class="chipbtn" type="button" data-act="cmp" data-i="${x.__i}">시기별 비교 ${nv}</button>`:""}${rel.length?`<button class="chipbtn relbtn" type="button" data-act="rel" aria-expanded="false">표준화 자료 ${rel.length}건</button>`:""}<span class="acts-r"><button class="linkbtn" type="button" data-act="report">의견 남기기</button>${isStd?"":`<button class="chipbtn primary" type="button" data-act="law" data-i="${x.__i}">원문 보기</button>`}</span></div>
+    ${rel.length?`<div class="rel" hidden>${rel.map(o=>card(o.s,rxs,true,o.up)).join("")}</div>`:""}
+  </article>`;
+}
+function render(){
+  save(); syncUrl(); syncClear();
+  if(!loaded) return;
+  if(kind!=="elev"&&!K){ $("#status").textContent="자료 불러오는 중…"; loadKinds(); return; } // 자료를 다 불러오기 전에 누르거나 치면 "0건"으로 잘못 보이니, 불러온 뒤 한 번에 그린다
+  // 표준화 자료가 없는 종류(지금은 엘리베이터 밖 전부)에서는 검사기준/표준화 상자를 숨기고 검사기준으로
+  const hasStd=curS().length>0; $("[data-src=\"s\"]").closest(".seg").hidden=!hasStd;
+  if(!hasStd&&src==="s"){ src="c"; setSeg("src",src); }
+  document.body.classList.toggle("era",view==="era"&&src!=="s");
+  // 표준화 자료는 시기별로 나눌 게 없어 목록/시기별 버튼을 끈다. 숨기면 뒤 버튼들이 밀려 줄이 바뀌니 자리는 그대로 두고 흐리게만 (2026-09-29)
+  {const off=src==="s"; $("#viewseg").classList.toggle("off",off); $("#viewseg").querySelectorAll("button").forEach(b=>b.disabled=off);}
+  const q=$("#q").value, isStd=src==="s";
+  let {rxs,res,part}=search(isStd?curS():cur(),q);
+  // 원래 자료에 글·기간이 똑같은 조항이 여러 번 들어 있어 카드가 겹쳐 나온다 → 하나만 (띄어쓰기 차이는 같은 글로)
+  // 즐겨찾기만: 이 기기에 별표해 둔 조항만 남긴다 (검색어·허가일은 그대로 함께 적용). 아래 겹친 카드 걸러내기보다 먼저 해야 별표한 쪽이 남는다
+  if(favOnly){ res=res.filter(o=>favs.has(keyOf(o.x,isStd))); part=part.filter(o=>favs.has(keyOf(o.x,isStd))); }
+  const seen=new Set(), uniq=a=>a.filter(o=>{const k=(o.x.text||"").replace(/\s+/g,"")+"|"+o.x.from+"|"+o.x.to; if(seen.has(k)) return false; seen.add(k); return true;});
+  res=uniq(res); part=uniq(part); lastHits=res.length+part.length;
+  favLabel();
+  // 날짜 읽기
+  const raw=$("#d").value, p=parseLoose(raw), msg=$("#dmsg");
+  let d="", split=null;
+  msg.hidden=!raw.trim(); msg.className="dmsg";
+  if(raw.trim()&&!p){ msg.textContent="날짜로 읽지 못했어요. 예) 240612, 2024.6.12, 2013.9, 2016"; msg.classList.add("bad"); }
+  else if(p&&p.from===p.to){ d=p.from;
+    // 6자리가 두 뜻으로 읽히면(201205) 다른 뜻을 고를 수 있게, 앞날이면 오타일 수 있다고 알린다
+    const alt=p.alt?` · <button type="button" class="qd" data-pick="${p.alt.from.slice(0,7)}">${+p.alt.from.slice(0,4)}년 ${+p.alt.from.slice(5,7)}월로 읽기</button>`:"";
+    msg.innerHTML=`→ ${kor(d)}${d>todayIso()?" · 앞으로 올 날짜예요. 허가일이 맞는지 확인해 주세요":""}${alt}`; }
+  else if(p){
+    const label=p.y?`${p.from.slice(0,4)}년`:`${+p.from.slice(0,4)}년 ${+p.from.slice(5,7)}월`;
+    split=changeDays(isStd?[]:[...res,...part],p.from,p.to); // 일부만 맞는 조항도 그 기간 안에서 기준이 바뀔 수 있어 함께 본다
+    if(!split.length){ d=p.from; msg.textContent=`→ ${label} (이 검색어는 ${label} 안에서 어느 날이든 결과가 같아요)`; split=null; }
+    else{
+      msg.innerHTML=`→ ${label} 안에서 기준이 바뀌어요. 골라 주세요: `+
+        [p.from,...split].map((s,i)=>{
+          const md=x=>`${+x.slice(5,7)}월 ${+x.slice(8)}일`; const txt=i===0?`${md(split[0])} 전`:`${md(s)}부터`;
+          return `<button type="button" class="qd" data-pick="${s}">${txt}</button>`}).join(" ");
+    }
+  }
+  // 표준화 자료는 허가일로 거르지 않는다: 날짜 칸·바로 고르기를 흐리게 하고, 날짜 아래 안내로 알린다 (값은 두어 검사기준으로 돌아가면 다시 적용)
+  document.body.classList.toggle("stdmode",isStd);
+  if(isStd&&raw.trim()){ msg.hidden=false; msg.className="dmsg off"; msg.textContent="표준화 자료는 허가일로 거르지 않아요. 검사기준으로 돌아가면 다시 적용돼요"; }
+  markQuick(d);
+  // 얇은 검색줄에 지금 검색어·허가일을 보여 준다
+  const qv=q.trim(), dv=raw.trim();
+  $("#mqt").textContent=qv||"낱말이나 조항 번호"; $("#mqt").className=qv?"":"ph";
+  $("#md").textContent=dv?`허가일 ${dv}`:"허가일 넣기"; $("#md").className="md"+(dv?"":" none");
+  const total=res.length, useDate=!isStd&&isDate(d);
+  hitD=useDate?d:"";
+  let excl=[];
+  if(useDate){ excl=res.filter(o=>!applies(o.x,d)); res=res.filter(o=>applies(o.x,d)); part=part.filter(o=>applies(o.x,d)); }
+  // 이 허가일에 적용되는 글 중, 허가일이 속한 기준 체계(2013.9.15~ / 2019.3.28~)가 시작된 뒤 개정일에 바뀌거나 새로 생긴 조항을 날짜별로.
+  // 체계 시작일은 기준이 통째로 바뀐 날이라 개정으로 치지 않는다 (그 날은 "새 기준 체계" 안내). 2013.9.15 전(옛 기준)은 다루지 않는다
+  revSet=new Set(); const ERA_START=["2013-09-15","2019-03-28"], revDays={};
+  const eraStart=useDate?ERA_START.filter(e=>e<=d).pop()||"":"";
+  if(eraStart&&!isStd) for(const o of res){ const f=isDate(o.x.from)?o.x.from:""; if(f>eraStart&&f<=d){ revSet.add(o.x); revDays[f]=(revDays[f]||0)+1; } }
+  if(!revDays[revSel]) revSel="";
+  if(revSel){ res=res.filter(o=>o.x.from===revSel); part=[]; }
+  const note=[];
+  // 옛 기준(2013.9.14 이전)의 휠체어리프트 기준은 별책(첨부 1·2)에 있는데 국가법령정보센터에 없어 자료가 없다 → 그 시기를 볼 때 알린다
+  if((kind==="wlv"||kind==="wli")&&!isStd&&((useDate&&d<"2013-09-15")||view==="era"))
+    note.push("2013.9.14 이전 허가분 휠체어리프트 기준은 옛 승강기검사기준의 별책(첨부 1·2)에 있는데, 국가법령정보센터에 올라와 있지 않아 여기에는 없어요.");
+  // 즐겨찾기만 보는 중에 검색어·허가일도 있으면 그 조건에 맞는 것만 남으니 그렇게 알린다 (2026-10-02 운영자: "즐겨찾기 2개인데 결과 1건"이 헷갈림)
+  if(favOnly){ const cond=[q.trim()&&"검색어",useDate&&"허가일"].filter(Boolean).join("·");
+    const fc=favCount(); // 조건 때문에 실제로 빠진 게 있을 때만 "N개 중 M개"로 (다 맞으면 그냥 즐겨찾기만)
+    note.push(cond&&res.length<fc?`즐겨찾기 ${fc}개 중 ${cond}에 맞는 ${res.length}개만 보여 줘요.`:"즐겨찾기한 조항만 보여 줘요."); }
+  else if(!q.trim()) note.push("검색어가 없어 전체를 원래 순서대로 보여 줍니다."+(hasTopics(isStd)?" 아래 “항목으로 찾기”를 펼쳐 골라 볼 수도 있어요.":""));
+  // 인쇄할 때 맨 위에 찍히는 머리글
+  // 탭 제목 = PDF 파일 이름(브라우저가 문서 제목을 파일 이름으로 씀): 검색어·허가일을 늘 제목에 둔다
+  // 인쇄 직전에 바꿨다 되돌리면 폰 크롬은 옛 제목으로 저장하고, PC "Microsoft Print to PDF"는 저장 창이 안 떴다 → 미리 정해 두고 그대로 둔다
+  // 날짜는 점 없이 "2013년 9월 15일"로 (파일 이름에 점이 여럿 들어가지 않게)
+  const tParts=[kind!=="elev"&&KIND[kind],isStd&&"표준화 자료",q.trim(),useDate?"허가일 "+kor(d):raw.trim()&&"허가일 "+raw.trim(),favOnly&&"즐겨찾기"].filter(Boolean);
+  document.title=tParts.length?(BASE_TITLE.startsWith("[LAB] ")?"[LAB] ":"")+"ELISN "+tParts.join(" ").replace(/[\\/:*?"<>|]+/g," ").slice(0,90):BASE_TITLE;
+  $("#phead").innerHTML=`<b>ELISN 승강기 검사기준 길잡이</b><br>`+esc([KIND[kind],isStd?"표준화 자료":"검사기준",q.trim()&&"검색어: "+q.trim(),raw.trim()&&"건축허가일: "+raw.trim(),favOnly&&"즐겨찾기만","인쇄일 "+dot(todayIso())].filter(Boolean).join(" · "))+` · 참고용이며 판단은 고시 원문 기준`;
+  // 돋보기로 예시를 넣었으면 무엇으로 찾았는지 알려 준다. 사람이 고쳐 치면 안내는 사라진다
+  const exNote=exQ&&q===exQ?`예시로 찾았어요: <b>${esc(exQ)}</b><button class="chipbtn" type="button" data-act="exclear">지우기</button> `:"";
+  // 즐겨찾기만 볼 때: 별표한 조항을 한 번에 지우는 버튼 (2026-10-01 운영자)
+  const favClr=favOnly&&favCount()?` <button class="chipbtn noprint" type="button" data-act="favclear">모두 지우기</button>`:"";
+  $("#note").innerHTML=exNote+esc(note.join(" "))+favClr;
+  $("#dateBanner").hidden=!useDate;
+  const revList=Object.keys(revDays).sort();
+  const revTag=!eraStart?"":revList.length?`<span class="revs"><span class="rl">${dot(eraStart)} 체계 뒤 개정<button type="button" class="rvb all${revSel?"":" off"}" data-rev=""${revSel?"":" tabindex=\"-1\" aria-hidden=\"true\""}>전체 보기</button></span>${revList.map(f=>`<button type="button" class="rvb${revSel===f?" on":""}" data-rev="${f}">${dot(f)} ${revDays[f]}건</button>`).join("")}</span>`:
+    d===eraStart?`<span class="sub">${dot(eraStart)}부터 새 기준 체계예요 (조항 번호·글이 통째로 바뀜)</span>`:"";
+  if(useDate) $("#dateBanner").innerHTML=`<span class="bdate">건축허가일 ${kor(d)} 기준</span><span class="big">${revSel?dot(revSel)+" 개정":"적용"} ${res.length}건</span>${revTag}${excl.length?`<button type="button" class="small bx" data-act="toexcl">적용 안 됨 ${excl.length}건 ›</button><span class="small printonly">적용 안 되는 ${excl.length}건은 인쇄하지 않았어요</span>`:`<span class="small">적용 안 됨 0건</span>`}`+
+    (excl.length?"":`<span class="sub">이 검색어의 조항은 이 날짜에 모두 적용돼요</span>`)+
+    `<span class="sub legend"><span class="li"><span class="pill hit">✓ 기간</span>적용</span><span class="li noprint"><span class="pill old">기간</span>적용 안 됨</span>${revSet.size?`<span class="li"><span class="pill rev">개정</span>허가일 전 개정·신설</span>`:""}</span>`; // 색 설명: 한 쌍씩 안 끊기게, 개정 표시가 없으면 뺀다
+  $("#status").innerHTML=(!q.trim()&&!favOnly?"전체 ":"결과 ")+`<b>${res.length.toLocaleString()}</b>건`;
+  $("#status").hidden=useDate; // 허가일을 넣으면 위 파란 칸에 '적용 N건'이 나오니 같은 숫자를 두 번 보이지 않게 숨긴다 (인쇄 건수 확인용으로 글은 채워 둠)
+  const rel=relTerms(res,q,rxs), rq=$("#relq");
+  rq.hidden=!rel.length;
+  rq.innerHTML=rel.length?`<span class="qlabel">연관 검색어</span><div class="qs">`+rel.map(w=>`<button type="button" class="qd" data-rel="${esc(w)}">${esc(w)}</button>`).join("")+`</div>`:"";
+  if(rel.length) slider(rq.querySelector(".qs"));
+  const out=$("#out");
+  // 허가일에 적용 안 되는 조항은 맨 아래에 접어서, 까닭과 함께 보여 준다
+  const exclBlock=excl.length?`<div class="excl"><button class="chipbtn" type="button" data-act="excl">이 날짜에 적용 안 되는 조항 ${excl.length}건 보기</button><div class="list" hidden>${excl.slice(0,80).map(o=>card(o.x,rxs,false,false,whyNot(o.x,d))).join("")}</div></div>`:"";
+  // 낱말이 둘 이상일 때 일부만 맞는 조항은 따로 접어 둔다. 모두 맞는 조항이 없으면 펼쳐서 보여 준다
+  const words=q.trim().split(/\s+/).length, open=!res.length;
+  const partBlock=part.length?`<div class="excl part"><button class="chipbtn" type="button" data-act="excl">검색어 일부만 맞는 조항 ${part.length.toLocaleString()}건 ${open?"접기":"보기"}</button><div class="list"${open?"":" hidden"}>`+
+    `<p class="note">낱말 ${words}개 중 일부만 들어 있는 조항이에요${useDate?" (이 날짜에 적용되는 것만)":""}. 많이 맞는 순서로 ${part.length>40?"40건까지 ":""}보여 줘요.</p>`+
+    `${part.slice(0,40).map(o=>card(o.x,rxs,isStd)).join("")}</div></div>`:"";
+  const tail=partBlock+exclBlock;
+  const endFb=`<p class="endfb">원하는 조항을 못 찾았나요? <button type="button" class="linkbtn nofb">의견 보내기</button></p>`; // 결과를 다 본 뒤 맨 끝에 한 줄
+  if(!res.length&&favOnly){out.innerHTML=`<p class="empty-msg">${favs.size?"즐겨찾기한 조항 중 지금 검색에 맞는 게 없어요. 검색어나 허가일을 지워 보세요.":"아직 즐겨찾기한 조항이 없어요. 조항 아래 ☆ 즐겨찾기를 누르면 여기 모여요."}</p>`+tail;return}
+  if(!res.length){out.innerHTML=`<p class="empty-msg">${useDate?"이 건축허가일에 모든 낱말이 맞는 조항은 없어요.":"모든 낱말이 맞는 조항이 없어요. 낱말을 줄이거나 다른 말로 찾아보세요 (예: \"상부\" 대신 \"지붕\")."}<br><span class="nofbl">찾는 조항이 없나요? <button type="button" class="linkbtn nofb">의견 보내기</button></span></p>`+tail;return}
+  const topics=!q.trim()&&!favOnly&&hasTopics(isStd)?topicPanel(isStd):""; // 항목으로 찾기: 종류마다 따로 만든 말로 (다른 종류의 표준화 자료는 분류가 엘리베이터 것이라 뺀다)
+  if(view==="era"&&!isStd){
+    const bad=res.filter(o=>range(o.x).bad);
+    const per=ERA.map(e=>res.filter(o=>overlaps(o.x,e)));
+    const moreNeeded=per.some(a=>a.length>limit)||bad.length>limit;
+    out.innerHTML=topics+`<div class="cols">${ERA.map((e,ei)=>{
+      const inE=per[ei];
+      const show=inE.slice(0,limit);
+      const here=useDate&&e.from<=d&&d<=e.to;
+      // 폰은 세 칸이 위아래로 쌓여 현행 칸까지 한참 내려가야 한다 → 허가일이 있으면 그 시기 칸만 펼치고 나머지는 접어 둔다 (제목을 누르면 펼침)
+      const shut=useDate&&!here&&matchMedia("(max-width:640px)").matches;
+      return `<section class="col${inE.length?"":" empty"}${here?" here":""}${shut?" shut":""}"><h2 data-act="col" aria-expanded="${!shut}"><span>${e.name}${here?' <em>허가일 시기</em>':""}</span><span>${inE.length}건</span></h2><div class="list">${show.map(o=>card(o.x,rxs,false)).join("")||'<p class="empty-msg">해당 조항 없음</p>'}</div></section>`;
+    }).join("")}</div>`+
+    (bad.length?`<h2 class="note" style="margin-top:18px">날짜 확인이 필요한 조항 ${bad.length}건</h2><div class="list">${bad.slice(0,limit).map(o=>card(o.x,rxs,false)).join("")}</div>`:"")+
+    (moreNeeded?`<button class="chipbtn more" type="button" data-act="more">더 보기</button>`:"")+tail+endFb;
+    return;
+  }
+  out.innerHTML=topics+`<div class="list">${res.slice(0,limit).map(o=>card(o.x,rxs,isStd)).join("")}</div>`+
+    (res.length>limit?`<button class="chipbtn more" type="button" data-act="more">${(res.length-limit).toLocaleString()}건 더 보기</button>`:"")+tail+endFb;
+}
+// 항목으로 찾기: 검색어가 떠오르지 않을 때 부위별로 골라 본다. 누르면 그 말로 찾는다
+// 검사기준은 부위별로 묶은 말, 표준화 자료는 자료에 달린 분류를 그대로 쓴다
+const TOPICS=[["공간",["승강로","기계실","피트","카 지붕","풀리실","피난공간"]],
+  ["문",["승강장문","카문","잠금","문닫힘","출입문","비상문"]],
+  ["구동·매다는 장치",["구동기","권상기","브레이크","로프","벨트","체인","도르래"]],
+  ["안전장치",["과속조절기","추락방지","완충기","상승과속","정지장치","전기안전장치"]],
+  ["전기·조명·통화",["조명","비상등","비상통화","제어반","절연","접지"]],
+  ["그 밖에",["레일","균형추","착상","틈새","환기","점검운전","비상구출","보호난간","사다리"]],
+  ["종류",["유압","비상용","소방구조용"]]];
+// 엘리베이터 밖 종류: 그 종류 조항 제목에서 뽑은 부위별 말 (결과 0건인 말은 저절로 빠진다)
+const TOPICS_K={
+  esc:[["공간·구조",["기계실","구동기 공간","트러스","승강장","보호벽"]],
+    ["디딤판",["스텝","팔레트","벨트","콤","틈새"]],
+    ["난간",["난간","핸드레일","손잡이","뉴얼","스커트"]],
+    ["구동·브레이크",["구동기","브레이크","보조 브레이크","체인","수동핸들"]],
+    ["안전장치",["비상정지","과속","역전","전기안전장치","안전회로"]],
+    ["전기·운전",["주 개폐기","제어반","배선","자동 운전","점검운전"]],
+    ["그 밖에",["자유공간","방화셔터","경사도","조명","표지"]]],
+  wlv:[["공간",["승강로","기계실","피트","외벽"]],
+    ["문·출입구",["승강장문","카문","잠금","방호울","램프"]],
+    ["카",["바닥 면적","유리","조작","점검문"]],
+    ["구동",["구동기","랙","스크류","로프","체인","유압","팬터그래프","2차 전지"]],
+    ["안전장치",["비상정지장치","과속조절기","브레이크","전기안전장치"]],
+    ["전기·통화",["비상통화","조명","콘센트","무선","이동케이블","표지"]]],
+  wli:[["레일",["가이드 레일","주행안내 레일","접는 레일"]],
+    ["플랫폼·좌석",["플랫폼","입석식","좌석","복합형","보호대","램프","토가드","안전벨트"]],
+    ["감지",["감지날","감지면"]],
+    ["구동",["랙","스크류","로프","체인","드럼","유압","축전지"]],
+    ["안전장치",["비상정지장치","추락방지","과속","브레이크","전기안전장치"]],
+    ["전기·운전",["조작","무선","비상운전","비상통화","잔류전류"]]],
+  dumb:[["공간",["승강로","기계실","피트","환기"]],
+    ["문",["승강장문","카문","잠금","수직 개폐식"]],
+    ["매다는 장치",["로프","체인","권동","도르래","현수"]],
+    ["안전장치",["비상정지장치","과속조절기","완충기","리미트 스위치","브레이크","전기안전장치"]],
+    ["유압",["유압","잭","럽처밸브","배관"]],
+    ["그 밖에",["정격하중","에이프런","표시","레일","균형추"]]],
+  ince:[["공간",["승강로","기계실","피트","풀리실","기계류 캐비닛","작업구역"]],
+    ["문",["승강장문","카문","잠금","비상문","점검문"]],
+    ["카",["카 바닥","조명","보호난간","환기"]],
+    ["구동·매다는 장치",["구동기","로프","체인","도르래","드럼","브레이크"]],
+    ["안전장치",["추락방지","과속조절기","완충기","상승과속","개문출발","리미트 스위치","전기안전장치"]],
+    ["전기·통화",["제어반","비상통화","케이블","접지","점검운전"]]]};
+const hasTopics=isStd=>kind==="elev"||(!isStd&&!!TOPICS_K[kind]);
+const topicN={};
+function topicPanel(isStd){
+  const arr=isStd?S:cur(), n=w=>{const k=kind+src+w; if(!(k in topicN)) topicN[k]=search(arr,w).res.length; return topicN[k]};
+  const chip=w=>n(w)?`<button type="button" class="qd" data-topic="${esc(w)}">${esc(w)}<span class="tn">${n(w)}</span></button>`:"";
+  let body;
+  if(isStd){
+    const kw={}; S.forEach(x=>{if(x.keyword)kw[x.keyword]=(kw[x.keyword]||0)+1});
+    body=`<div class="tg">${Object.keys(kw).sort((a,b)=>kw[b]-kw[a]||a.localeCompare(b,"ko")).map(chip).join("")}</div>`;
+  } else body=(kind==="elev"?TOPICS:TOPICS_K[kind]).map(([g,ws])=>{ const c=ws.map(chip).join(""); return c?`<div class="tg"><span class="qlabel">${g}</span>${c}</div>`:""; }).join("");
+  return `<details class="topics"${topicsOpen?" open":""}><summary>항목으로 찾기 <span class="ts">${isStd?"분류별로":"부위별로"} 골라 보기</span></summary>${body}</details>`;
+}
+// 항목으로 찾기는 평소엔 접어 두고, 펼치면 이 기기에 기억한다 (다시 그려도 펼친 채로)
+let topicsOpen=false; try{topicsOpen=localStorage.getItem("elisn-lab-topics")==="1"}catch(_){}
+$("#out").addEventListener("toggle",e=>{ if(!e.target.matches(".topics")) return; topicsOpen=e.target.open;
+  try{topicsOpen?localStorage.setItem("elisn-lab-topics","1"):localStorage.removeItem("elisn-lab-topics")}catch(_){} },true);
+// 연관 검색어: 결과 조항 제목에 자주 같이 나오는 낱말을 골라, 누르면 지금 검색어에 더해 좁혀 찾게 한다
+// 흔한 말(기준, 설치 등)은 빼고, 늘 붙어 다니는 두 낱말(에너지 분산형)은 한 덩어리로 보여 준다
+const REL_STOP=new Set("기준 요구 요구사항 요건 추가요건 일반사항 종전 현행 설치 작동 엘리베이터 승강기 관련 장치 사용 조건 구조 상태 입증 제한 또는 이상 이상의 서로 다른 적용 검사 방식 수준 최대 최소 위치 수단 경우 대한 의한 있는 없는 해당 기타 표시 성능 부품 방법 사항 등의 및 시험 규정 내용 운전 갖는 가진 위한 따른 방지 조치 필요".split(" "));
+function relTerms(res,q,rxs){
+  if(!rxs.length||res.length<3) return [];
+  const qw=q.replace(/\s+/g,"");
+  const ok=w=>w.length>1&&!REL_STOP.has(w)&&!/^[\d.]+$/.test(w)&&!qw.includes(w)&&!rxs.some(r=>{r.lastIndex=0;return r.test(w)});
+  const one={},two={};
+  res.slice(0,80).forEach(o=>{
+    const ws=String(o.x.title||"").split(/[\s,·()\[\]\/:;'"“”‘’<>「」『』~-]+/).map(w=>w.length>2?w.replace(/(의|가|를|을|은|는)$/,""):w).filter(Boolean);
+    const seen=new Set(), add=(m,k)=>{if(!seen.has(k)){seen.add(k);m[k]=(m[k]||0)+1}};
+    ws.forEach((w,i)=>{ if(!ok(w)) return; add(one,w); const b=ws[i+1]; if(b&&ok(b)) add(two,w+" "+b); });
+  });
+  // 두 낱말이 자주 붙어 나오면 묶음으로 보여 주고, 묶음에 든 낱말은 따로 보여 주지 않는다
+  const cand={}, inPair=new Set();
+  for(const [k,n] of Object.entries(two)){ const [a,b]=k.split(" ");
+    if(n>=3&&n>=0.6*Math.min(one[a],one[b])){ cand[k]=n; inPair.add(a); inPair.add(b); } }
+  for(const [k,n] of Object.entries(one)) if(!inPair.has(k)) cand[k]=n;
+  // 두 곳 이상에 나오고, 더했을 때 결과가 실제로 줄어드는 말만. 한쪽이 다른 쪽에 들어가는 말(안전장치·전기안전장치)은 하나만
+  const pick=[];
+  for(const [k] of Object.entries(cand).filter(([,n])=>n>=2&&n<res.length).sort((a,b)=>b[1]-a[1])){
+    const flat=k.replace(/\s+/g,"");
+    if(pick.some(p=>{const f=p.replace(/\s+/g,"");return f.includes(flat)||flat.includes(f)})) continue;
+    pick.push(k); if(pick.length===5) break;
+  }
+  return pick;
+}
+function setSeg(attr,val){document.querySelectorAll(`[data-${attr}]`).forEach(b=>b.setAttribute("aria-pressed",b.dataset[attr]===val))}
+
+let t; $("#q").addEventListener("input",()=>{clearTimeout(t);t=setTimeout(()=>{limit=40;render()},150)});
+let dt; $("#d").addEventListener("input",()=>{clearTimeout(dt);dt=setTimeout(()=>{limit=40;revSel="";render()},200)});
+$("#dmsg").addEventListener("click",e=>{const b=e.target.closest("[data-pick]"); if(!b) return; $("#d").value=fmt(b.dataset.pick); limit=40; render();});
+$("#dclear").addEventListener("click",()=>{$("#d").value="";limit=40;render()});
+document.querySelectorAll(".quick .qd[data-d]").forEach(b=>b.addEventListener("click",()=>{
+  const v=b.dataset.d==="today"?todayIso():b.dataset.d;
+  const cur=parseLoose($("#d").value);
+  $("#d").value=cur&&cur.from===cur.to&&cur.from===v?"":fmt(v); // 이미 고른 버튼을 다시 누르면 풀린다
+  limit=40;render();
+}));
+// 승강기 종류: 누르면 그 종류 자료로 (검색어·허가일·보기는 그대로)
+document.querySelectorAll("[data-kind]").forEach(b=>b.addEventListener("click",()=>{ if(b.dataset.kind!==kind){ $("#q").value=""; exQ=""; $("#qclear").hidden=true; } kind=b.dataset.kind; setSeg("kind",kind); limit=40; render(); showExample(); })); // 종류를 바꾸면 검색어는 비운다(부품 이름이 종류마다 달라 이어 찾으면 엉뚱함). 허가일은 그대로. 추천 검색어도 그 종류 것으로
+// 엘리베이터 밖 종류 자료(data/kinds.json): 처음 고를 때 한 번 불러와 번호·즐겨찾기 키·시기별 묶음을 붙인다
+function loadKinds(){ if(KP) return KP;
+  return KP=fetch("data/kinds.json").then(r=>{ if(!r.ok) throw new Error("kinds"); return r.json(); }).then(j=>{
+    K=j.items||[]; K.forEach((x,n)=>{ x.__i=C.length+n+1; x.__k=x.kind+"|"+[x.title,x.label,x.from,x.to,textSig(x.text)].join("|"); if(x.text) x.text=tidy(x.text); });
+    const g={}; for(const x of K) (g[x.kind+"|"+x.label]=g[x.kind+"|"+x.label]||[]).push(x);
+    // 같은 번호라도 기준 체계(2009 / 2013~2019 / 2019~)가 다르면 내용이 다를 수 있어, 다른 체계끼리는 글이 비슷할 때만(엘리베이터와 같은 기준) 한 묶음으로
+    const era=x=>!x.from?0:x.from<"2019-03-28"?1:2;
+    for(const v of Object.values(g)){ v.sort((a,b)=>(a.from||"0000").localeCompare(b.from||"0000")); v.forEach(x=>x.__t=vToks(x.text||""));
+      for(const x of v){ const w=v.filter(y=>y===x||era(y)===era(x)||dice(x.__t,y.__t)>=0.3); x.__v=w.length>1?w:null; } }
+    render();
+  }).catch(()=>{ KP=null; $("#status").textContent="자료를 불러오지 못했어요. 다시 눌러 주세요."; });
+}
+// 두 칸짜리 상자: 이미 고른 칸을 한 번 더 누르면 다른 칸으로 넘어간다 (스위치처럼)
+const other=(attr,v)=>[...document.querySelectorAll(`[data-${attr}]`)].map(b=>b.dataset[attr]).find(x=>x!==v);
+document.querySelectorAll("[data-src]").forEach(b=>b.addEventListener("click",()=>{src=b.dataset.src===src?other("src",src):b.dataset.src;setSeg("src",src);limit=40;render()}));
+document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>{view=b.dataset.view===view?other("view",view):b.dataset.view;setSeg("view",view);limit=40;render()}));
+$("#out").addEventListener("click",e=>{
+  const tp=e.target.closest("[data-topic]");
+  if(tp){$("#q").value=tp.dataset.topic;addRecent(tp.dataset.topic);limit=40;render();scrollTo({top:0});return}
+  if(e.target.closest(".nofb")){ if(!openForm()) toast("의견 창구 준비 중이에요."); return; } // 결과가 없을 때 뜨는 의견 보내기
+  const im=e.target.closest("[data-img]");
+  if(im){openViewer(im.dataset.img,im.dataset.cap||"");return}
+  // 긴 본문: 글을 누르면 펼치고, 다시 누르면 접는다 (글자를 끌어 고르는 중이면 그대로 둔다)
+  const tx=e.target.closest(".text.fold");
+  if(tx&&!e.target.closest("a,button")&&!String(getSelection()).trim()){foldText(tx.closest("article"));return}
+  const a=e.target.closest("[data-act]"); if(!a) return;
+  if(a.dataset.act==="col"){ const c=a.closest(".col"); if(!c.classList.contains("shut")&&!c.classList.contains("fold-ok")) return; // PC처럼 접을 일이 없는 칸은 그대로
+    c.classList.add("fold-ok"); c.classList.toggle("shut"); a.setAttribute("aria-expanded",!c.classList.contains("shut")); return; }
+  const art=a.closest("article");
+  if(a.dataset.act==="open") foldText(art);
+  else if(a.dataset.act==="rel"){const r=art.querySelector(":scope>.rel");r.hidden=!r.hidden;a.setAttribute("aria-expanded",!r.hidden)} // 버튼 모양으로 열림·닫힘을 보여 준다
+  else if(a.dataset.act==="more"){limit+=40;render()}
+  else if(a.dataset.act==="report") report(art);
+  else if(a.dataset.act==="law") showLaw(+a.dataset.i);
+  else if(a.dataset.act==="cmp") showCompare(+a.dataset.i);
+  else if(a.dataset.act==="fav"){
+    const k=art.dataset.k, on=!favs.has(k); on?favs.add(k):favs.delete(k); saveFavs();
+    // 같은 조항이 화면 여러 곳(시기별 칸 등)에 있으면 함께 바꾼다
+    document.querySelectorAll("#out article").forEach(el=>{ if(el.dataset.k!==k) return; const b=el.querySelector(':scope>.acts>[data-act="fav"]'); if(b){b.setAttribute("aria-pressed",on);b.innerHTML=favLbl(on)} });
+    if(favOnly&&!on) render(); else favLabel();
+    toast(on?"즐겨찾기에 넣었어요. 위의 ‘즐겨찾기만’으로 모아 볼 수 있어요":"즐겨찾기에서 뺐어요",2500);
+  }
+  else if(a.dataset.act==="excl"){const l=a.nextElementSibling;l.hidden=!l.hidden;a.textContent=a.textContent.replace(l.hidden?"접기":"보기",l.hidden?"보기":"접기")}
+});
+// 그림 크게 보기: 처음엔 화면에 맞춤. 그림을 누르면 누른 자리를 가운데로 2배, 다시 누르면 맞춤. 어두운 곳·✕·Esc로 닫기
+function openViewer(src,cap){ const box=$("#dlgbox"), img=$("#dlgimg"); box.classList.remove("big"); img.style.width=""; $("#dlgzoom").textContent="2배 확대";
+  img.src=src; img.alt=cap||"그림"; $("#dlgcap").textContent=cap||""; $("#dlg").showModal(); box.scrollTo(0,0); }
+function zoomViewer(ex,ey){ const box=$("#dlgbox"), img=$("#dlgimg");
+  if(box.classList.contains("big")){ box.classList.remove("big"); img.style.width=""; $("#dlgzoom").textContent="2배 확대"; return; }
+  const r=img.getBoundingClientRect(), fx=ex==null?.5:(ex-r.left)/r.width, fy=ey==null?.5:(ey-r.top)/r.height;
+  img.style.width=Math.round(r.width*2)+"px"; box.classList.add("big"); $("#dlgzoom").textContent="화면에 맞춤";
+  const w=img.offsetWidth, h=img.offsetHeight; box.scrollTo({left:fx*w-box.clientWidth/2+12, top:fy*h-box.clientHeight/2+12}); }
+$("#dlgimg").addEventListener("click",e=>{ e.stopPropagation(); zoomViewer(e.clientX,e.clientY); });
+$("#dlgzoom").addEventListener("click",()=>zoomViewer());
+// 폰 뒤로가기: 창(원문·시기별 비교·그림·QR·의견)이 떠 있으면 앱을 나가지 말고 그 창만 닫는다 (2026-10-02)
+// 창이 열릴 때 기록을 하나 쌓고, 뒤로가기면 맨 위 창을 닫는다. 닫기 버튼·Esc로 닫으면 쌓은 기록을 되돌린다
+let dlgBack=false, dlgPop=false;
+document.querySelectorAll("dialog").forEach(d=>{
+  new MutationObserver(()=>{ if(d.open&&!d._h){ d._h=1; history.pushState(history.state,"",location.href); } }).observe(d,{attributes:true,attributeFilter:["open"]});
+  d.addEventListener("close",()=>{ if(!d._h) return; d._h=0; if(dlgPop) dlgPop=false; else { dlgBack=true; history.back(); } });
+});
+addEventListener("popstate",()=>{
+  if(dlgBack){ dlgBack=false; return; } // 버튼으로 닫으며 되돌린 기록이면 다른 창은 그대로
+  const top=[...document.querySelectorAll("dialog[open]")].filter(d=>d._h).pop();
+  if(top){ dlgPop=true; top.close(); }
+});
+$("#dlgx").addEventListener("click",()=>$("#dlg").close());
+$("#dlgbox").addEventListener("click",e=>{ if(e.target.id==="dlgbox") $("#dlg").close(); });
+$("#cmpclose").addEventListener("click",()=>$("#cmpdlg").close());
+$("#cmpdlg").addEventListener("click",e=>{ if(e.target.id==="cmpdlg") $("#cmpdlg").close(); });
+$("#cmpdel").addEventListener("change",e=>$("#cmpdlg").classList.toggle("cmp-showdel",e.target.checked)); // 빠진 말도 보기
+$("#favonly").addEventListener("click",()=>{favOnly=!favOnly;limit=40;render()});
+// 검색어 지우기 ×: 검색어가 있으면 늘 보이고, 누르면 비우고 바로 새로 칠 수 있게 검색창에 커서를 둔다
+function syncClear(){ $("#qclear").hidden=!$("#q").value; }
+$("#q").addEventListener("input",syncClear);
+$("#qclear").addEventListener("pointerdown",e=>e.preventDefault()); // 누르는 동안 검색창 포커스·최근 검색어 창이 흔들리지 않게
+// (2026-09-30 운영자 결정 B) 지운 뒤 커서는 두되 최근 검색어 목록은 바로 띄우지 않는다: 폰에서 자판+목록이 화면을 덮어 답답하던 것.
+// 글자를 치면 맞는 최근 검색어가 뜨고, 빈 검색창을 한 번 더 누르면 최근 검색어가 뜬다
+let quietFocus=false;
+$("#qclear").addEventListener("click",()=>{ $("#q").value=""; exQ=""; limit=40; render(); $("#recent").hidden=true; quietFocus=true; $("#q").focus(); quietFocus=false; });
+// 제목·아이콘을 누르면 처음 화면으로: 검색어·허가일·자료·보기·즐겨찾기만 보기를 비운다 (즐겨찾기·최근 검색어·화면 설정은 그대로)
+document.querySelectorAll(".brand .home").forEach(el=>el.addEventListener("click",e=>{
+  e.preventDefault();
+  $("#q").value=""; $("#d").value=""; exQ=""; src="c"; view="list"; favOnly=false; limit=40;
+  setSeg("src",src); setSeg("view",view); $("#recent").hidden=true; document.activeElement?.blur();
+  render(); scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});
+}));
+// 인쇄: 지금 결과를 모두 펼쳐 인쇄한다 (많으면 먼저 물어봄). 브라우저 인쇄(Ctrl+P)로 해도 같다
+// 인쇄 버튼(건수 확인을 거침)은 전부, 확인 없이 들어오는 Ctrl+P는 100건까지만 (2,018건 전부 그리다 폰이 멈칫하고 종이가 쏟아지지 않게)
+let printLimit=null, printAll=false;
+const restorePrint=()=>{ printAll=false; if(printLimit!==null){limit=printLimit;printLimit=null;render();} };
+addEventListener("beforeprint",()=>{ if(printLimit===null){printLimit=limit;limit=printAll?1e9:Math.max(limit,100);render();} });
+addEventListener("afterprint",restorePrint);
+// 폰(터치 화면): 인쇄할 사람은 거의 없고 PDF로 저장하려는 경우라, 버튼 이름을 'PDF 저장'으로 하고 처음 한 번 저장 방법을 알려 준다 (하는 일은 인쇄 창 열기로 같음)
+const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+// 폰·태블릿은 기기 이름으로 알아본다: S펜 갤럭시는 hover가 되는 기기로 잡혀 (hover:none)으로는 PC로 보였다 (2026-09-30)
+const MOB=IOS||/Android|Mobile/i.test(navigator.userAgent)||matchMedia("(hover:none) and (pointer:coarse)").matches;
+if(MOB) $("#print").textContent="PDF 저장";
+$("#print").addEventListener("click",()=>{
+  // 카카오톡·네이버 등 앱 안 브라우저는 인쇄(PDF 저장) 창이 안 뜬다 → 카카오톡은 바깥 브라우저로 바로 열고, 다른 앱은 여는 법을 알려 준다
+  if(inApp){
+    if(/KAKAOTALK/i.test(ua)){ if(confirm("카카오톡 안에서는 PDF로 저장할 수 없어요.\n다른 브라우저(크롬 등)로 지금 화면을 열까요? 열린 뒤 다시 ‘PDF 저장’을 눌러 주세요.")) location.href="kakaotalk://web/openExternal?url="+encodeURIComponent(location.href); }
+    else alert("앱 안에서 열려 있어 PDF로 저장할 수 없어요.\n오른쪽 위(또는 아래) ⋮ 메뉴 → 다른 브라우저로 열기를 누른 뒤, 거기서 다시 ‘PDF 저장’을 눌러 주세요.");
+    return;
+  }
+  const n=+($("#status b")||{}).textContent?.replace(/,/g,"")||0;
+  const msg=[];
+  if(n>60) msg.push(MOB?`조항 ${n.toLocaleString()}건을 모두 PDF에 담아요.\n쪽수가 많을 수 있어요.\n고른 조항만 담으려면 ☆ 즐겨찾기 한 뒤 ‘즐겨찾기만’을 켜고 저장하세요.`
+    :`조항 ${n.toLocaleString()}건을 모두 인쇄해요.\n종이가 많이 나올 수 있어요.\n고른 조항만 뽑으려면 ☆ 즐겨찾기 한 뒤 ‘즐겨찾기만’을 켜고 인쇄하세요.`);
+  let seen=false; try{seen=localStorage.getItem("elisn-pdfhow")==="1"}catch(_){}
+  // PC: 인쇄 창이 열리면 화면 알림이 가려져 못 읽으므로(2026-10-01 운영자) 확인 창으로 보여 주고, 처음 세 번만
+  let pcTip=0; try{pcTip=+localStorage.getItem("elisn-printtip")||0}catch(_){}
+  if(!MOB&&pcTip<3) msg.push("PDF로 받을 때는 인쇄 창의 프린터(대상) 칸에서 ‘PDF로 저장’을 고르세요.\n쪽 아래 주소 줄을 없애려면 ‘설정 더보기 → 머리글 및 바닥글’ 체크를 끄세요.\n한 번 끄면 다음부터 기억돼요.\n\n(이 안내는 처음 세 번만 나와요)");
+  if(MOB&&!seen) msg.push(IOS?"PDF로 저장하는 법: 다음 화면 위쪽의 공유 버튼을 누르고 ‘파일에 저장’을 고르세요."
+    :"PDF로 저장하는 법: 다음 화면 맨 위 프린터 칸을 ‘PDF로 저장’으로 고르고, PDF 버튼(⬇)을 누르세요.");
+  if(msg.length&&!confirm(msg.join("\n\n")+(MOB?"\n\n계속할까요?":"\n\n그대로 인쇄할까요?"))) return;
+  if(MOB) try{localStorage.setItem("elisn-pdfhow","1")}catch(_){}
+  if(!MOB&&pcTip<3) try{localStorage.setItem("elisn-printtip",String(pcTip+1))}catch(_){}
+  // (PC 안내는 위 확인 창으로 옮김 — 화면 알림은 인쇄 창에 가려져 못 읽었음)
+  // 폰 크롬 등은 인쇄 시작 신호(beforeprint)가 없거나 인쇄 화면을 찍은 뒤에 와서, 처음 40건만 PDF로 나왔다
+  // → 버튼으로 인쇄할 때는 먼저 전부 그려 두고, 잠깐 뒤 인쇄 창을 연다 (화면 그리기 신호는 창이 가려지면 멈춰서 쓰지 않음)
+  printAll=true; if(printLimit===null){printLimit=limit;limit=1e9;render();}
+  setTimeout(()=>{
+    print();
+    // 인쇄가 끝났다는 신호(afterprint)가 없는 기기: 다음에 화면을 누르면 40건 화면으로 돌아온다
+    setTimeout(()=>addEventListener("pointerdown",restorePrint,{once:true}),500);
+  },MOB?120:300);
+});
+// 최근 검색어: 빈 검색창을 누르면 뜨고, 고르면 바로 찾는다
+const rIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>';
+function showRecent(){
+  const box=$("#recent");
+  // 치는 중이면 그 글자가 들어 있는 최근 검색어만 보여 준다 ("비" → "비상통"). 띄어쓰기는 무시, 친 말과 똑같은 것은 뺀다
+  const typed=$("#q").value.trim(), flat=s=>s.replace(/\s+/g,"").toLowerCase();
+  const list=typed?recent.filter(s=>flat(s).includes(flat(typed))&&flat(s)!==flat(typed)):recent;
+  if(!list.length||document.activeElement!==$("#q")){box.hidden=true;return}
+  const rx=typed?[new RegExp(loose(typed),"gi")]:[];
+  box.innerHTML=`<div class="rh"><span>최근 검색어</span><button type="button" data-rclear>기록 지우기</button></div>`+list.map(s=>`<div class="rrow"><button type="button" class="ri" data-r="${esc(s)}">${rIcon}<span>${hl(s,rx)}</span></button><button type="button" class="rx" data-rdel="${esc(s)}" aria-label="${esc(s)} 지우기" title="지우기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div>`).join("");
+  if(box.hidden){ recentY=scrollY; recentAt=Date.now(); }
+  box.hidden=false;
+}
+// 최근 검색어 창이 열린 채 12px 넘게 스크롤하면 닫는다(2026-09-30 더 예민하게, 전엔 30px). 폰은 자판도 내려 결과를 넓게 보이게
+// (열린 직후 0.35초는 폰 자판이 올라오며 화면이 저절로 밀리는 것이라 닫지 않고 기준 위치만 옮긴다)
+let recentY=0, recentAt=0;
+addEventListener("scroll",()=>{
+  const box=$("#recent"); if(box.hidden) return;
+  if(Date.now()-recentAt<350){ recentY=scrollY; return; }
+  if(Math.abs(scrollY-recentY)<12) return;
+  box.hidden=true;
+  if(matchMedia("(pointer:coarse)").matches&&document.activeElement===$("#q")) $("#q").blur();
+},{passive:true});
+// 폰: 손가락을 위아래로 12px 넘게 끌면 바로 닫는다. 페이지가 실제로 움직였는지와 상관없이
+// (최근 검색어 창 위에서 끌거나, 자판 때문에 페이지가 거의 안 움직여도 닫히게 — 2026-09-30)
+let touchY=null;
+addEventListener("touchstart",e=>{ touchY=e.touches.length===1?e.touches[0].clientY:null; },{passive:true});
+addEventListener("touchmove",e=>{
+  const box=$("#recent"); if(box.hidden||touchY===null) return;
+  if(Math.abs(e.touches[0].clientY-touchY)<12) return;
+  touchY=null; box.hidden=true;
+  if(document.activeElement===$("#q")) $("#q").blur();
+},{passive:true});
+$("#q").addEventListener("focus",()=>{ if(!quietFocus) showRecent(); });
+$("#q").addEventListener("click",()=>{ if($("#recent").hidden) showRecent(); }); // 이미 커서가 있을 때 한 번 더 누르면 최근 검색어
+$("#q").addEventListener("input",showRecent);
+$("#q").addEventListener("blur",()=>{ setTimeout(()=>{$("#recent").hidden=true},150); if($("#q").value!==exQ&&lastHits>0) addRecent($("#q").value); });
+$("#recent").addEventListener("pointerdown",e=>e.preventDefault()); // 누르는 동안 검색창이 포커스를 잃지 않게
+$("#recent").addEventListener("click",e=>{
+  if(e.target.closest("[data-rclear]")){ recent=[]; try{localStorage.removeItem("elisn-lab-recent")}catch(_){} $("#recent").hidden=true; return; }
+  // 하나만 지우기: 목록은 그대로 열어 두고 그 줄만 뺀다
+  const x=e.target.closest("[data-rdel]");
+  if(x){ recent=recent.filter(r=>r!==x.dataset.rdel); try{localStorage.setItem("elisn-lab-recent",JSON.stringify(recent))}catch(_){} showRecent(); return; }
+  const b=e.target.closest("[data-r]"); if(!b) return;
+  $("#q").value=b.dataset.r; $("#recent").hidden=true; goSearch();
+});
+// 치다가 2초 쉬면 그 말도 기억 (엔터를 안 누르는 사람도 있어서)
+let rt; $("#q").addEventListener("input",()=>{clearTimeout(rt);rt=setTimeout(()=>{ if(lastHits>0) addRecent($("#q").value); },2000)});
+// 원문 보기: 조항에 맞는 고시 원문 조각을 창으로 보여 준다 (원본/원문조각.json, 처음 누를 때 한 번 불러옴)
+// 불러오는 중인 것도 기억해, 빨리 여러 번 눌러도 1.6MB를 한 번만 받는다 (실패하면 다음에 다시 시도)
+let LAWP=null;
+function loadLaw(){ return LAWP||(LAWP=fetch("data/law.json").then(r=>{ if(!r.ok) throw new Error("law"); return r.json(); }).catch(e=>{ LAWP=null; throw e; })); }
+let lawSeq=0; // 늦게 도착한 앞 조항 원문이 지금 연 조항 창을 덮어쓰지 않게, 마지막으로 누른 것만 화면에 쓴다
+const tidy=s=>s.replace(/([가-힣])\?(?=[가-힣A-Za-z0-9])/g,"$1·").replace(/([가-힣])․/g,"$1·") // 옛 원문 파일에서 깨진 가운뎃점(?) 되살리기 (옛 아이폰이 못 읽는 '앞글자 확인' 규칙은 안 씀)
+  // (2026-10-02) 뒤가 영문·숫자인 곳(제어반?TV, 버튼?1차)도, 원래 자료의 점 하나 기호(U+2024 ․, 폰 글꼴에서 마침표처럼 보임)도 가운뎃점으로
+  // (2026-10-02) 판마다 섞인 전각 부등호(＜ ＞)·기호를 보통 글자로 맞춘다: 크기가 달라 보이고 시기별 비교에서 바뀐 말로 잡히던 것
+  .replace(/[＜＞＝＋]/g,c=>({"＜":"<","＞":">","＝":"=","＋":"+"})[c])
+  .replace(/(\d) °/g,"$1°")            // "35 °" → "35°" (판마다 띄어쓰기만 달라 비교에서 바뀐 말로 잡히던 것)
+  .replace(/(\S)[ \t]{2,}(?=\S)/g,"$1 "); // 줄 가운데 겹빈칸 → 한 칸 (줄 앞 들여쓰기는 그대로)
+async function showLaw(i){
+  const x=byI(i); const dlg=$("#lawdlg"), my=++lawSeq;
+  $("#lawttl").textContent=x.label&&/^\d/.test(x.label)?dotAll(x.label):(x.title||"");
+  $("#lawsrc").textContent="원문 불러오는 중…"; $("#lawbody").textContent=""; $("#lawwarn").hidden=true;
+  $("#lawfull").href=lawUrl(x);
+  if(!dlg.open) dlg.showModal();
+  if(x.kind||x.added){ // 종류 자료·보충한 옛 판 글은 고시 원문에서 바로 옮긴 글이라 그대로 보여 준다
+    $("#lawsrc").textContent=x.srcName||""; $("#lawttl").textContent=x.label||x.title||""; $("#lawfull").href=x.srcUrl||lawUrl(x);
+    $("#lawbody").textContent=x.text||""; return; }
+  try{
+    const L=await loadLaw(); if(my!==lawSeq) return; let r=L.clauses[i];
+    if(!r){ $("#lawsrc").textContent="원문 조각을 자동으로 찾지 못한 조항이에요";
+      $("#lawbody").textContent="이 조항은 번호로 원문을 찾지 못했어요. 아래 \"고시 전체 보기\"에서 확인해 주세요.\n\n[원래 자료 글]\n"+bodyText(x); return; }
+    // 허가일(하루로 넣은 날짜)이 이 조항 기간 안이면 그날 시행 중이던 판 글로 보여 준다 (2026-10-02). 아니면 기간 끝의 판
+    const pd=parseLoose($("#d").value), d=pd&&pd.from===pd.to?pd.from:"";
+    if(d&&r.vers&&d>=(x.from||"")&&d<=(x.to||"9999-12-31")){
+      const all=[r,...r.vers.map(v=>({...r,...v,near:false}))].sort((a,b)=>L.sources[a.src].date<L.sources[b.src].date?-1:1);
+      r=all.filter(v=>L.sources[v.src].date<=d).pop()||all[0]; }
+    const s=L.sources[r.src];
+    $("#lawsrc").textContent=s.name; $("#lawttl").textContent=r.num; $("#lawfull").href=s.url;
+    $("#lawbody").textContent=tidy(r.text);
+    const w=[];
+    if(r.near) w.push("이 조항이 적용되던 때의 판 원문이 없어 가장 가까운 판으로 보여 줘요. 글이 조금 다를 수 있어요.");
+    if(r.quoted) w.push("2009 고시보다 앞선 기준이라, 원문 중 \"종전기준\"이라고 인용된 부분이 이 조항의 근거예요.");
+    if(w.length){ $("#lawwarn").textContent=w.join(" "); $("#lawwarn").hidden=false; }
+  }catch(e){ if(my===lawSeq) $("#lawsrc").textContent="원문을 불러오지 못했어요. 다시 눌러 주세요."; }
+}
+$("#lawclose").addEventListener("click",()=>$("#lawdlg").close());
+$("#lawdlg").addEventListener("click",e=>{ if(e.target.id==="lawdlg") $("#lawdlg").close(); });
+// 제보 창구: 노션 "ELISN 제보함" 폼 (공개 링크). 비어 있으면 조항 정보만 복사해 카톡 등으로 보내게 한다
+const FORM_URL="https://udinotti.notion.site/e30c46d4f15e41b0a49a84906d9b55ff";
+let toastT;
+function toast(msg,ms=5000){const el=$("#toast");el.textContent=msg;el.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>el.hidden=true,ms)}
+function openForm(){ if(!FORM_URL) return false; const a=document.createElement("a"); a.href=FORM_URL; a.target="_blank"; a.rel="noopener"; document.body.appendChild(a); a.click(); a.remove(); return true; }
+// 의견 남기기: 바로 폼으로 넘기지 않고 안내 창을 먼저 띄워, 조항 정보가 복사됐는지 눈으로 확인하게 한다
+async function copyClause(){
+  const txt=$("#repclause").textContent+(window.ELISN_VER?" (ELISN "+window.ELISN_VER+")":""), st=$("#repstate"); // 어느 버전에서 본 조항인지 함께 복사
+  try{ await navigator.clipboard.writeText(txt); st.textContent="✓ 복사됐어요"; st.className="rep-state ok"; }
+  catch(e){ // 새 방식이 막힌 환경: 글을 선택해 옛 방식으로 복사, 그것도 안 되면 직접 복사하게 한다
+    const r=document.createRange(); r.selectNodeContents($("#repclause")); const s=getSelection(); s.removeAllRanges(); s.addRange(r);
+    let ok=false; try{ ok=document.execCommand("copy"); }catch(_){}
+    if(ok){ st.textContent="✓ 복사됐어요"; st.className="rep-state ok"; }
+    else{ st.textContent="복사가 안 됐어요. 위 글이 선택돼 있으니 길게 눌러 복사해 주세요."; st.className="rep-state bad"; } }
+}
+function report(art){
+  $("#repclause").textContent=art.querySelector(".head").innerText.replace(/\s+/g," ").trim();
+  $("#repstate").textContent=""; $("#repstate").className="rep-state";
+  $("#repopen").href=FORM_URL||"#";
+  $("#repdlg").showModal();
+  copyClause(); // 누른 순간 복사 (사용자 동작 안에서 해야 막히지 않음)
+}
+$("#repcopy").addEventListener("click",copyClause);
+$("#repclose").addEventListener("click",()=>$("#repdlg").close());
+$("#repopen").addEventListener("click",()=>setTimeout(()=>$("#repdlg").close(),300));
+$("#repdlg").addEventListener("click",e=>{ if(e.target.id==="repdlg") $("#repdlg").close(); });
+document.querySelectorAll("[data-act=feedback]").forEach(b=>b.addEventListener("click",()=>{ if(!openForm()) toast("의견 창구 준비 중이에요."); }));
+
+// 화면 모드: 버튼을 누르면 자동(폰·PC 설정 따라)·밝게·어둡게 중에 고르는 메뉴가 열린다. 고른 값은 이 기기에 기억
+const THEMES=[["auto","자동","폰·PC 설정을 따라가요",'<circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/>'],
+  ["light","밝게","",'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'],
+  ["dark","어둡게","",'<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>']];
+const svg=i=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">${i}</svg>`;
+let theme=document.documentElement.dataset.theme||"auto";
+$("#tmenu").innerHTML=THEMES.map(([k,name,sub,icon])=>`<button type="button" role="menuitemradio" data-theme="${k}">${svg(icon)}<span>${name}${sub?`<small>${sub}</small>`:""}</span><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></button>`).join("")+
+  `<div class="fz"><span>글자 크기</span><button type="button" data-fz="-1" aria-label="글자 작게">가−</button><output id="fzv"></output><button type="button" data-fz="1" aria-label="글자 크게">가+</button></div>`;
+// 글자 크기: 조항 글만 90~150%로. 이 기기에 기억 (메뉴는 닫지 않아 여러 번 눌러 맞출 수 있게)
+const FZ=[0.9,1,1.15,1.3,1.5];
+let fz=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--fz"))||1;
+function showFz(){
+  document.documentElement.style.setProperty("--fz",fz);
+  $("#fzv").textContent=Math.round(fz*100)+"%";
+  $("#tmenu [data-fz='-1']").disabled=fz<=FZ[0]; $("#tmenu [data-fz='1']").disabled=fz>=FZ[FZ.length-1];
+}
+showFz();
+function showTheme(){
+  const [k,name,,icon]=THEMES.find(t=>t[0]===theme);
+  if(k==="auto") delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme=k;
+  // 버튼에는 화면 모드 그림과 "가"를 함께 보여, 글자 크기도 여기서 바꾼다는 걸 알린다
+  $("#theme").innerHTML=svg(icon)+`<span class="aa" aria-hidden="true">가</span><span class="tl">화면·글자</span>`;
+  $("#theme").setAttribute("aria-label",`화면 모드(${name})와 글자 크기`);
+  document.querySelectorAll("#tmenu [data-theme]").forEach(b=>b.setAttribute("aria-checked",b.dataset.theme===k));
+}
+const menuOpen=open=>{$("#tmenu").hidden=!open;$("#theme").setAttribute("aria-expanded",open);if(open)$("#tmenu [aria-checked=true]").focus()};
+$("#theme").addEventListener("click",e=>{e.stopPropagation();menuOpen($("#tmenu").hidden)});
+$("#tmenu").addEventListener("click",e=>{
+  const z=e.target.closest("[data-fz]");
+  if(z){ let i=FZ.findIndex(v=>v>=fz-0.01); if(i<0) i=1; fz=FZ[Math.max(0,Math.min(FZ.length-1,i+ +z.dataset.fz))];
+    try{fz===1?localStorage.removeItem("elisn-lab-fz"):localStorage.setItem("elisn-lab-fz",fz)}catch(_){} showFz(); return; }
+  const b=e.target.closest("[data-theme]"); if(!b) return;
+  theme=b.dataset.theme;
+  try{theme==="auto"?localStorage.removeItem("elisn-lab-theme"):localStorage.setItem("elisn-lab-theme",theme)}catch(_){}
+  showTheme(); menuOpen(false); $("#theme").focus();
+});
+document.addEventListener("click",e=>{if(!$("#tmenu").hidden&&!e.target.closest(".tm"))menuOpen(false)});
+// 화면 모드 메뉴도 검색어 창처럼 스크롤하면 닫는다: 페이지가 12px 넘게 움직이거나, 폰에서 메뉴 밖을 위아래로 12px 넘게 끌면
+let tmY=0, tmTouch=null;
+$("#theme").addEventListener("click",()=>{tmY=scrollY});
+addEventListener("scroll",()=>{if(!$("#tmenu").hidden&&Math.abs(scrollY-tmY)>=12)menuOpen(false)},{passive:true});
+addEventListener("touchstart",e=>{tmTouch=e.touches.length===1&&!e.target.closest(".tm")?e.touches[0].clientY:null},{passive:true});
+addEventListener("touchmove",e=>{if(tmTouch===null||$("#tmenu").hidden||Math.abs(e.touches[0].clientY-tmTouch)<12)return;tmTouch=null;menuOpen(false)},{passive:true});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#tmenu").hidden){menuOpen(false);$("#theme").focus()}});
+showTheme();
+// 맨 위로: 조금 내려가면 오른쪽 아래에 나타난다
+const topBtn=$("#totop");
+addEventListener("scroll",()=>{
+  topBtn.hidden=scrollY<900;
+  $("#minibar").classList.toggle("on",$(".controls").getBoundingClientRect().bottom<0); // 검색창이 화면 위로 사라지면 얇은 검색줄을 띄운다
+},{passive:true});
+// 얇은 검색줄을 누르면 맨 위로 올라가 그 칸에 바로 쓸 수 있게 (폰 자판이 뜨도록 누른 순간에 바로 옮긴다)
+$("#mq").addEventListener("click",()=>{scrollTo(0,0);$("#q").focus()});
+$("#md").addEventListener("click",()=>{scrollTo(0,0);$("#d").focus()});
+// 옆으로 미는 버튼 줄(바로 고르기·연관 검색어): 더 밀 수 있는 쪽 끝을 흐리게 + PC에서도 마우스로 끌어 넘기기
+function slider(qk){
+  const fade=()=>{const m=qk.scrollWidth-qk.clientWidth;qk.classList.toggle("fl",qk.scrollLeft>4);qk.classList.toggle("fr",qk.scrollLeft<m-4)};
+  qk.addEventListener("scroll",fade,{passive:true}); new ResizeObserver(fade).observe(qk); fade();
+  // 끌었을 때는 버튼이 눌리지 않게
+  let x0=0,s0=0,down=false,moved=false;
+  qk.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse"||e.button!==0)return;down=true;moved=false;x0=e.clientX;s0=qk.scrollLeft});
+  qk.addEventListener("pointermove",e=>{if(!down)return;const dx=e.clientX-x0;if(!moved&&Math.abs(dx)>5){moved=true;qk.classList.add("drag");qk.setPointerCapture(e.pointerId)}if(moved)qk.scrollLeft=s0-dx});
+  const up=()=>{down=false;qk.classList.remove("drag")};
+  qk.addEventListener("pointerup",up); qk.addEventListener("pointercancel",up);
+  qk.addEventListener("click",e=>{if(moved){e.stopPropagation();e.preventDefault();moved=false;return}
+    // 누른 버튼이 끝에 걸쳐 있으면 가운데로 옮겨 옆 버튼도 보이게
+    const b=e.target.closest(".qd");if(!b)return;const r=b.getBoundingClientRect(),q=qk.getBoundingClientRect();
+    qk.scrollBy({left:(r.left+r.width/2)-(q.left+q.width/2),behavior:"smooth"})},true);
+}
+document.querySelectorAll(".quick .qs").forEach(slider); // 종류 줄·바로 고르기 줄
+// 결과 공유: 지금 검색어·허가일·보기 방식이 담긴 주소를 보낸다. 폰은 공유 창, PC는 주소 복사
+$("#share").addEventListener("click",async()=>{
+  const url=location.href, bits=[$("#q").value.trim(),$("#d").value.trim()&&"건축허가일 "+$("#d").value.trim()].filter(Boolean);
+  const text="ELISN 승강기 검사기준"+(bits.length?" · "+bits.join(" · "):"");
+  if(navigator.share&&matchMedia("(pointer:coarse)").matches){ try{await navigator.share({title:text,url});}catch(e){} return; }
+  let ok=false;
+  try{ await navigator.clipboard.writeText(url); ok=true; }
+  catch(e){ // 새 방식이 막힌 환경: 숨은 칸에 넣고 옛 방식으로 복사
+    const ta=document.createElement("textarea"); ta.value=url; ta.setAttribute("readonly",""); ta.style.cssText="position:fixed;opacity:0;top:0";
+    document.body.appendChild(ta); ta.select(); try{ ok=document.execCommand("copy"); }catch(_){} ta.remove(); }
+  toast(ok?"링크를 복사했어요. 붙여 넣어 보내면 같은 화면이 열려요":"주소창의 주소를 복사해 보내 주세요",ok?3000:4000);
+});
+// 폰으로 이어 보기(2026-10-01 운영자): PC에서만 버튼을 보이고, 누르면 지금 화면 주소(검색어·허가일·종류 포함)를 QR로 띄운다.
+// 폰 카메라로 비추면 같은 화면이 폰에서 열린다. QR 그리는 파일(lib/qrcode.js, MIT)은 처음 누를 때만 받는다
+if(!MOB) $("#qrbtn").hidden=false;
+let qrLib=null;
+const loadQr=()=>qrLib||(qrLib=new Promise((ok,no)=>{ if(window.qrcode) return ok();
+  const s=document.createElement("script"); s.src="lib/qrcode.js"; s.onload=()=>ok(); s.onerror=()=>{qrLib=null;no();}; document.head.appendChild(s); }));
+$("#qrbtn").addEventListener("click",async()=>{
+  syncUrl(); const url=location.href, box=$("#qrbox"), say=$("#qrsay");
+  const q=$("#q").value.trim(), d=$("#d").value.trim();
+  box.textContent=""; say.textContent="QR 만드는 중…"; $("#qrdlg").showModal();
+  try{
+    await loadQr();
+    const qr=qrcode(0,"M"); qr.addData(url); qr.make();
+    // 칸 크기는 정수로: 주소가 길어 칸 수가 늘어도 그림이 260px 안팎이 되게(늘리거나 줄이면 칸이 번져 잘 안 읽힌다)
+    const cell=Math.max(3,Math.floor(260/(qr.getModuleCount()+4)));
+    // 둘레 흰 여백(픽셀 단위)은 칸 3개 + 상자 안쪽 여백 10px ≈ 칸 4개: 폰 카메라가 QR 경계를 잘 잡게
+    const img=new Image(); img.src=qr.createDataURL(cell,cell*3); img.alt="지금 화면 주소 QR"; box.appendChild(img);
+    const now=[q&&"‘"+q+"’ 검색",d&&"허가일 "+d].filter(Boolean).join(" · ");
+    say.innerHTML="폰 카메라로 비추면 <b>지금 화면이 폰에서 그대로</b> 열려요."+(now?"<br>"+esc(now):"");
+  }catch(e){ say.textContent="QR을 불러오지 못했어요. 인터넷 연결을 확인하고 다시 눌러 주세요."; }
+});
+$("#qrclose").addEventListener("click",()=>$("#qrdlg").close());
+$("#qrdlg").addEventListener("click",e=>{ if(e.target.id==="qrdlg") $("#qrdlg").close(); });
+topBtn.addEventListener("click",()=>scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"}));
+// 인터넷 없이 쓰기: 오프라인 도우미(sw.js)를 붙인다.
+// 새 버전이 올라오면 버튼 없이 뒤에서 바로 적용한다 (2026-10-02 운영자: 올릴 때마다 "업데이트가 있어요"가 떠서 오류로 착각할 수 있음)
+// 보던 화면은 새로 고치지 않고, 다음에 열 때 새 버전이 나온다
+const offl=()=>{$("#offline").hidden=navigator.onLine!==false};
+addEventListener("online",offl); addEventListener("offline",offl); offl();
+if("serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost")){
+  let want=false; // 사용자가 버튼을 눌렀을 때만 새로 고친다 (처음 저장할 때는 새로 고치지 않음)
+  navigator.serviceWorker.addEventListener("controllerchange",()=>{ if(want){ want=false; location.reload(); } });
+  const ask=w=>{ if(!navigator.serviceWorker.controller) return; // 처음 여는 경우는 알릴 것 없음
+    w.postMessage("skip"); }; // 예전엔 #upd 버튼을 띄우고 누르면 적용·새로 고침
+  navigator.serviceWorker.register("sw.js").then(reg=>{
+    if(reg.waiting) ask(reg.waiting);
+    reg.addEventListener("updatefound",()=>{ const w=reg.installing; if(w) w.addEventListener("statechange",()=>{ if(w.state==="installed") ask(w); }); });
+  }).catch(()=>{});
+}
+// 홈 화면에 추가 버튼: 늘 보이고, 누르면 기기에 맞게 반응한다
+//  설치 창을 띄울 수 있는 브라우저(안드로이드 크롬, PC 크롬·엣지)는 바로 설치 창, 아이폰은 공유 → 홈 화면에 추가 안내,
+//  카카오톡 등 앱 안 브라우저는 다른 브라우저로 열기 안내, 이미 앱으로 여는 중이면 버튼 대신 안내 글
+let installEv=null;
+const ua=navigator.userAgent;
+const isApp=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+const isIOS=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
+const inApp=/KAKAOTALK|NAVER\(|Instagram|FBAN|FBAV|Line\/|DaumApps|everytimeApp|band\//i.test(ua);
+const shareIco='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>';
+function installHow(html){ const p=$("#installhow"); p.innerHTML=html; p.hidden=false; }
+function showInstall(){
+  const b=$("#install");
+  if(isApp()){ b.hidden=true; installHow("✓ 지금 앱으로 쓰는 중이에요. 인터넷이 없어도 열려요."); return; }
+  b.hidden=false;
+}
+$("#install").addEventListener("click",async()=>{
+  if(installEv){ installEv.prompt(); try{ await installEv.userChoice; }catch(_){} installEv=null; return; }
+  if(inApp) installHow(`지금은 ${/KAKAOTALK/i.test(ua)?"카카오톡":"앱"} 안에서 열려 있어 추가할 수 없어요. 오른쪽 위(또는 아래) <b>⋮ 메뉴 → 다른 브라우저로 열기</b>를 누른 뒤, 거기서 다시 이 버튼을 눌러 주세요.`);
+  else if(isIOS) installHow(`사파리 아래(아이패드는 위) <b class="ico">${shareIco}공유</b> 버튼 → <b>홈 화면에 추가</b>를 눌러 주세요. 크롬에서 열었다면 주소창 옆 공유 버튼에서도 돼요.`);
+  else installHow(`브라우저 메뉴(<b>⋮</b> 또는 <b>…</b>) → <b>홈 화면에 추가</b> 또는 <b>앱 설치</b>를 눌러 주세요. 메뉴에 없으면 크롬으로 열어 주세요.`);
+});
+addEventListener("beforeinstallprompt",e=>{ e.preventDefault(); installEv=e; });
+addEventListener("appinstalled",()=>{ installEv=null; toast("홈 화면에 추가했어요",2500); installHow("✓ 홈 화면에 추가했어요. 이제 앱처럼 바로 열려요."); $("#install").hidden=true; });
+showInstall();
+// 처음 켜면 검색창·날짜는 비워 두고, 회색 예시 문구(placeholder)를 무작위로 보여 준다. 누르고 치면 예시는 저절로 사라진다
+// 승강기 종류마다 그 종류 자료에서 실제로 결과가 나오는 말로 고른다. 순서는 켤 때마다 섞는다
+const EXAMPLES={
+  elev:["카 지붕 조명","8.10.4","비상통화장치","피트 깊이","승강장문 잠금","로프 마모","완충기","자동구출운전","문닫힘 안전장치","기계실 조도","6.1.4.1","추락방지안전장치","상승과속방지","소방구조용","카문 개방력","과속조절기","개문출발방지","비상조명","정격하중","균형추","피트 사다리","카 문턱","럽처밸브","주 개폐기","비상구출문"],
+  esc:["핸드레일","콤","스텝","팔레트","난간","뉴얼","비상정지스위치","보조 브레이크","역전 감지","경사도","공칭속도","트러스","방화셔터","자유공간","주 개폐기","수동핸들","자동 운전","안전선반","제동부하","손잡이 속도"],
+  wlv:["승강장문 잠금","방호울","램프","내부바닥 면적","랙 피니언","유압 구동","2차 전지","무선 제어","비상통화장치","비상정지장치","전자브레이크","팬터그래프","유량제한기","점검문","로프와 체인","외벽","콘센트","과속조절기"],
+  wli:["접는 가이드 레일","플랫폼","감지날","램프","토가드","보호대","안전벨트","입석식","비상구출 수동운전","구동 스크류","축전지","잔류전류장치","회전감지기","권동 드럼","무선운전","비상통화장치","복합형 카","유도로프"],
+  dumb:["주로프","권동식","수직 개폐식 문","로프이완","럽처밸브","정격하중","승강기 번호","에이프런","과속조절기 로프","완충기","파이널 리미트 스위치","카문","기계실","승강로 환기","비상정지장치","잭","피트"],
+  ince:["카 바닥의 기울기","주행안내 레일","피트 바닥 강도","풀리실","기계류 캐비닛","비상구출문","보호난간","상승과속방지장치","문열림출발방지","완충기","과속조절기 작동 시험","카문 개방","전동기 구동시간 제한장치","비상통화장치","점검 트랩문","매다는 장치","안전접점","조명"]};
+for(const k in EXAMPLES){ const a=EXAMPLES[k]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } }
+let exI=0;
+const exNow=()=>{ const a=EXAMPLES[kind]||EXAMPLES.elev; return a[exI%a.length]; };
+const showExample=()=>{$("#q").placeholder="예: "+exNow()+"  (낱말이나 조항 번호)"};
+showExample();
+// 비어 있고 입력 중이 아닐 때만 4초마다 다른 예시로 바꾼다. 돋보기에 손이나 마우스를 올린 동안은 멈춘다 (누르는 순간 바뀌지 않게)
+let exHold=false;
+$("#qgo").addEventListener("pointerenter",()=>{exHold=true});
+$("#qgo").addEventListener("pointerleave",()=>{exHold=false});
+setInterval(()=>{ if(!exHold&&!$("#q").value&&document.activeElement!==$("#q")){exI++;showExample();} },4000);
+// 돋보기를 누르거나 빈 칸에서 엔터: 비어 있으면 지금 보이는 예시로 바로 찾는다. 글자가 있으면 그대로 찾고 폰 자판을 내린다
+const goSearch=()=>{
+  const q=$("#q");
+  const typed=!!q.value.trim();
+  if(!typed){ q.value=exNow(); exQ=q.value; }
+  clearTimeout(t); limit=40; render();
+  if(typed&&lastHits>0) addRecent(q.value); // 찾은 게 있을 때만 최근 검색어에
+  q.blur();
+};
+$("#qgo").addEventListener("click",goSearch);
+$("#q").addEventListener("keydown",e=>{ if(e.key==="Enter"&&!e.isComposing){ e.preventDefault(); goSearch(); } });
+$("#relq").addEventListener("click",e=>{ const b=e.target.closest("[data-rel]"); if(!b) return;
+  $("#q").value=($("#q").value.trim()+" "+b.dataset.rel).trim(); limit=40; render(); });
+// 허가일 칸의 "적용 안 됨 N건 ›": 맨 아래 적용 안 되는 조항 목록을 펼치고 그 첫 조항으로 (위에 붙는 얇은 검색줄에 가리지 않게 조금 띄움)
+$("#dateBanner").addEventListener("click",e=>{ const rb=e.target.closest("[data-rev]"); if(rb){ revSel=revSel===rb.dataset.rev?"":rb.dataset.rev; limit=40; render(); return; }
+  if(!e.target.closest('[data-act="toexcl"]')) return;
+  const box=[...document.querySelectorAll("#out .excl")].find(b=>!b.classList.contains("part")); if(!box) return;
+  const btn=box.querySelector(":scope>.chipbtn"), list=box.querySelector(".list");
+  if(list.hidden){ list.hidden=false; btn.textContent=btn.textContent.replace("보기","접기"); }
+  const first=list.querySelector("article")||box;
+  // PC는 머리(검색·버튼) 전체가 위에 붙어 있어 그 높이만큼 띄운다. 폰은 얇은 검색줄만 붙으니 72px (2026-09-30: PC에서 첫 조항이 머리 밑에 가려지던 것)
+  const hd=$("header"), off=getComputedStyle(hd).position==="sticky"?hd.offsetHeight+12:72;
+  scrollTo({top:first.getBoundingClientRect().top+scrollY-off,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"}); });
+// 즐겨찾기 모두 지우기: 지금 보는 종류·자료(검사기준/표준화)에서 별표한 것만 지운다. 버튼 옆 숫자와 같은 범위
+$("#note").addEventListener("click",e=>{ if(!e.target.closest('[data-act="favclear"]')) return;
+  const isStd=src==="s", ks=[...new Set((isStd?curS():cur()).map(x=>keyOf(x,isStd)).filter(k=>favs.has(k)))];
+  if(!ks.length) return;
+  const rest=favs.size-ks.length;
+  if(!confirm(`즐겨찾기 ${ks.length}개를 모두 지울까요?`+(rest>0?"\n다른 종류·자료의 즐겨찾기는 그대로 둬요.":""))) return;
+  ks.forEach(k=>favs.delete(k)); saveFavs(); favOnly=false; limit=40; render();
+  toast(`즐겨찾기 ${ks.length}개를 지웠어요`,2500); });
+$("#note").addEventListener("click",e=>{ if(!e.target.closest('[data-act="exclear"]')) return;
+  exQ=""; $("#q").value=""; exI++; showExample(); limit=40; render(); });
+if(st.src)src=st.src; if(st.view)view=st.view; if(KIND[st.kind])kind=st.kind;
+// 공유받은 링크(?q=…&d=…)로 들어오면 그 검색을 그대로 연다 (이 기기에 기억된 값보다 먼저)
+{const P=new URLSearchParams(location.search);
+ // 주소에는 기본값(검사기준·목록)을 적지 않으므로, 주소로 들어왔으면 이 기기에 기억된 자료·보기가 아니라 기본값에서 시작한다
+ if(["q","d","src","view","k"].some(k=>P.has(k))){src="c";view="list";kind="elev";}
+ if(KIND[P.get("k")])kind=P.get("k");
+ if(P.has("q"))$("#q").value=P.get("q"); if(P.has("d"))$("#d").value=P.get("d");
+ if(P.has("src"))src=P.get("src")==="s"?"s":"c"; if(P.has("view"))view=P.get("view")==="era"?"era":"list";}
+setSeg("src",src); setSeg("view",view); setSeg("kind",kind);
+showExample(); // 기억된 종류·공유 링크의 종류로 추천 검색어를 다시 보여 준다
+Promise.all(["data/criteria.json","data/standardization.json","data/fixes.json"].map(u=>fetch(u).then(r=>{if(!r.ok)throw new Error(u);return r.json()})))
+ .then(([c,s,f])=>{
+   C=c.criteria;S=s.standardization; C.forEach((x,i)=>x.__i=i+1);
+   C.forEach(x=>x.__k=keyOf(x,false)); S.forEach(x=>x.__k=keyOf(x,true)); // 즐겨찾기 키: 원래 자료 값으로 한 번만
+   // 원래 자료에서 날짜가 뒤집힌 조항을 법령 원문으로 확인해 바로잡은 값 (원래 값은 fix에 남긴다)
+   const fix=([k,v])=>{const x=C[k-1]; if(!x) return; x.fix={from:x.from,to:x.to,why:v.why}; x.from=v.from; x.to=v.to;};
+   const fixList=Object.entries(f.fixes||{});
+   fixList.filter(([,v])=>!v.checked).forEach(fix); // 2026-09-27 보정(예전 즐겨찾기 키가 이 날짜로 만들어졌다)
+   // 예전 방식 즐겨찾기(제목|번호|보정된 기간, 본문 없음)를 새 키로 옮긴다. 예전엔 한 키가 여러 조항을 가리켰으니 맞는 조항 모두에.
+   // 예전 키를 만들 때의 값과 맞춰 봐야 하니, 이후 보정(checked)·번호 칸 교체보다 먼저 한다
+   {const old=[...favs].filter(k=>k.split("|").length===5);
+    if(old.length){const o=new Set(old);
+      for(const [arr,s] of [[C,false],[S,true]]) for(const x of arr) if(o.has((s?"s|":"c|")+[x.title,x.label,x.from,x.to].join("|"))) favs.add(x.__k);
+      old.forEach(k=>favs.delete(k)); saveFavs();}}
+   fixList.filter(([,v])=>v.checked).forEach(fix); // 2026-09-28 법령 원문 대조로 더한 보정
+   // 원래 자료 글에 섞여 들어간, 고시 원문이 아닌 메모를 뺀다 (뺄 글이 그대로 있을 때만)
+   // replace가 있으면 원래 자료가 줄여 적은 글을 법령 원문 글로 통째로 바꾼다
+   for(const [k,v] of Object.entries(f.textfixes||{})){const x=C[k-1]; if(!x) continue;
+     if(v.newLabel) x.label=v.newLabel; // 원래 자료가 "…요약"처럼 적은 번호 칸도 바로잡는다
+     if(v.replace){x.text=v.replace; continue;}
+     if(v.remove&&(x.text||"").includes(v.remove)) x.text=x.text.replace(v.remove,"");}
+   // 원래 자료에 2019 글만 있던 조항의 2019-03-28 전 판(옛 고시 원문 글)을 뒤에 붙인다.
+   // 순번은 원래 자료 다음부터 이어 매겨, 기존 조항 순번·보정·즐겨찾기는 그대로 둔다
+   // 원래 자료 글에서 낱말·문장 중간에 끊긴 줄(공조장⏎치를)을 잇는다. 어디를 어떻게 잇는지는 줄잇기2.js가 자료 전체 낱말로 판단해 보정.json lineJoins에 둠 (2026-10-01)
+   for(const [k,list] of Object.entries(f.lineJoins||{})){ const x=k[0]==="s"?S[+k.slice(1)-1]:C[+k.slice(1)-1]; if(!x||!x.text) continue;
+     let t=x.text.replace(/<br\s*\/?>/gi,"\n"); for(const [p,m] of list){ const [ta,hb]=p.split("\n"); t=t.replace(ta+"\n"+hb,ta+(m==="s"?" ":"")+hb); } x.text=t; }
+   for(const a of f.additions||[]){const x={...a,added:true}; x.__i=C.length+1; x.__k=keyOf(x,false); C.push(x);}
+   // 원래 자료에 같은 조항이 다른 시작일로 한 번 더 들어간 카드는 뺀다 (dup=남기는 쪽 순번. 연혁집 2017.1.28 묶음을 옮기며 생긴 문 조항 8건 등)
+   for(const [k,v] of fixList) if(v.dup&&C[k-1]) C[k-1].dup=v.dup;
+   CV=C.filter(x=>!x.dup);
+   // 원래 자료에서 가운뎃점이 "?"로 깨진 곳(콘크리트?모르타르)을 불러올 때 한 번에 되살린다 (카드·검색 모두)
+   for(const x of [...C,...S]){ if(x.text) x.text=tidy(x.text); if(x.title) x.title=tidy(x.title); }
+   buildVersions(); // 날짜를 바로잡은 뒤에 묶어야 순서가 맞다
+   loaded=true; render()})
+ .catch(()=>{$("#status").textContent="자료를 불러오지 못했어요. 페이지를 새로 고쳐 주세요."});
+})();
+</script>
+
+</html>
