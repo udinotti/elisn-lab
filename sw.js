@@ -2,7 +2,7 @@
 // 한 번 열면 페이지·조항 자료·원문을 폰에 저장해, 인터넷이 없어도 검색·원문 보기가 되게 한다.
 // 그림은 데이터를 아끼려고 한 번 본 것만 저장한다.
 // VERSION·PRECACHE는 사이트만들기.js가 채운다. 자료가 바뀌면 VERSION이 바뀌어 새로 저장하고 옛 것은 지운다.
-const VERSION="44f6055d81", IMGVERSION="44e25a925f"; // 그림 버전은 그림이 바뀔 때만 바뀐다 → 자료만 바뀌면 본 그림은 남는다
+const VERSION="2621286571", IMGVERSION="44e25a925f"; // 그림 버전은 그림이 바뀔 때만 바뀐다 → 자료만 바뀌면 본 그림은 남는다
 const CORE="elisn-lab-core-"+VERSION, IMG="elisn-lab-img-"+IMGVERSION, FONT="elisn-lab-font";
 const PRECACHE=["./","manifest.webmanifest","data/criteria.json","data/standardization.json","data/fixes.json","data/law.json","data/kinds.json","icons/apple-touch-icon.png","icons/icon-192.png","icons/icon-512.png","icons/maskable-512.png"];
 
