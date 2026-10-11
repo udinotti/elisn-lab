@@ -581,7 +581,7 @@ footer a{color:var(--accent)}
     <section><h3>의견 남기기</h3><p>고쳤으면 하는 조항이나 바라는 기능이 있으면 편하게 알려 주세요. 조항마다 있는 ‘의견 남기기’로도 보낼 수 있어요.</p><button type="button" class="chipbtn primary ft-btn" data-act="feedback">의견 보내기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p>한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실·피트처럼 신호가 없는 곳에서도 검색과 원문 보기가 돼요. 그림은 한 번 본 것만 저장돼요. 홈 화면에 두면 앱처럼 바로 열려요.<br>아이폰: 사파리 아래 <b>공유</b> 버튼 → <b>홈 화면에 추가</b> · 안드로이드: 크롬 <b>⋮</b> 메뉴 → <b>홈 화면에 추가</b></p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.11.3"</script>버전 v2026.10.11.3 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.11.4"</script>버전 v2026.10.11.4 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
   <p class="ft-copy">© 2026 ELISN. All rights reserved.</p>
 </footer>
 </div>
@@ -645,7 +645,7 @@ let C=[],CV=[],S=[],src="c",limit=40,exQ="",loaded=false,lastHits=0,kind="elev",
 const favLbl=on=>(on?"★":"☆")+`<span class="favl"> 즐겨찾기${on?"됨":""}</span>`;
 const KIND={elev:"엘리베이터",esc:"에스컬레이터·무빙워크",wlv:"수직형 휠체어리프트",wli:"경사형 휠체어리프트",dumb:"소형화물용 엘리베이터",ince:"경사형 엘리베이터"};
 // 표준화 자료는 대부분 엘리베이터 것이라, 다른 종류는 이름이 들어간 것만
-const KIND_STD={esc:/에스컬레이터|무빙워크/,wlv:/휠체어\s*리프트/,wli:/휠체어\s*리프트/,dumb:/소형\s*화물|덤웨이터/,ince:/경사형\s*엘리베이터/};
+const KIND_STD={esc:/에스컬레이터|무빙워크/,wlv:/^(?![\s\S]*경사형\s*휠체어\s*리프트)[\s\S]*휠체어\s*리프트/,wli:/^(?![\s\S]*수직형\s*휠체어\s*리프트)[\s\S]*휠체어\s*리프트/,dumb:/소형\s*화물|덤웨이터/,ince:/경사형\s*엘리베이터/};
 // CV: 중복 카드(보정 fixes의 dup)를 뺀 엘리베이터 조항. C는 순번(__i)으로 찾아야 해서 그대로 둔다 (2026-10-02)
 const KS={}, cur=()=>kind==="elev"?CV:(KS[kind]||(KS[kind]=(K||[]).filter(x=>x.kind===kind)));
 const curS=()=>kind==="elev"?S:S.filter(x=>KIND_STD[kind].test((x.title||"")+" "+(x.keyword||"")+" "+(x.text||"")));
