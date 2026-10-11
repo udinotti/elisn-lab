@@ -1,0 +1,322 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "schema_version": 1,
+    "graphify_version": "0.9.82"
+  },
+  "nodes": [
+    {
+      "id": "lib_qrcode_qrpolynomial",
+      "label": "qrPolynomial()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "QR Code Generator",
+      "file_type": "code",
+      "norm_label": "qrpolynomial()",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1182"
+    },
+    {
+      "id": "lib_qrcode_toutf8array",
+      "label": "toUTF8Array()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "QR Code Generator",
+      "file_type": "code",
+      "norm_label": "toutf8array()",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L2254"
+    },
+    {
+      "id": "sw_fromcache",
+      "label": "fromCache()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Service Worker Cache",
+      "file_type": "code",
+      "norm_label": "fromcache()",
+      "source_file": "sw.js",
+      "source_location": "L23"
+    },
+    {
+      "id": "lib_qrcode_qrpolynomial_this",
+      "label": "_this",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "QR Math Operations",
+      "file_type": "code",
+      "norm_label": "_this",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1200"
+    },
+    {
+      "id": "lib_qrcode_qrpolynomial_this_getat",
+      "label": ".getAt()",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "QR Math Operations",
+      "file_type": "code",
+      "norm_label": ".getat()",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1202"
+    },
+    {
+      "id": "lib_qrcode_qrpolynomial_this_getlength",
+      "label": ".getLength()",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "QR Math Operations",
+      "file_type": "code",
+      "norm_label": ".getlength()",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1206"
+    },
+    {
+      "id": "lib_qrcode_qrpolynomial_this_mod",
+      "label": ".mod()",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "QR Math Operations",
+      "file_type": "code",
+      "norm_label": ".mod()",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1223"
+    },
+    {
+      "id": "lib_qrcode_qrpolynomial_this_multiply",
+      "label": ".multiply()",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "QR Math Operations",
+      "file_type": "code",
+      "norm_label": ".multiply()",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1210"
+    },
+    {
+      "id": "lib_qrcode",
+      "label": "qrcode.js",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "QR Code Generator",
+      "file_type": "code",
+      "norm_label": "qrcode.js",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "sw",
+      "label": "sw.js",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Service Worker Cache",
+      "file_type": "code",
+      "norm_label": "sw.js",
+      "source_file": "sw.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "sw_precache",
+      "label": "PRECACHE",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Service Worker Cache",
+      "file_type": "code",
+      "norm_label": "precache",
+      "source_file": "sw.js",
+      "source_location": "L7"
+    }
+  ],
+  "links": [
+    {
+      "source": "lib_qrcode_qrpolynomial_this_mod",
+      "target": "lib_qrcode_qrpolynomial_this_getlength",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1225",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode_qrpolynomial_this_mod",
+      "target": "lib_qrcode_qrpolynomial_this_getat",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1229",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode_qrpolynomial_this_mod",
+      "target": "lib_qrcode_qrpolynomial",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1241",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode_qrpolynomial_this_mod",
+      "target": "lib_qrcode_qrpolynomial_this_mod",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1241",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode_qrpolynomial_this_multiply",
+      "target": "lib_qrcode_qrpolynomial_this_getlength",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1212",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode_qrpolynomial_this_multiply",
+      "target": "lib_qrcode_qrpolynomial_this_getat",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1216",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode_qrpolynomial_this_multiply",
+      "target": "lib_qrcode_qrpolynomial",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1220",
+      "weight": 1.0
+    },
+    {
+      "source": "sw",
+      "target": "sw_fromcache",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "sw.js",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode",
+      "target": "lib_qrcode_qrpolynomial",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1182",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode",
+      "target": "lib_qrcode_toutf8array",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/qrcode.js",
+      "source_location": "L2254",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode_qrpolynomial",
+      "target": "lib_qrcode_qrpolynomial_this",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1200",
+      "weight": 1.0
+    },
+    {
+      "source": "sw",
+      "target": "sw_precache",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "sw.js",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode_qrpolynomial_this",
+      "target": "lib_qrcode_qrpolynomial_this_getat",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1202",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode_qrpolynomial_this",
+      "target": "lib_qrcode_qrpolynomial_this_getlength",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1206",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode_qrpolynomial_this",
+      "target": "lib_qrcode_qrpolynomial_this_multiply",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1210",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_qrcode_qrpolynomial_this",
+      "target": "lib_qrcode_qrpolynomial_this_mod",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/qrcode.js",
+      "source_location": "L1223",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "ca3c2f36bc8662bf6d3df34a4e3b5a1d8488794a"
+}
