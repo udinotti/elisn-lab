@@ -42,7 +42,7 @@
   --now:#41d392; --now-soft:#143023; --old:#a0a0aa; --old-soft:#2a2a31;
   --warn:#ffb547; --warn-soft:#3a2a12; --mark:rgba(255,196,0,.26);
   --del:#ff7a7f; --star:#ffc53d; --star-soft:#3a2f12;
-  --edge:rgba(255,255,255,.06); --lift:none; --btn-edge:#72727f;
+  --edge:rgba(255,255,255,.06); --lift:none;
 }}
 :root[data-theme="dark"]{
   color-scheme:dark;
@@ -52,7 +52,7 @@
   --now:#41d392; --now-soft:#143023; --old:#a0a0aa; --old-soft:#2a2a31;
   --warn:#ffb547; --warn-soft:#3a2a12; --mark:rgba(255,196,0,.26);
   --del:#ff7a7f; --star:#ffc53d; --star-soft:#3a2f12;
-  --edge:rgba(255,255,255,.06); --lift:none; --btn-edge:#72727f;
+  --edge:rgba(255,255,255,.06); --lift:none;
 }
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;letter-spacing:-.01em;padding-inline:16px;-webkit-font-smoothing:antialiased}
@@ -187,8 +187,6 @@ input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offse
 @media (hover:hover) and (pointer:fine){.qd:hover{color:var(--accent)}}
 .qd[aria-pressed=true],.qd[aria-checked=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 /* 어두운 화면: 눌리는 상자 경계를 3:1 이상으로 (밝은 화면은 변수가 없어 그대로) */
-.qd,.more,.excl>.chipbtn{border-color:var(--btn-edge,var(--edge))}
-.chipbtn,.seg{box-shadow:inset 0 0 0 1px var(--btn-edge,transparent)}
 .dmsg{margin:10px 2px 0;font-size:14px;font-weight:600;color:var(--accent);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .dmsg.bad{color:var(--warn)}
 .dmsg.off{color:var(--muted);font-weight:500} /* 표준화 자료를 볼 때 */
@@ -475,7 +473,7 @@ footer a{color:var(--accent)}
   .printonly{display:inline!important}
   @page{size:A4;margin:14mm 12mm}
   /* 기기가 어두운 모드여도 흰 종이에 검은 글씨로 (어두운 색 규칙이 더 강해서 선택자를 같이 적는다) */
-  :root,:root[data-theme="dark"],:root:not([data-theme="light"]){color-scheme:light;--bg:#fff;--surface:#fff;--fill:#f2f4f6;--chip:#ffffff;--ink:#000;--sub:#222;--muted:#555;--edge:transparent;--btn-edge:transparent;--lift:none;--accent:#1b64da;--accent-soft:#e8f3ff;--banner:#e8f3ff;--now:#0a7a48;--now-soft:#e5f8ef;--old:#444;--old-soft:#f2f4f6;--warn:#a35800;--warn-soft:#fff3e0;--mark:rgba(255,196,0,.34)}
+  :root,:root[data-theme="dark"],:root:not([data-theme="light"]){color-scheme:light;--bg:#fff;--surface:#fff;--fill:#f2f4f6;--chip:#ffffff;--ink:#000;--sub:#222;--muted:#555;--edge:transparent;--lift:none;--accent:#1b64da;--accent-soft:#e8f3ff;--banner:#e8f3ff;--now:#0a7a48;--now-soft:#e5f8ef;--old:#444;--old-soft:#f2f4f6;--warn:#a35800;--warn-soft:#fff3e0;--mark:rgba(255,196,0,.34)}
   body{background:#fff;padding:0;font-size:12pt}
   .wrap{max-width:none;padding:0}
   header,footer,.relq,.acts,.excl,.topics,.more,.minibar,.totop,.toast,.upd,.offline,.note,.resline,.endfb,dialog,#note,.noprint{display:none!important}
@@ -618,7 +616,7 @@ footer a{color:var(--accent)}
     <section><h3>의견 남기기</h3><p>고쳤으면 하는 조항이나 바라는 기능이 있으면 편하게 알려 주세요. 조항마다 있는 ‘의견 남기기’로도 보낼 수 있어요.</p><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p>한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실·피트처럼 신호가 없는 곳에서도 검색과 원문 보기가 돼요. 그림은 한 번 본 것만 저장돼요. 홈 화면에 두면 앱처럼 바로 열려요.<br>아이폰: 사파리 아래 <b>공유</b> 버튼 → <b>홈 화면에 추가</b> · 안드로이드: 크롬 <b>⋮</b> 메뉴 → <b>홈 화면에 추가</b></p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.12.13"</script>버전 v2026.10.12.13 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.12.14"</script>버전 v2026.10.12.14 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
   <p class="ft-copy">© 2026 ELISN. All rights reserved.</p>
 </footer>
 </div>
