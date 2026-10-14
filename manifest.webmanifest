@@ -1,7 +1,7 @@
 {
   "name": "[LAB] ELISN 승강기 검사기준 길잡이",
   "short_name": "ELISN LAB",
-  "description": "기준일(착공필증 교부일)로 적용 기준과 근거 원문을 찾는 참고용 검색 서비스",
+  "description": "검사기준일로 적용 기준과 근거 원문을 찾는 참고용 검색 서비스",
   "lang": "ko",
   "start_url": "./",
   "scope": "./",
