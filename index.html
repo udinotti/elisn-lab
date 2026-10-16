@@ -210,7 +210,7 @@ body.stdmode .date,body.stdmode .quick:not(.kinds){opacity:.45;transition:opacit
 .seg[hidden]{display:none}
 .seg{display:inline-flex;gap:2px;background:var(--track);border-radius:12px;padding:3px}
 .seg button{font:inherit;font-size:14px;font-weight:600;border:0;background:none;color:var(--muted);padding:7px 14px;border-radius:9px;cursor:pointer}
-.seg button[aria-disabled=true]{opacity:.45;cursor:not-allowed}
+.seg button[aria-disabled=true]{opacity:.4;text-decoration:line-through;text-decoration-thickness:1.5px;cursor:not-allowed} /* 원래 연한 글자라 흐림만으론 구분이 약해 가운뎃줄로 '없음'을 보임 */
 .seg button[aria-checked=true]{background:var(--surface);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .chipbtn{font:inherit;font-size:13.5px;font-weight:600;border:0;background:var(--fill);color:var(--sub);border-radius:10px;padding:7.5px 12px 8.5px;cursor:pointer} /* 프리텐다드 한글이 줄 안에서 약간 아래로 앉아, 위 0.5px 줄이고 아래 0.5px 늘려 가운데로 (높이는 그대로, 1px은 너무 올라감) */
 /* 위쪽 도구 버튼(즐겨찾기만·인쇄·결과 공유): 밝은 모드에선 --fill이 페이지 바탕과 같아 박스가 안 보여 흰 바탕으로 */
@@ -669,7 +669,7 @@ footer a{color:var(--accent)}
     <section><h3>의견 남기기</h3><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p>한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실·피트처럼 신호가 없는 곳에서도 검색과 원문 보기가 돼요. 그림은 한 번 본 것만 저장돼요. 홈 화면에 두면 앱처럼 바로 열려요.<br>아이폰: 사파리 아래 <b>공유</b> 버튼 → <b>홈 화면에 추가</b> · 안드로이드: 크롬 <b>⋮</b> 메뉴 → <b>홈 화면에 추가</b></p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.16.32"</script>버전 v2026.10.16.32 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.16.33"</script>버전 v2026.10.16.33 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
   <p class="ft-copy">© 2026 ELISN. All rights reserved.</p>
 </footer>
 </div>
