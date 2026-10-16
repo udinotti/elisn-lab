@@ -666,7 +666,7 @@ footer a{color:var(--accent)}
     <section><h3>의견 남기기</h3><p>고쳤으면 하는 조항이나 바라는 기능이 있으면 편하게 알려 주세요. 조항마다 있는 ‘의견 남기기’로도 보낼 수 있어요.</p><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p>한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실·피트처럼 신호가 없는 곳에서도 검색과 원문 보기가 돼요. 그림은 한 번 본 것만 저장돼요. 홈 화면에 두면 앱처럼 바로 열려요.<br>아이폰: 사파리 아래 <b>공유</b> 버튼 → <b>홈 화면에 추가</b> · 안드로이드: 크롬 <b>⋮</b> 메뉴 → <b>홈 화면에 추가</b></p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.16.22"</script>버전 v2026.10.16.22 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.16.23"</script>버전 v2026.10.16.23 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
   <p class="ft-copy">© 2026 ELISN. All rights reserved.</p>
 </footer>
 </div>
@@ -1550,7 +1550,7 @@ function loadKinds(){ if(KP) return KP;
 const other=(attr,v)=>[...document.querySelectorAll(`[data-${attr}]`)].map(b=>b.dataset[attr]).find(x=>x!==v);
 document.querySelectorAll("[data-src]").forEach(b=>b.addEventListener("click",()=>{src=b.dataset.src===src?other("src",src):b.dataset.src;setSeg("src",src);limit=40;render()}));
 function failCopy(a){ const one=a.dataset.act==="lcopy"; a._o||=a.textContent; const txt=(one?[a.closest("li")]:[...a.closest(".failbox").querySelectorAll("li")]).map(li=>"- "+[...li.querySelector(".ft").childNodes].map(n=>n.className==="fsub"?"\n  "+n.textContent:n.textContent+(n.className==="fno"?" ":"")).join("")).join("\n");
-    const ok=()=>{ toast("복사됨",1500); if(one) return; a.textContent="복사됨"; clearTimeout(a._t); a._t=setTimeout(()=>a.textContent=a._o,1500); };
+    const ok=()=>{ if(!/Android/.test(navigator.userAgent)) toast("복사됨",1500); /* 안드로이드 13+는 폰이 "복사했어요" 알림을 띄워 두 개가 겹침 */ if(one) return; a.textContent="복사됨"; clearTimeout(a._t); a._t=setTimeout(()=>a.textContent=a._o,1500); };
     const old=()=>{ const ta=document.createElement("textarea"); ta.value=txt; ta.style.cssText="position:fixed;opacity:0"; document.body.append(ta); ta.select(); let g=false; try{g=document.execCommand("copy")}catch{} ta.remove(); g?ok():toast("복사하지 못했어요. 글을 길게 눌러 직접 복사해 주세요."); };
     (navigator.clipboard?navigator.clipboard.writeText(txt).then(ok,old):Promise.resolve(old())); }
 $("#out").addEventListener("keydown",e=>{ const o=e.key==="Escape"&&e.target.closest("article")?.querySelector(":scope>.failpop"); if(!o) return; const b=o.parentNode.querySelector(".failbadge"); o.remove(); b.setAttribute("aria-expanded","false"); b.focus(); });
