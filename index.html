@@ -275,8 +275,7 @@ article.warn{box-shadow:inset 0 0 0 1.5px var(--warn)}
 .pill.kw{background:var(--accent-soft);color:var(--accent)}
 .pill.hit{background:var(--accent);color:var(--on-accent)} /* 넣은 건축허가일에 적용되는 기간 */
 /* 허가일 직전 개정일에 바뀐 조항 표시 (누르면 시기별 비교) */
-.pill.rev{background:var(--warn-soft);color:var(--warn);border:0;font:inherit;font-size:12.5px;font-weight:800;cursor:pointer}
-span.pill.rev{cursor:default}
+.pill.rev{background:var(--warn-soft);color:var(--warn);border:0;font-size:12.5px;font-weight:800} /* 개정·신설 표시: 글자만. 비교는 아래 시기별 비교 버튼 하나로 (2026-10-16) */
 .pill.sum{background:var(--fill);color:var(--sub);border:1px dashed var(--muted);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer} /* 원래 자료가 원문을 줄여 적은 조항(원문이 길어 요약을 남긴 것): 눌러서 원문 보기 */
 /* 허가일 칸의 개정일 목록: 누르면 그 날 개정만 */
 .banner .revs{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:4px}
@@ -671,7 +670,7 @@ footer a{color:var(--accent)}
     <section><h3>의견 남기기</h3><p>고쳤으면 하는 조항이나 바라는 기능이 있으면 편하게 알려 주세요. 조항마다 있는 ‘의견 남기기’로도 보낼 수 있어요.</p><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p>한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실·피트처럼 신호가 없는 곳에서도 검색과 원문 보기가 돼요. 그림은 한 번 본 것만 저장돼요. 홈 화면에 두면 앱처럼 바로 열려요.<br>아이폰: 사파리 아래 <b>공유</b> 버튼 → <b>홈 화면에 추가</b> · 안드로이드: 크롬 <b>⋮</b> 메뉴 → <b>홈 화면에 추가</b></p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.16.30"</script>버전 v2026.10.16.30 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.16.31"</script>버전 v2026.10.16.31 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
   <p class="ft-copy">© 2026 ELISN. All rights reserved.</p>
 </footer>
 </div>
@@ -1218,7 +1217,7 @@ function card(x,rxs,isStd,upNote,why){
   return `<article class="${r&&r.bad?"warn":""}${why?" off":""}" data-k="${esc(k)}">
     ${why?`<div class="why">적용 안 됨 · ${esc(why)}</div>`:""}
     <div class="head">${fn?`<div class="hrow">`:""}${shownLabel(x)||!x.label?`<span class="label">${labelHTML(x)}</span>`:""}${fn?`<button type="button" class="failbadge" data-act="failgo" data-i="${x.__i}" aria-expanded="false" aria-label="${fo.inherited?"불합격 기준 지금 기준(참고) ":"불합격 기준 "}${fn}개 보기">${fbt}</button></div>`:""}<span class="title">${hl(x.title||"",rxs)}</span></div>
-    <div class="meta">${x.summary?`<button type="button" class="pill sum" data-act="law" data-i="${x.__i}" title="원래 자료가 원문을 줄여 적은 조항이에요. 눌러서 고시 원문을 확인하세요.">요약 · 원문 확인 ›</button>`:""}${upNote?`<span class="pill kw">상위 조항 해석</span>`:""}${periodPills(x,isStd)}${revSet.has(x)?((x.__v||[]).some(y=>y!==x&&y.to&&y.to<x.from)?`<button type="button" class="pill rev" data-act="cmp" data-i="${x.__i}" title="옛 글과 비교">${dot(x.from)} 개정 ›</button>`:`<span class="pill rev">${dot(x.from)} 신설</span>`):""}</div>
+    <div class="meta">${x.summary?`<button type="button" class="pill sum" data-act="law" data-i="${x.__i}" title="원래 자료가 원문을 줄여 적은 조항이에요. 눌러서 고시 원문을 확인하세요.">요약 · 원문 확인 ›</button>`:""}${upNote?`<span class="pill kw">상위 조항 해석</span>`:""}${periodPills(x,isStd)}${revSet.has(x)?((x.__v||[]).some(y=>y!==x&&y.to&&y.to<x.from)?`<span class="pill rev">${dot(x.from)} 개정</span>`:`<span class="pill rev">${dot(x.from)} 신설</span>`):""}</div>
     <div class="text${long?" clip fold":""}">${textHTML(bT,rxs,figAt,x.tables)}</div>
     ${fp.rest.length?`<div class="imgs">${fp.rest.map(n=>figHTML(x,imgs[n],n)).join("")}</div>`:""}
     <div class="acts"><button class="chipbtn fav" type="button" data-act="fav" aria-pressed="${faved}" aria-label="즐겨찾기">${favLbl(faved)}</button>${long?`<button class="chipbtn" type="button" data-act="open" aria-expanded="false">전체 보기</button>`:""}${nv>1?`<button class="chipbtn cntbtn" type="button" data-act="cmp" data-i="${x.__i}">시기별 비교<span class="cnt">${nv}</span></button>`:""}${rel.length?`<button class="chipbtn cntbtn relbtn" type="button" data-act="rel" aria-expanded="${relOpen.has(k)}">표준화 자료<span class="cnt">${rel.length}건</span></button>`:""}<span class="acts-r"><button class="linkbtn fbico" type="button" data-act="report" aria-label="의견 남기기" title="의견 남기기"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg><span class="fbt">의견 남기기</span></button>${isStd?"":lawBtn(x)}</span></div>
