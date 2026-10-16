@@ -666,7 +666,7 @@ footer a{color:var(--accent)}
     <section><h3>의견 남기기</h3><p>고쳤으면 하는 조항이나 바라는 기능이 있으면 편하게 알려 주세요. 조항마다 있는 ‘의견 남기기’로도 보낼 수 있어요.</p><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p>한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실·피트처럼 신호가 없는 곳에서도 검색과 원문 보기가 돼요. 그림은 한 번 본 것만 저장돼요. 홈 화면에 두면 앱처럼 바로 열려요.<br>아이폰: 사파리 아래 <b>공유</b> 버튼 → <b>홈 화면에 추가</b> · 안드로이드: 크롬 <b>⋮</b> 메뉴 → <b>홈 화면에 추가</b></p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.16.16"</script>버전 v2026.10.16.16 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.16.17"</script>버전 v2026.10.16.17 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
   <p class="ft-copy">© 2026 ELISN. All rights reserved.</p>
 </footer>
 </div>
@@ -931,7 +931,7 @@ function failHTML(l,head,note,cls,hid,lbl){
   const many=failCount(l)>1;
   return `<div class="failbox${cls?" "+cls:""}" tabindex="-1"${hid?" hidden":""}><div class="fh"><span>${head}</span><button type="button" class="chipbtn fcopy" data-act="fcopy" aria-label="불합격 기준${many?" 전체":""} 복사: ${esc(lbl||"")}">${many?"전체 복사":"복사"}</button></div>${note?`<div class="fn">${note}</div>`:""}<ul>`+l.map(o=>o.it.fails.map(f=>{
     const [h,...sub]=f.split("\n"); return `<li${many?' class="lb"':""}><div class="ft">${o.show?`<span class="fno">${esc(o.n)}</span>`:""}${esc(h)}${sub.map(s=>`<span class="fsub">${esc(s)}</span>`).join("")}</div>${many?`<button type="button" class="lcopy" data-act="lcopy" aria-label="이 항목 복사: ${esc(h)}" title="이 항목 복사: ${esc(h)}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg></button>`:""}</li>`; }).join("")).join("")+
-    `</ul><div class="fsrc">출처 · 승강기안전공단 불합격 기준 (${dot(FAILD.revised)}. 개정)</div></div>`; }
+    `</ul><div class="fsrc">출처 · 한국승강기안전공단 불합격 기준 (${dot(FAILD.revised)}. 개정)</div></div>`; }
 // 검사기준 조항 번호로 표준화 자료 찾기
 // 표준화 자료는 2019-03-28 기준 번호로 달려 있어서, 2019-03-28 이후 조항에만 붙인다
 // (2013 기준도 같은 번호를 다른 뜻으로 써서 섞이면 엉뚱한 해석이 붙는다)
