@@ -671,7 +671,7 @@ footer a{color:var(--accent)}
     <section><h3>의견 남기기</h3><p>고쳤으면 하는 조항이나 바라는 기능이 있으면 편하게 알려 주세요. 조항마다 있는 ‘의견 남기기’로도 보낼 수 있어요.</p><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p>한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실·피트처럼 신호가 없는 곳에서도 검색과 원문 보기가 돼요. 그림은 한 번 본 것만 저장돼요. 홈 화면에 두면 앱처럼 바로 열려요.<br>아이폰: 사파리 아래 <b>공유</b> 버튼 → <b>홈 화면에 추가</b> · 안드로이드: 크롬 <b>⋮</b> 메뉴 → <b>홈 화면에 추가</b></p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.16.29"</script>버전 v2026.10.16.29 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.16.30"</script>버전 v2026.10.16.30 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
   <p class="ft-copy">© 2026 ELISN. All rights reserved.</p>
 </footer>
 </div>
@@ -758,7 +758,8 @@ const relOpen=new Set();
 // 카드 글과 원문 보기 글의 관계(빌드가 미리 비교, data/fixes.json lawRel): "s" 같음 → 버튼을 작은 "출처"로, "p" 카드가 조항 일부 → "원문 전체" (2026-10-04 운영자)
 const LAWREL={};
 const favCount=()=>new Set((src==="s"?curS():cur()).map(x=>keyOf(x,src==="s")).filter(k=>favs.has(k))).size; // 지금 자료(검사기준/표준화)에서 별표한 수
-const favLabel=()=>{const n=favCount(),b=document.getElementById("favonly");b.textContent=`${favOnly?"★":"☆"} 즐겨찾기만${n?" · "+n:""}`;b.setAttribute("aria-pressed",favOnly); try{localStorage.setItem("elisn-lab-favlbl",`☆ 즐겨찾기만${n?" · "+n:""}`)}catch(e){}};
+// 꺼져 있으면 별표한 수, 켜져 있으면 불합격 항목만 버튼처럼 지금 보이는 결과 수(shown, render가 넘김)
+const favLabel=shown=>{const n=favCount(),b=document.getElementById("favonly");b.textContent=favOnly?`★ 즐겨찾기만 · ${shown??n}`:`☆ 즐겨찾기만${n?" · "+n:""}`;b.setAttribute("aria-pressed",favOnly); try{localStorage.setItem("elisn-lab-favlbl",`☆ 즐겨찾기만${n?" · "+n:""}`)}catch(e){}};
 // 새로 고칠 때 자료를 불러오기 전에도 지난번 개수를 먼저 보여 줘서, 불러온 뒤 " · N"이 붙으며 옆 버튼이 밀리지 않게
 try{const t=localStorage.getItem("elisn-lab-favlbl"); if(t) document.getElementById("favonly").textContent=t}catch(e){}
 // 최근 검색어: 이 기기에 5개까지
@@ -1300,7 +1301,7 @@ function render(){
   if(eraStart&&!isStd) for(const o of res){ const f=isDate(o.x.from)?o.x.from:""; if(f>eraStart&&f<=d){ revSet.add(o.x); revDays[f]=(revDays[f]||0)+1; } }
   if(!lv&&!revDays[revSel]) revSel="";
   if(revSel){ res=res.filter(o=>o.x.from===revSel); part=[]; }
-  const fcnt=$("#failcnt"); fcnt.hidden=!fOn; fcnt.textContent=fOn?` · ${lv?fgN:res.length}건`:""; // 날짜·개정일까지 다 거른 뒤 실제 그려질 카드 수
+  const shown=lv?fgN:res.length, fcnt=$("#failcnt"); fcnt.hidden=!fOn; fcnt.textContent=fOn?` · ${shown}`:""; favLabel(shown); // 날짜·개정일까지 다 거른 뒤 실제 그려질 카드 수 (켜진 거르기 버튼에 숫자만)
   const note=[];
   // 옛 기준(2013.9.14 이전)의 휠체어리프트 기준은 별책(첨부 1·2)에 있는데 국가법령정보센터에 없어 자료가 없다 → 그 시기를 볼 때 알린다
   if((kind==="wlv"||kind==="wli")&&!isStd&&((useDate&&d<"2013-09-15")))
@@ -1588,7 +1589,7 @@ $("#out").addEventListener("click",e=>{
     const k=art.dataset.k, on=!favs.has(k); on?favs.add(k):favs.delete(k); saveFavs();
     // 같은 조항이 화면 여러 곳에 있으면 함께 바꾼다
     document.querySelectorAll("#out article").forEach(el=>{ if(el.dataset.k!==k) return; const b=el.querySelector(':scope>.acts>[data-act="fav"]'); if(b){b.setAttribute("aria-pressed",on);b.innerHTML=favLbl(on)} });
-    if(favOnly&&!on) render(); else favLabel();
+    if(favOnly) render(); else favLabel(); // 켜져 있으면 결과 수가 바뀌니 다시 그린다
     toast(on?"즐겨찾기에 넣었어요. 위의 ‘즐겨찾기만’으로 모아 볼 수 있어요.":"즐겨찾기에서 뺐어요.",2500);
   }
   else if(a.dataset.act==="excl"){const l=a.nextElementSibling;l.hidden=!l.hidden;a.textContent=a.textContent.replace(l.hidden?"접기":"보기",l.hidden?"보기":"접기")}
