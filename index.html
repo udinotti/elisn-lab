@@ -119,14 +119,13 @@ header{background:var(--bg);padding-block:16px 14px} /* 모든 폭에서 흘러�
 .nofbl{display:inline-block;margin-top:10px;font-size:14px}
 .nofbl .linkbtn{padding:4px 2px;font-size:14px;color:var(--accent);font-weight:700;text-decoration-color:currentColor}
 .chipbtn.primary{background:var(--accent-soft);color:var(--accent);font-weight:700}
-.chipbtn.srcb{font-size:12.5px;box-sizing:border-box;height:37.6px;display:inline-flex;align-items:center;padding:0 10px 1px;color:var(--muted);font-weight:600} /* 카드 글이 원문과 같을 때의 "출처": 덜 눈에 띄게 */
 /* 맨 위로 */
 .totop{position:fixed;right:16px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:15;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.16)}
 .totop svg{width:22px;height:22px}
 .totop[hidden]{display:none}
 .mtop{display:none}
 @media (min-width:561px) and (hover:hover) and (pointer:fine){.minibar .mtop{display:inline-flex;align-items:center;gap:6px;flex:none;white-space:nowrap;margin-left:auto;background:var(--surface);border:1px solid var(--line);box-shadow:var(--lift)}.mtop svg{width:16px;height:16px}.totop{display:none!important}} /* 마우스 쓰는 넓은 화면만: 맨 위로 버튼을 얇은 검색줄 오른쪽에. 폰·태블릿(손가락)은 폭과 상관없이 오른쪽 아래 둥근 버튼 그대로 */
-/* 카드 아래 오른쪽 묶음(의견 남기기·원문 보기): 자리가 모자라면 둘이 함께 다음 줄 오른쪽으로 내려가 '원문 보기'만 혼자 떨어지지 않게 */
+/* 카드 아래 오른쪽 묶음(의견 남기기·원문): 자리가 모자라면 둘이 함께 다음 줄 오른쪽으로 내려가 '원문'만 혼자 떨어지지 않게 */
 .acts-r{margin-left:auto;display:flex;align-items:center;gap:8px}
 .fbico svg{display:none;pointer-events:none} /* PC는 글자 그대로, 폰 너비에서만 말풍선 */
 @media (max-width:480px){.fbico svg{display:block}}
@@ -337,7 +336,7 @@ header input,header textarea{-webkit-user-select:text;user-select:text}
 .tfold{margin-top:12px} /* 접기 버튼은 폭 전체: 왼손·오른손 어느 쪽 엄지로도 닿게 */
 .tfold .chipbtn{width:100%;min-height:44px;padding:0 16px;justify-content:center}
 .tg .tn{margin-left:6px;font-size:12px;font-weight:600;color:var(--muted)}
-.empty-msg{color:var(--muted);font-size:15px;padding:24px 4px;text-align:center}
+.empty-msg{color:var(--sub);font-size:15px;padding:24px 4px;text-align:center}
 .empty-msg .chipbtn{margin:10px 3px 0;font-size:13.5px;padding:5px 12px 7px;background:var(--chip)} /* 빈 결과 안내의 "허가일 지우기" 등 */
 .more{margin:18px auto 0;display:block;padding:12px 20px;border-radius:14px;background:var(--surface);box-shadow:var(--lift);border:1px solid var(--edge)}
 
@@ -667,10 +666,10 @@ footer a{color:var(--accent)}
     <section><h3>이용 안내</h3><p>이 서비스는 참고용이며 법적 효력이 없습니다. 실제 판단과 결정은 반드시 해당 고시 원문을 기준으로 하세요.</p></section>
     <section><h3>적용 기간</h3><p>기준적용일(또는 시행일) 기준입니다. 끝 날짜가 없는 조항은 현재까지 적용되는 것으로 봅니다. 기준적용일을 넣으면 적용되지 않는 조항은 맨 아래에 이유와 함께 따로 모아 보여 줍니다.</p></section>
     <section><h3>자료 출처</h3><p>근거 원문: <a href="https://www.law.go.kr/행정규칙/승강기안전부품안전기준및승강기안전기준" target="_blank" rel="noopener">국가법령정보센터 행정안전부 고시</a><br>불합격 기준: 한국승강기안전공단 「설치검사 및 안전검사 검사항목별 불합격 내용」(2024.10.30. 개정) · <a href="https://www.data.go.kr/data/15138138/fileData.do" target="_blank" rel="noopener">공공데이터포털</a><br>표에 없어도 주요 안전장치가 없거나 카를 운행할 수 없으면 불합격이고, 경과조치 항목은 경과조치 규정에 따라요.</p></section>
-    <section><h3>의견 남기기</h3><p>고쳤으면 하는 조항이나 바라는 기능이 있으면 편하게 알려 주세요. 조항마다 있는 ‘의견 남기기’로도 보낼 수 있어요.</p><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>의견 남기기 →</button></section>
+    <section><h3>의견 남기기</h3><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p>한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실·피트처럼 신호가 없는 곳에서도 검색과 원문 보기가 돼요. 그림은 한 번 본 것만 저장돼요. 홈 화면에 두면 앱처럼 바로 열려요.<br>아이폰: 사파리 아래 <b>공유</b> 버튼 → <b>홈 화면에 추가</b> · 안드로이드: 크롬 <b>⋮</b> 메뉴 → <b>홈 화면에 추가</b></p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.16.31"</script>버전 v2026.10.16.31 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.16.32"</script>버전 v2026.10.16.32 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
   <p class="ft-copy">© 2026 ELISN. All rights reserved.</p>
 </footer>
 </div>
@@ -754,7 +753,7 @@ const saveFavs=()=>{try{localStorage.setItem("elisn-lab-fav",JSON.stringify([...
 let favOnly=false, failOnly=false;
 // 조항 안 '표준화 자료 N건'을 펼친 조항: 다시 그려도(인쇄·즐겨찾기 등) 펼친 채로 둔다 → 펼쳐 보던 그대로 함께 인쇄된다 (2026-10-04 운영자)
 const relOpen=new Set();
-// 카드 글과 원문 보기 글의 관계(빌드가 미리 비교, data/fixes.json lawRel): "s" 같음 → 버튼을 작은 "출처"로, "p" 카드가 조항 일부 → "원문 전체" (2026-10-04 운영자)
+// 카드 글과 원문 보기 글의 관계(빌드가 미리 비교, data/fixes.json lawRel): "s" 같음, "p" 카드가 조항 일부 → 버튼 이름은 "원문" 하나, 관계는 title로만(2026-10-16) (2026-10-04 운영자)
 const LAWREL={};
 const favCount=()=>new Set((src==="s"?curS():cur()).map(x=>keyOf(x,src==="s")).filter(k=>favs.has(k))).size; // 지금 자료(검사기준/표준화)에서 별표한 수
 // 꺼져 있으면 별표한 수, 켜져 있으면 불합격 항목만 버튼처럼 지금 보이는 결과 수(shown, render가 넘김)
@@ -1203,10 +1202,9 @@ function foldText(art){
   if(b){b.textContent=closing?"전체 보기":"접기"; b.setAttribute("aria-expanded",!closing);}
   if(closing&&art.getBoundingClientRect().top<0) art.scrollIntoView({block:"start",behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});
 }
-// 원문 보기 버튼: 종류 자료·보충한 옛 판 글은 원문에서 바로 옮긴 글이라 "출처"
-const lawBtn=x=>{ const r=x.kind||x.added?"s":LAWREL[x.__i];
-  return r==="s"?`<button class="chipbtn srcb" type="button" data-act="law" data-i="${x.__i}" title="카드 글이 고시 원문과 같아요. 눌러서 어느 고시의 몇 년 판인지 봐요.">출처</button>`
-    :`<button class="chipbtn primary" type="button" data-act="law" data-i="${x.__i}"${r==="p"?' title="카드는 조항의 일부예요. 눌러서 조항 전체 원문을 봐요."':""}>${r==="p"?"원문 전체":"원문 보기"}</button>`; };
+// 원문 버튼: 이름·모양은 하나("원문"), 카드 글과 원문의 관계는 title로만 알린다 (2026-10-16 운영자: 출처·원문 전체·원문 보기가 섞여 헷갈림)
+const lawBtn=x=>{ const r=x.kind||x.added?"s":LAWREL[x.__i], t=r==="s"?"카드 글이 고시 원문과 같아요. 눌러서 어느 고시의 몇 년 판인지 봐요.":r==="p"?"카드는 조항의 일부예요. 눌러서 조항 전체 원문을 봐요.":"";
+  return `<button class="chipbtn primary" type="button" data-act="law" data-i="${x.__i}"${t?` title="${t}"`:""}>원문</button>`; };
 function card(x,rxs,isStd,upNote,why){
   const r=!isStd&&range(x);
   const rel=isStd?[]:relStd(x), fo=isStd?{items:[]}:failOrInherit(x), fl=fo.items, fn=failCount(fl), fbt=fo.inherited?"불합격 기준 · 지금 기준(참고)":"불합격 "+fn;
@@ -1285,7 +1283,7 @@ function render(){
     fgN=items.length; fgM=items.filter(it=>inv.has(it)).length;
     fgHtml=items.map(it=>{ const c=(inv.get(it)||[]).sort((a,b)=>a.inh-b.inh), nm=it.nums.join(" · ");
       return `<article class="fgitem">`+failHTML([{it,show:false}],`<span class="fgn">${esc(nm)}</span> ${esc(it.target||"")}`,"","",false,nm)+
-        `<div class="fgrel">${c.length?`<span class="fgl">이 기준적용일 판의 관련 조항</span>`+c.map(o=>{ const lb=dotAll(shownLabel(o.x)||"번호 없음");
+        `<div class="fgrel">${c.length?`<span class="fgl">이 날짜의 관련 조항</span>`+c.map(o=>{ const lb=dotAll(shownLabel(o.x)||"번호 없음");
           return `<span class="fgc"><button type="button" class="chipbtn fgb" data-act="fgcard" data-i="${o.x.__i}" aria-expanded="false" title="${esc(lb+" "+(o.x.title||""))}"><b>${labelNum(o.x)}</b><span class="fgt">${esc(o.x.title||"")}</span><span class="fgp">(${per(o.x)})</span></button>${o.inh?`<span class="fgr">(참고)</span>`:""}</span>`; }).join("")+`<div class="rel fgx"></div>`
           :`<span class="fgl none">이 판에는 이어 둔 조항이 없어요</span>`}</div></article>`; }).join("");
     res=[]; part=[]; // 아래 조항 카드용 값은 쓰지 않는다
@@ -1308,11 +1306,11 @@ function render(){
   // 즐겨찾기만 보는 중에 검색어·허가일도 있으면 그 조건에 맞는 것만 남으니 그렇게 알린다 (2026-10-02 운영자: "즐겨찾기 2개인데 결과 1건"이 헷갈림)
   if(favOnly){ const cond=[q.trim()&&"검색어",useDate&&"기준적용일"].filter(Boolean).join("·");
     const fc=favCount(); // 조건 때문에 실제로 빠진 게 있을 때만 "N개 중 M개"로 (다 맞으면 그냥 즐겨찾기만)
-    // 하나도 안 맞으면 아래 빈 결과 안내가 이유를 말하니 이 줄은 뺀다 (같은 말 두 번 안 하게)
-    if(!(cond&&!res.length)) note.push(cond&&res.length<fc?`즐겨찾기 ${fc}개 중 ${cond}에 맞는 ${res.length}개만 보여 줘요.`:"즐겨찾기한 조항만 보여 줘요."); }
+    // 하나도 안 맞으면 아래 빈 결과 안내가 이유를 말하니 이 줄은 뺀다 (같은 말 두 번 안 하게, 2026-10-16 즐겨찾기 0개일 때도)
+    if(res.length) note.push(cond&&res.length<fc?`즐겨찾기 ${fc}개 중 ${cond}에 맞는 ${res.length}개만 보여 줘요.`:"즐겨찾기한 조항만 보여 줘요."); }
   else if(!q.trim()&&!fOn) note.push("검색어가 없어 전체를 원래 순서대로 보여 줍니다."+(hasTopics(isStd)?" 아래 “항목으로 찾기”를 펼쳐 골라 볼 수도 있어요.":""));
   if(fOn&&res.length) note.push(isStd?"불합격 판정이 적힌 항목만 보여 줘요.":"불합격 기준이 있는 조항만 보여 줘요.");
-  if(lv){ note.length=0; note.push(`공단 불합격 기준 ${fgN}개${` · ${useDate?"이 기준적용일 판":"지금 판"} 조항과 이어진 것 ${fgM}개`}`); }
+  if(lv){ note.length=0; note.push(`공단 불합격 기준 ${fgN}개${` · ${useDate?"이 날짜":"지금"} 조항과 이어진 것 ${fgM}개`}`); }
   // 인쇄할 때 맨 위에 찍히는 머리글
   // 탭 제목 = PDF 파일 이름(브라우저가 문서 제목을 파일 이름으로 씀): 검색어·허가일을 늘 제목에 둔다
   // 인쇄 직전에 바꿨다 되돌리면 폰 크롬은 옛 제목으로 저장하고, PC "Microsoft Print to PDF"는 저장 창이 안 떴다 → 미리 정해 두고 그대로 둔다
@@ -1351,7 +1349,7 @@ function render(){
     `<p class="note">낱말 ${words}개 중 일부만 들어 있는 조항이에요${useDate?" (이 날짜에 적용되는 것만)":""}. 많이 맞는 순서로 ${part.length>40?"40건까지 ":""}보여 줘요.</p>`+
     `${part.slice(0,40).map(o=>card(o.x,rxs,isStd)).join("")}</div></div>`:"";
   const tail=partBlock+exclBlock;
-  const endFb=`<p class="endfb">원하는 조항을 못 찾았나요? <button type="button" class="linkbtn nofb">의견 남기기</button></p>`; // 결과를 다 본 뒤 맨 끝에 한 줄
+  const endFb=`<p class="endfb">찾는 조항이 없나요? <button type="button" class="linkbtn nofb">의견 남기기</button></p>`; // 결과를 다 본 뒤 맨 끝에 한 줄
   // 즐겨찾기 중 맞는 게 없을 때: 걸린 조건(허가일·검색어)만 짚고, 그 조건을 바로 푸는 버튼을 둔다 (2026-10-03 운영자)
   const offB=`<button class="chipbtn" type="button" data-act="filteroff">거르기 끄기</button>`;
   if(lv){ out.innerHTML=(!q.trim()&&!favOnly&&hasTopics(false)?topicPanel(false,fgCnt):"")+(fgN?`<div class="list">${fgHtml}</div>`:`<p class="empty-msg">조건에 맞는 불합격 항목이 없어요. 거르기를 끄면 다시 보여요.<br>${offB}${q.trim()?` <button class="chipbtn" type="button" data-act="qclear">검색어 지우기</button>`:""}</p>`); return; }
@@ -1624,8 +1622,8 @@ $("#cmpdel").addEventListener("change",e=>$("#cmpdlg").classList.toggle("cmp-sho
 $("#favonly").addEventListener("click",()=>{favOnly=!favOnly;limit=40;render()});
 $("#failonly").addEventListener("click",()=>{failOnly=!failOnly;limit=40;render()});
 // 검색어 지우기 ×: 검색어가 있으면 늘 보이고, 누르면 비우고 바로 새로 칠 수 있게 검색창에 커서를 둔다
-function syncClear(){ $("#qclear").hidden=!$("#q").value; }
-$("#q").addEventListener("input",syncClear);
+function syncClear(){ $("#qclear").hidden=!$("#q").value; $("#dclear").style.visibility=$("#d").value?"":"hidden"; } // 기준적용일 지우기: 빈 칸이면 자리만 두고 감춤(칸이 출렁이지 않게) 2026-10-16
+$("#q").addEventListener("input",syncClear); $("#d").addEventListener("input",syncClear);
 $("#qclear").addEventListener("pointerdown",e=>e.preventDefault()); // 누르는 동안 검색창 포커스·최근 검색어 창이 흔들리지 않게
 // (2026-09-30 운영자 결정 B) 지운 뒤 커서는 두되 최근 검색어 목록은 바로 띄우지 않는다: 폰에서 자판+목록이 화면을 덮어 답답하던 것.
 // 글자를 치면 맞는 최근 검색어가 뜨고, 빈 검색창을 한 번 더 누르면 최근 검색어가 뜬다
