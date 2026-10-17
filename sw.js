@@ -2,7 +2,7 @@
 // 한 번 열면 페이지·조항 자료·원문을 폰에 저장해, 인터넷이 없어도 검색·원문 보기가 되게 한다.
 // 그림은 데이터를 아끼려고 한 번 본 것만 저장한다.
 // VERSION·PRECACHE는 사이트만들기.js가 채운다. 자료가 바뀌면 VERSION이 바뀌어 새로 저장하고 옛 것은 지운다.
-const VERSION="67e551335b", IMGVERSION="81f5e0aa72"; // 그림 버전은 그림이 바뀔 때만 바뀐다 → 자료만 바뀌면 본 그림은 남는다
+const VERSION="0f4d0f5fb9", IMGVERSION="81f5e0aa72"; // 그림 버전은 그림이 바뀔 때만 바뀐다 → 자료만 바뀌면 본 그림은 남는다
 const CORE="elisn-lab-core-"+VERSION, IMG="elisn-lab-img-"+IMGVERSION, FONT="elisn-lab-font";
 const PRECACHE=["./","manifest.webmanifest","data/criteria.json","data/standardization.json","data/fixes.json","data/law.json","data/kinds.json","data/fail.json","icons/apple-touch-icon.png","icons/icon-192.png","icons/icon-512.png","icons/maskable-512.png"];
 
@@ -16,7 +16,7 @@ self.addEventListener("activate",e=>{
     .then(ks=>Promise.all(ks.filter(k=>(k.startsWith("elisn-lab-core-")||k.startsWith("elisn-lab-img-"))&&![CORE,IMG].includes(k)).map(k=>caches.delete(k))))
     .then(()=>self.clients.claim()));
 });
-// 페이지에서 "업데이트가 있어요"를 누르면 기다리던 새 버전을 바로 쓴다
+// 페이지가 새 버전 설치를 알리면(skip) 기다리지 않고 바로 새 버전으로 바꾼다. 화면을 언제 새로 고칠지는 페이지가 정한다
 self.addEventListener("message",e=>{ if(e.data==="skip") self.skipWaiting(); });
 
 // 저장된 것을 먼저 쓰고, 없으면 인터넷에서 받아 (필요하면) 저장한다

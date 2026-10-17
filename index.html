@@ -506,9 +506,6 @@ footer{word-break:keep-all;margin-top:48px;padding:28px 24px;border-radius:24px;
 /* 인터넷 없이 보는 중 알림, 업데이트 알림 */
 .offline{margin:6px 0 0;padding:12px 16px;border-radius:16px;background:var(--warn-soft);color:var(--warn);font-size:13.5px;font-weight:600;line-height:1.55;word-break:keep-all}
 .offline[hidden]{display:none}
-.upd{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:21;font:inherit;font-size:14px;font-weight:700;border:0;border-radius:14px;padding:12px 18px;background:var(--accent);color:var(--on-accent);box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;white-space:nowrap}
-.upd:active{transform:translateX(-50%) scale(.97)} /* 가운데 맞춤(translateX)을 유지한 채 눌림 효과 */
-.upd[hidden]{display:none}
 .ft-meta{margin:22px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;font-variant-numeric:tabular-nums}
 .ft-copy{margin:6px 0 0;font-size:12px;color:var(--sub);word-break:keep-all} /* 저작권 표시 (2026-10-02 운영자) */
 footer a{color:var(--accent)}
@@ -526,7 +523,7 @@ footer a{color:var(--accent)}
   .failbox{background:var(--fill)!important}
   .fgx{display:none!important}
   .fgb{border:0!important;background:none!important;padding:0!important;min-height:0!important;white-space:normal!important;text-align:left}.fgt,.fgb .lnm{overflow:visible!important;text-overflow:clip!important;max-width:none!important}
-  header,footer,.relq,.acts,.excl,.topics,.more,.minibar,.totop,.toast,.upd,.offline,.note,.resline,.endfb,dialog,#note,.noprint,.fcopy,.lcopy,.failbadge,#failonly{display:none!important}
+  header,footer,.relq,.acts,.excl,.topics,.more,.minibar,.totop,.toast,.offline,.note,.resline,.endfb,dialog,#note,.noprint,.fcopy,.lcopy,.failbadge,#failonly{display:none!important}
   /* 페이지 본문(.wrap) 밖은 모두 빼기: 브라우저 확장 프로그램이 화면 가장자리에 붙이는 아이콘(흐린 빨간 그림)이 쪽마다 찍혔다 (2026-09-30) */
   body>:not(.wrap){display:none!important}
   .phead{display:block;margin:0 0 10px;padding-bottom:8px;border-bottom:1.5px solid #000;font-size:10pt;color:#333}
@@ -671,12 +668,11 @@ footer a{color:var(--accent)}
     <section><h3>의견 남기기</h3><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p>한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실·피트처럼 신호가 없는 곳에서도 검색과 원문 보기가 돼요. 그림은 한 번 본 것만 저장돼요. 홈 화면에 두면 앱처럼 바로 열려요.<br>아이폰: 사파리 아래 <b>공유</b> 버튼 → <b>홈 화면에 추가</b> · 안드로이드: 크롬 <b>⋮</b> 메뉴 → <b>홈 화면에 추가</b></p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.17.12"</script>버전 v2026.10.17.12 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.17.13"</script>버전 v2026.10.17.13 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
   <p class="ft-copy">© 2026 ELISN. All rights reserved.</p>
 </footer>
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
-<button type="button" class="upd" id="upd" hidden>업데이트가 있어요 · 눌러서 적용</button>
 <div class="minibar" id="minibar"><button type="button" class="mq" id="mq" aria-label="검색창으로 가기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span id="mqt"></span></button><button type="button" class="md" id="md" aria-label="기준적용일 칸으로 가기"></button><button type="button" class="chipbtn mtop" id="mtop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>맨 위로</button></div>
 <button type="button" class="totop" id="totop" aria-label="맨 위로" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <dialog id="repdlg" aria-labelledby="repttl">
@@ -1976,18 +1972,22 @@ $("#qrdlg").addEventListener("click",e=>{ if(e.target.id==="qrdlg") $("#qrdlg").
 $("#mtop").addEventListener("click",()=>topBtn.click());
 topBtn.addEventListener("click",()=>scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"}));
 // 인터넷 없이 쓰기: 오프라인 도우미(sw.js)를 붙인다.
-// 새 버전이 올라오면 버튼 없이 뒤에서 바로 적용한다 (2026-10-02 운영자: 올릴 때마다 "업데이트가 있어요"가 떠서 오류로 착각할 수 있음)
-// 보던 화면은 새로 고치지 않고, 다음에 열 때 새 버전이 나온다
 const offl=()=>{$("#offline").hidden=navigator.onLine!==false};
 addEventListener("online",offl); addEventListener("offline",offl); offl();
+// 새 버전이 오면: 처음 연 그대로면 바로 새로 고치고, 이미 쓰는 중이면 다른 탭·앱에 갔다 돌아올 때 새로 고친다(검색 조건은 주소에 남음)
+// "업데이트가 있어요" 버튼·알림은 띄우지 않는다 (2026-10-02 운영자: 오류로 착각할 수 있음)
 if("serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost")){
-  let want=false; // 사용자가 버튼을 눌렀을 때만 새로 고친다 (처음 저장할 때는 새로 고치지 않음)
-  navigator.serviceWorker.addEventListener("controllerchange",()=>{ if(want){ want=false; location.reload(); } });
-  const ask=w=>{ if(!navigator.serviceWorker.controller) return; // 처음 여는 경우는 알릴 것 없음
-    w.postMessage("skip"); }; // 예전엔 #upd 버튼을 띄우고 누르면 적용·새로 고침
-  navigator.serviceWorker.register("sw.js").then(reg=>{
-    if(reg.waiting) ask(reg.waiting);
-    reg.addEventListener("updatefound",()=>{ const w=reg.installing; if(w) w.addEventListener("statechange",()=>{ if(w.state==="installed") ask(w); }); });
+  const sw=navigator.serviceWorker;
+  let had=!!sw.controller, used=!!location.search, stale=false; // 주소에 검색 조건이 있으면 이미 결과를 보는 중
+  for(const t of ["pointerdown","keydown","wheel","touchstart"]) addEventListener(t,()=>{used=true},{once:true,capture:true,passive:true});
+  sw.addEventListener("controllerchange",()=>{ if(!had){had=true;return;} // 처음 설치 때는 새로 고치지 않음
+    if(used) stale=true; else location.reload(); });
+  sw.register("sw.js").then(reg=>{
+    const skip=w=>{ if(sw.controller) w.postMessage("skip"); };
+    if(reg.waiting) skip(reg.waiting);
+    reg.addEventListener("updatefound",()=>{ const w=reg.installing; if(w) w.addEventListener("statechange",()=>{ if(w.state==="installed") skip(w); }); });
+    // 홈 화면 앱처럼 오래 켜 둔 경우도 돌아올 때마다 새 버전을 확인한다
+    document.addEventListener("visibilitychange",()=>{ if(document.visibilityState!=="visible") return; if(stale) location.reload(); else reg.update().catch(()=>{}); });
   }).catch(()=>{});
 }
 // 홈 화면에 추가 버튼: 늘 보이고, 누르면 기기에 맞게 반응한다
