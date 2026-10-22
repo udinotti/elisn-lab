@@ -728,7 +728,7 @@ footer a{color:var(--accent)}
     <section><h3>의견 남기기</h3><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p id="installtxt">한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실이나 공사 중인 건물처럼 신호가 약한 곳에서도 검색과 원문 보기가 돼요. 새 자료는 인터넷이 될 때 저절로 받아져요.<br>아래 버튼을 누르면 쓰는 기기에 맞는 설치 방법을 알려 줘요.</p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.22.2"</script>버전 v2026.10.22.2 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.22.3"</script>버전 v2026.10.22.3 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
   <p class="ft-copy">Copyright ⓒ 2026 ELISN. Created by 김찬호.</p>
 </footer>
 </div>
@@ -1998,15 +1998,15 @@ function refHTML(text,name,id,rxs=[]){
   const ll=lineLevels(items.map(o=>o.h>=4?"0.0 ":o.l)); let k=0; /* 4단 이상 로마자 머리줄(Ⅲ.7.1.1.1)은 새 절이라 목록 단계를 처음으로: 안 하면 앞 절 목록 단계가 쌓여 폰에서 너무 깊게 들어간다 */
   const tbNote=(n,body)=>`<div class="ln tbnote">이 표는 칸이 풀린 채로 옮겨져 있어요. 아래 ‘고시 전체 보기’에서 표로 보세요.</div><details class="reftb"><summary>풀린 칸 글 보기 (${n})</summary>${body}</details>`;
   const EQ=o=>!o.sym&&!o.gap&&!o.box&&!o.tb&&!o.h&&/^=/.test(o.l);
-  return items.map((o,i)=>{ const eqNote=EQ(o)&&!(i&&(EQ(items[i-1])||items[i-1].gap))?`<div class="ln eqgap" style="--lv:${Math.max(0,k-1)}">[기호·수식: 원문에 그림으로만 있어요. 아래 고시 전체 보기에서 확인하세요]</div>`:""; // 좌변 기호가 그림이라 빠진 "= …" 줄 묶음
+  return items.map((o,i)=>{ const eqNote=EQ(o)&&!(i&&(EQ(items[i-1])||items[i-1].gap))?`<div class="ln eqgap" style="--lv:${Math.min(1,Math.max(0,k-1))}">[기호·수식: 원문에 그림으로만 있어요. 아래 고시 전체 보기에서 확인하세요]</div>`:""; // 좌변 기호가 그림이라 빠진 "= …" 줄 묶음
     if(eqNote) return eqNote+one(o,i); return one(o,i); }).join("");
-  function one(o,i){ if(o.sym) return `<div class="ln sym" style="--lv:${Math.max(0,k-1)}"><b>${hl(o.sym[0],rxs)}</b><span>${hl(o.sym[1],rxs)}</span></div>`;
-    if(o.gap) return `<div class="ln eqgap" style="--lv:${Math.max(0,k-1)}">[수식${o.l?" "+esc(o.l):""}: 원문에 그림으로만 있어요. 아래 고시 전체 보기에서 확인하세요]</div>`;
+  function one(o,i){ if(o.sym) return `<div class="ln sym" style="--lv:${Math.min(1,Math.max(0,k-1))}"><b>${hl(o.sym[0],rxs)}</b><span>${hl(o.sym[1],rxs)}</span></div>`;
+    if(o.gap) return `<div class="ln eqgap" style="--lv:${Math.min(1,Math.max(0,k-1))}">[수식${o.l?" "+esc(o.l):""}: 원문에 그림으로만 있어요. 아래 고시 전체 보기에서 확인하세요]</div>`;
     if(o.box){ const t=boxTab(o.box); return t?tabHTML(t,rxs):tbNote("상자 표",`<pre class="boxraw">${hl(o.box.join("\n"),rxs)}</pre>`); }
     if(o.tb) return `<div class="ln rh rh3">${hl(o.l,rxs)}</div>`+tbNote(o.tb.length+"칸",`<p>${o.tb.map(c=>hl(c,rxs)).join(" · ")}</p>`);
     if(o.h){ k=o.h; return `<div class="ln rh rh${Math.min(k,3)}">${hl(o.l,rxs)}</div>`; }
     if(/^\[\s*표\s/.test(o.l)) return `<div class="ln tcap">${hl(o.l,rxs)}</div>`; // 표 제목은 들여쓰지 않고 굵게
-    return `<div class="ln" style="--lv:${Math.max(0,k-1)+ll[i]}">${hl(o.l,rxs)}</div>`; }
+    return `<div class="ln" style="--lv:${Math.min(1,Math.max(0,k-1))+ll[i]}">${hl(o.l,rxs)}</div>`; } // 본문 들여쓰기는 머리줄 깊이와 상관없이 한 단까지: 폰에서 Ⅲ.7.1.1.1 아래 줄이 화면 가운데까지 밀리던 것 (2026-10-22)
 }
 // 조항 번호 링크 (2026-10-21): 같은 번호 카드 중 기준적용일(하루로 넣었을 때) 또는 이 카드 기간에 걸치는 것을 한 창에 모두 보여 주고, 아래 단추로 그 번호를 찾는다
 function showCardRef(b){
