@@ -214,7 +214,7 @@ body.stdmode .date,body.stdmode .quick:not(.kinds){opacity:.45;transition:opacit
 .seg::before{content:"";position:absolute;top:4px;bottom:4px;left:0;width:var(--w,0);transform:translateX(var(--x,0));background:var(--surface);border-radius:9px;box-shadow:0 1px 3px rgba(0,0,0,.08);opacity:0}
 .seg.on::before{opacity:1}
 .seg.go::before{transition:transform .2s ease,width .2s ease}.seg.go button{transition:color .2s ease} /* 고른 바탕(알약)이 옆으로 미끄러짐. 첫 그림·새로 고침엔 .go 가 아직 없어 안 움직임(segPill) */
-.seg button{position:relative;font:inherit;font-size:14px;font-weight:600;border:0;background:none;color:var(--muted);padding:7px 14px;border-radius:9px;cursor:pointer}
+.seg button{position:relative;font:inherit;font-size:14px;font-weight:600;border:0;background:none;color:var(--muted);padding:7px 14px;line-height:22px;border-radius:9px;cursor:pointer} /* 줄 높이를 정수로: 소수점 높이면 폰에서 알약 위아래 틈이 1칸씩 달라 보임 (2026-10-28 운영자) */
 .seg button[aria-disabled=true]{opacity:.4;text-decoration:line-through;text-decoration-thickness:1.5px;cursor:not-allowed} /* 원래 연한 글자라 흐림만으론 구분이 약해 가운뎃줄로 '없음'을 보임 */
 .seg button[aria-checked=true]{color:var(--ink);font-weight:700}
 .seg:not(.on) button[aria-checked=true]{background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.08)} /* 알약을 못 잼(숨김 중)이면 예전처럼 단추 바탕 */
@@ -738,7 +738,7 @@ footer a{color:var(--accent)}
     <section><h3>의견 남기기</h3><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p id="installtxt">한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실이나 공사 중인 건물처럼 신호가 약한 곳에서도 검색과 원문 보기가 돼요. 새 자료는 인터넷이 될 때 저절로 받아져요.<br>아래 버튼을 누르면 쓰는 기기에 맞는 설치 방법을 알려 줘요.</p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.28.5"</script>버전 v2026.10.28.5 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.10.28.6"</script>버전 v2026.10.28.6 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
   <p class="ft-copy">Copyright ⓒ 2026 ELISN. Created by 김찬호.</p>
 </footer>
 </div>
