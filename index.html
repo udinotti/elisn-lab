@@ -745,7 +745,7 @@ footer a{color:var(--accent)}
     <section><h3>의견 남기기</h3><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p id="installtxt">한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실이나 공사 중인 건물처럼 신호가 약한 곳에서도 검색과 원문 보기가 돼요. 새 자료는 인터넷이 될 때 저절로 받아져요.<br>아래 버튼을 누르면 쓰는 기기에 맞는 설치 방법을 알려 줘요.</p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.11.04.2"</script>버전 v2026.11.04.2 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.11.04.3"</script>버전 v2026.11.04.3 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
 <script>/* 운영자 본인 방문 빼기: 주소의 #은 아래에서 곧 지워져 집계 파일의 #toggle-goatcounter가 못 읽는다 */if(location.hash==="#no-count"){localStorage.setItem("skipgc","t");alert("이 브라우저의 방문은 이제 통계에 안 세어요")}</script>
   <p class="ft-copy">Copyright ⓒ 2026 ELISN. Created by 김찬호.</p>
 </footer>
@@ -2159,7 +2159,7 @@ function showRangeRef(b){ lawCur=()=>showRangeRef(b);
   ++lawSeq; lawFoot(false); $("#lawfull").hidden=true; const body=$("#lawbody"); body.classList.remove("ref"); body.scrollTop=0;
   $("#lawttl").textContent=ttl; $("#lawsrc").textContent="ELISN 카드 · "+(hg?"항 ":"조항 ")+o.rg.length+"개";
   const row=([n,id])=>{ const ys=id.slice(1).split(",").map(k=>byI(+k)).filter(y=>y&&(y.kind||"elev")===(x.kind||"elev")), y=ys.find(y=>on(y,x.from||"",x.to||"9999-12-31"))||ys[0]; if(!y) return "";
-    return `<button type="button" class="csl" style="--sd:0" data-ref="${id}" data-i="${x.__i}" data-n="${esc(n)}"><span class="cb"><span class="cn">${esc(n)}</span><span class="cx">${esc(hg?bodyText(y).replace(/^\[[^\]]*\]\s*/,"").replace(/\s+/g," ").slice(0,44):y.title||"")}</span></span><span class="cv" aria-hidden="true">›</span></button>`; }; // 항 목록은 제목이 모두 같아서 그 항의 글 앞부분을 보인다
+    return `<button type="button" class="csl" style="--sd:0" data-ref="${id}" data-i="${x.__i}" data-n="${esc(n)}"><span class="cb"><span class="cn">${esc(n)}</span><span class="cx">${esc(hg?bodyText(y).replace(/^\[[^\]]*\]\s*/,"").replace(/\s+/g," ").replace(n,"").trim().slice(0,44):y.title||"")}</span></span><span class="cv" aria-hidden="true">›</span></button>`; }; // 항 목록은 제목이 모두 같아서 그 항의 글 앞부분을 보인다
   body.innerHTML=`<div class="cref crg${hg?" crh":""}"><div class="cgrp">${o.rg.map(row).join("")}</div></div>`;
   $("#lawwarn").textContent="카드 "+dotAll(shownLabel(x)||x.title||"")+"에서 가리키는 ‘"+(hg?o.t:ttl)+"’ "+(hg?"항이에요":"사이의 조항이에요")+". 눌러서 그 "+(hg?"항":"조항")+"을 보세요."; $("#lawwarn").hidden=false;
   $("#lawnote").textContent="";
