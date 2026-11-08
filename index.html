@@ -764,7 +764,7 @@ footer a{color:var(--accent)}
     <section><h3>의견 남기기</h3><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p id="installtxt">한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실이나 공사 중인 건물처럼 신호가 약한 곳에서도 검색과 원문 보기가 돼요. 새 자료는 인터넷이 될 때 저절로 받아져요.<br>아래 버튼을 누르면 쓰는 기기에 맞는 설치 방법을 알려 줘요.</p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.11.08.1"</script>버전 v2026.11.08.1 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.11.08.2"</script>버전 v2026.11.08.2 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
 <script>/* 운영자 본인 방문 빼기: 주소의 #은 아래에서 곧 지워져 집계 파일의 #toggle-goatcounter가 못 읽는다 */if(location.hash==="#no-count"){localStorage.setItem("skipgc","t");alert("이 브라우저의 방문은 이제 통계에 안 세어요")}</script>
   <p class="ft-copy">Copyright ⓒ 2026 ELISN. Created by 김찬호.</p>
 </footer>
@@ -1391,12 +1391,19 @@ function vt(update,from,to){
   const clear=()=>document.querySelectorAll('[style*="elisn-card"]').forEach(e=>{ e.style.viewTransitionName=""; });
   try{ document.startViewTransition(()=>{ from.style.viewTransitionName=""; update(); const e=to&&to(); if(e) e.style.viewTransitionName="elisn-card"; }).finished.then(clear,clear); }catch(_){ clear(); update(); }
 }
+// 원문·그림 창 (2026-11-08): 카드가 화면 밖으로 넘치거나(펼친 긴 카드) 위 얇은 검색줄 밑에 걸리면, 카드째 줄이면 글이 겹치고 검색줄이 깜빡여 커지는 효과 대신 부드럽게 겹쳐 바뀐다
+const fitsView=el=>{ const r=el.getBoundingClientRect(), m=$("#minibar"); return r.top>=(m.classList.contains("on")?m.getBoundingClientRect().bottom:0)&&r.bottom<=innerHeight; };
+function vtDlg(update,from,to){
+  if(!from||fitsView(from)){ vt(update,from,to); return; }
+  if(!document.startViewTransition||matchMedia("(prefers-reduced-motion:reduce)").matches){ update(); return; }
+  try{ document.startViewTransition(update); }catch(_){ update(); }
+}
 // 원문·그림 창 닫기: 열 때 기억한 카드(_vtFrom)가 화면에 있으면 그 카드로 줄어들며, 아니면 그냥 닫는다
 function closeDlg(d){
   const f=d._vtFrom, sh=d.id==="dlg"?$("#dlgimg"):d.querySelector(".sheet"), r=f&&f.isConnected?f.getBoundingClientRect():null;
   d._vtFrom=null;
   if(!d.open) return;
-  if(r&&sh&&r.width&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth) vt(()=>{ if(d.open) d.close(); },sh,()=>f); else d.close();
+  if(r&&sh&&r.width&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth) (fitsView(f)?vt(()=>{ if(d.open) d.close(); },sh,()=>f):vtDlg(()=>{ if(d.open) d.close(); },f)); else d.close();
 }
 function foldText(art){
   const t=art.querySelector(".text.fold"); if(!t) return;
@@ -1838,7 +1845,7 @@ $("#out").addEventListener("click",e=>{
 });
 // 그림 크게 보기: 처음엔 화면에 맞춤. 그림을 누르면 누른 자리를 가운데로 2배, 다시 누르면 맞춤. 어두운 곳·✕·Esc로 닫기
 function openViewer(src,cap,from){ const box=$("#dlgbox"), img=$("#dlgimg"); box.classList.remove("big"); img.style.width=""; $("#dlgzoom").textContent="2배 확대";
-  img.src=src; img.alt=cap||"그림"; $("#dlgcap").textContent=cap||""; const d=$("#dlg"); d._vtFrom=from||null; vt(()=>{ d.showModal(); box.scrollTo(0,0); },from,()=>img); }
+  img.src=src; img.alt=cap||"그림"; $("#dlgcap").textContent=cap||""; const d=$("#dlg"); d._vtFrom=from||null; vtDlg(()=>{ d.showModal(); box.scrollTo(0,0); },from,()=>img); }
 function zoomViewer(ex,ey){ const box=$("#dlgbox"), img=$("#dlgimg");
   if(box.classList.contains("big")){ box.classList.remove("big"); img.style.width=""; $("#dlgzoom").textContent="2배 확대"; return; }
   const r=img.getBoundingClientRect(), fx=ex==null?.5:(ex-r.left)/r.width, fy=ey==null?.5:(ey-r.top)/r.height;
@@ -2057,7 +2064,7 @@ async function showLaw(i){
   $("#lawttl").textContent=x.label&&/^\d/.test(x.label)?dotAll(x.label):(x.title||"");
   $("#lawsrc").textContent="원문 불러오는 중…"; $("#lawbody").textContent=""; $("#lawwarn").hidden=true;
   $("#lawfull").href=lawUrl(x); lawFoot(false);
-  if(!dlg.open){ dlg._vtFrom=from; vt(()=>dlg.show(),from,()=>dlg.querySelector(".sheet")); }
+  if(!dlg.open){ dlg._vtFrom=from; vtDlg(()=>dlg.show(),from,()=>dlg.querySelector(".sheet")); }
   if(x.kind||x.added){ // 종류 자료·보충한 옛 판 글은 고시 원문에서 바로 옮긴 글이라 그대로 보여 준다
     $("#lawsrc").textContent=x.srcName||""; $("#lawttl").textContent=x.label||x.title||""; $("#lawfull").href=x.srcUrl||lawUrl(x); lawFoot(/kats.go.kr/.test(x.srcUrl||""));
     if(x.tables) $("#lawbody").innerHTML=plainWithTables(dropNum(x.text,x.label),x.tables); else $("#lawbody").textContent=dropNum(x.text,x.label); return; }
