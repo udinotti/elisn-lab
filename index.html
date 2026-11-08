@@ -766,7 +766,7 @@ html.vtimg::view-transition-group(elisn-card){animation:none;transform-origin:0 
     <section><h3>의견 남기기</h3><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p id="installtxt">한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실이나 공사 중인 건물처럼 신호가 약한 곳에서도 검색과 원문 보기가 돼요. 새 자료는 인터넷이 될 때 저절로 받아져요.<br>아래 버튼을 누르면 쓰는 기기에 맞는 설치 방법을 알려 줘요.</p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.11.08.3"</script>버전 v2026.11.08.3 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.11.08.4"</script>버전 v2026.11.08.4 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
 <script>/* 운영자 본인 방문 빼기: 주소의 #은 아래에서 곧 지워져 집계 파일의 #toggle-goatcounter가 못 읽는다 */if(location.hash==="#no-count"){localStorage.setItem("skipgc","t");alert("이 브라우저의 방문은 이제 통계에 안 세어요")}</script>
   <p class="ft-copy">Copyright ⓒ 2026 ELISN. Created by 김찬호.</p>
 </footer>
@@ -1388,25 +1388,31 @@ function showCompare(i){
 // 긴 본문 펼치기·접기. 접을 때 조항 머리가 화면 위로 넘어가 있으면 머리로 돌아가 읽던 자리를 잃지 않게
 // 카드가 커지는 전환 (2026-11-08): from 요소의 이름표를 update 안에서 to() 요소로 옮긴다. 움직임 줄이기·미지원이면 바로 update
 // bar: 본문 펼치기·접기처럼 카드가 위 얇은 검색줄 밑을 지날 수 있으면 검색줄을 따로 떼어 카드 위에 가만히 둔다 (창 열기엔 안 씀: 창의 어두운 뒤판이 검색줄을 덮어야 해서)
+// 지금 돌고 있는 전환 (창이 커지는 도중에 닫으면 이걸 건너뛰고 바로 닫는다)
+let vtNow=null;
+const svt=cb=>{ const t=document.startViewTransition(cb); vtNow=t; const z=()=>{ if(vtNow===t) vtNow=null; }; t.finished.then(z,z); return t; };
 function vt(update,from,to,bar){
   if(!document.startViewTransition||matchMedia("(prefers-reduced-motion:reduce)").matches||!from){ update(); return; }
   from.style.viewTransitionName="elisn-card";
   const mb=$("#minibar"); if(bar&&mb.classList.contains("on")) mb.style.viewTransitionName="elisn-bar";
   const clear=()=>{ mb.style.viewTransitionName=""; document.querySelectorAll('[style*="elisn-card"]').forEach(e=>{ e.style.viewTransitionName=""; }); };
-  try{ const t=document.startViewTransition(()=>{ from.style.viewTransitionName=""; update(); const e=to&&to(); if(e) e.style.viewTransitionName="elisn-card"; }); t.finished.then(clear,clear); return t; }catch(_){ clear(); update(); }
+  try{ const t=svt(()=>{ from.style.viewTransitionName=""; update(); const e=to&&to(); if(e) e.style.viewTransitionName="elisn-card"; }); t.finished.then(clear,clear); return t; }catch(_){ clear(); update(); }
 }
 // 원문·그림 창 (2026-11-08): 카드가 화면 밖으로 넘치거나(펼친 긴 카드) 위 얇은 검색줄 밑에 걸리면, 카드째 줄이면 글이 겹치고 검색줄이 깜빡여 커지는 효과 대신 부드럽게 겹쳐 바뀐다
 const fitsView=el=>{ const r=el.getBoundingClientRect(), m=$("#minibar"); return r.top>=(m.classList.contains("on")?m.getBoundingClientRect().bottom:0)&&r.bottom<=innerHeight; };
 function vtDlg(update,from,to){
   if(!from||fitsView(from)) return vt(update,from,to);
   if(!document.startViewTransition||matchMedia("(prefers-reduced-motion:reduce)").matches){ update(); return; }
-  try{ return document.startViewTransition(update); }catch(_){ update(); }
+  try{ return svt(update); }catch(_){ update(); }
 }
 // 원문·그림 창 닫기: 열 때 기억한 카드(_vtFrom)가 화면에 있으면 그 카드로 줄어들며, 아니면 그냥 닫는다
 function closeDlg(d){
   const f=d._vtFrom, sh=d.id==="dlg"?$("#dlgimg"):d.querySelector(".sheet"), r=f&&f.isConnected?f.getBoundingClientRect():null;
   d._vtFrom=null;
   if(!d.open) return;
+  document.documentElement.classList.remove("vtimg");
+  // 커지는 도중에 닫으면, 새 전환은 다 커진 모습에서 시작해 그림이 한 번 최대로 깜빡였다 줄어든다 → 돌던 전환을 건너뛰고 바로 닫는다
+  if(vtNow){ const t=vtNow; t.skipTransition(); t.updateCallbackDone.then(()=>{ if(d.open) d.close(); },()=>{ if(d.open) d.close(); }); return; }
   if(r&&sh&&r.width&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth) (fitsView(f)?vt(()=>{ if(d.open) d.close(); },sh,()=>f):vtDlg(()=>{ if(d.open) d.close(); },f)); else d.close();
 }
 function foldText(art){
@@ -1851,7 +1857,8 @@ $("#out").addEventListener("click",e=>{
 function openViewer(src,cap,from){ const box=$("#dlgbox"), img=$("#dlgimg"); box.classList.remove("big"); img.style.width=""; $("#dlgzoom").textContent="2배 확대";
   img.src=src; img.alt=cap||"그림"; $("#dlgcap").textContent=cap||""; const d=$("#dlg"); d._vtFrom=from||null;
   // 큰 그림이 다 받아지기 전에 전환이 찍히면 빈 칸으로 커졌다가 그림이 툭 나와서, 0.4초까지 기다렸다 연다. 그림 전환은 조금 길고 부드럽게
-  const go=()=>{ if(d.open) return; const h=document.documentElement; h.classList.add("vtimg"); setTimeout(()=>h.classList.remove("vtimg"),800); const fr=from&&from.getBoundingClientRect(), t=vtDlg(()=>{ d.showModal(); box.scrollTo(0,0); },from,()=>img);
+  const go=()=>{ if(d.open) return; const h=document.documentElement; h.classList.add("vtimg"); const fr=from&&from.getBoundingClientRect(), t=vtDlg(()=>{ d.showModal(); box.scrollTo(0,0); },from,()=>img), off=()=>h.classList.remove("vtimg");
+    if(t) t.finished.then(off,off); else off(); // 그림 전용 움직임은 이 전환에만 (남아 있으면 바로 이은 닫기 전환이 멈췄다가 다 커진 모습에서 튄다)
     // 크기(가로·세로)를 매 장면 다시 재면 폰이 장면을 건너뛰어 끊겨 보여, 그림은 비율이 같으니 확대(transform)만 움직여 그래픽 칩이 그리게 한다
     if(t&&fr) t.ready.then(()=>{ const r=img.getBoundingClientRect(); if(!r.width||!r.height) return;
       h.animate({transform:["translate("+fr.left+"px,"+fr.top+"px) scale("+fr.width/r.width+","+fr.height/r.height+")","translate("+r.left+"px,"+r.top+"px)"]},{duration:450,easing:"cubic-bezier(.2,0,0,1)",pseudoElement:"::view-transition-group(elisn-card)"}); }).catch(()=>{}); };
