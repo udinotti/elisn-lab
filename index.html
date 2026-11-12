@@ -655,7 +655,7 @@ footer a{color:var(--accent)}
 /* 카드가 커지는 전환 (2026-11-08): 이름표 elisn-card 는 한 순간에 한 요소만 가짐 */
 ::view-transition-group(elisn-card),::view-transition-old(elisn-card),::view-transition-new(elisn-card),::view-transition-group(root),::view-transition-old(root),::view-transition-new(root){animation-duration:.2s;animation-timing-function:ease-out}
 ::view-transition-group(elisn-bar),::view-transition-new(elisn-bar){animation:none}::view-transition-old(elisn-bar){display:none}
-html.vtimg::view-transition-group(elisn-card){animation:none;transform-origin:0 0}html.vtimg::view-transition-group(*),html.vtimg::view-transition-old(*),html.vtimg::view-transition-new(*){animation-duration:.25s;animation-timing-function:cubic-bezier(.2,0,0,1)} /* 그림 크게 보기: 처음엔 빠르게, 끝은 천천히 내려앉게 */
+html.vtimg::view-transition-group(elisn-card){animation:none;transform-origin:0 0}html.vtimg::view-transition-group(*),html.vtimg::view-transition-old(*),html.vtimg::view-transition-new(*){animation-duration:.25s;animation-timing-function:cubic-bezier(.2,0,0,1);animation-fill-mode:both} /* 그림 크게 보기: 처음엔 빠르게, 끝은 천천히 내려앉게 */
 html.vtimg .vtsrc,html.vtimg .vtsrc img{border-radius:0!important} /* 누른 그림 하나만 전환 동안 각지게 (다른 작은 그림은 그대로; 끝나면 vtimg·vtsrc 가 빠지며 원래 모서리로) */
 @media (max-width:370px){.brand h1{font-size:17px!important}.brand .mark{width:38px!important;height:38px!important}.brand small{padding-left:.043em!important}} /* 더 좁은 폰: 제목이 한 줄에 들어가게 */
 /* 좁은 폰 화면(폴드 앞화면 등): 머리를 줄여 첫 조항이 빨리 보이게, 카드 여백·글씨를 조금 줄임 */
@@ -751,7 +751,7 @@ html.vtimg .vtsrc,html.vtimg .vtsrc img{border-radius:0!important} /* 누른 그
     </div>
   </div>
 </header>
-<p class="offline" id="offline" hidden>인터넷 없이 보는 중이에요. 기기에 저장된 자료(최근 업데이트 2026.11.11)로 보여 드려요. 고시 전체 보기·의견 남기기는 인터넷이 있을 때 돼요.</p>
+<p class="offline" id="offline" hidden>인터넷 없이 보는 중이에요. 기기에 저장된 자료(최근 업데이트 2026.11.12)로 보여 드려요. 고시 전체 보기·의견 남기기는 인터넷이 있을 때 돼요.</p>
 <div class="phead" id="phead"></div>
 <p class="banner" id="dateBanner" hidden></p>
 <p class="resline"><span class="status" id="status">자료 불러오는 중…</span> <span class="note" id="note"></span></p>
@@ -767,7 +767,7 @@ html.vtimg .vtsrc,html.vtimg .vtsrc img{border-radius:0!important} /* 누른 그
     <section><h3>의견 남기기</h3><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p id="installtxt">한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실이나 공사 중인 건물처럼 신호가 약한 곳에서도 검색과 원문 보기가 돼요. 새 자료는 인터넷이 될 때 저절로 받아져요.<br>아래 버튼을 누르면 쓰는 기기에 맞는 설치 방법을 알려 줘요.</p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.11.11.3"</script>버전 v2026.11.11.3 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.11.12.1"</script>버전 v2026.11.12.1 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
 <script>/* 운영자 본인 방문 빼기: 주소의 #은 아래에서 곧 지워져 집계 파일의 #toggle-goatcounter가 못 읽는다 */if(location.hash==="#no-count"){localStorage.setItem("skipgc","t");alert("이 브라우저의 방문은 이제 통계에 안 세어요")}</script>
   <p class="ft-copy">Copyright ⓒ 2026 ELISN. Created by 김찬호.</p>
 </footer>
@@ -1409,11 +1409,11 @@ function vtDlg(update,from,to){
 }
 // 그림 전환(열기·닫기 공통): 크기(가로·세로)를 매 장면 다시 재면 폰이 장면을 건너뛰어 끊겨 보여, 그림은 비율이 같으니 확대(transform)만 움직여 그래픽 칩이 그리게 한다.
 // fr: 전환 시작 때 처음 모습의 rect, el: 전환 뒤 이름표를 단 요소(그룹 크기가 이 요소 크기). 끝나면(실패도) 이 전환 전용 vtimg 를 뗀다 (남아 있으면 바로 이은 전환이 멈췄다가 튄다)
-function vtImgRun(t,fr,el){ const h=document.documentElement, off=()=>{ h.classList.remove("vtimg"); document.querySelectorAll(".vtsrc").forEach(e=>e.classList.remove("vtsrc")); };
+function vtImgRun(t,fr,el){ const h=document.documentElement; let an=null, off=()=>{ if(an) an.cancel(); h.classList.remove("vtimg"); document.querySelectorAll(".vtsrc").forEach(e=>e.classList.remove("vtsrc")); };
   if(!t){ off(); return; }
   t.finished.then(off,off);
   if(fr) t.ready.then(()=>{ const r=el.getBoundingClientRect(); if(!r.width||!r.height) return;
-    h.animate({transform:["translate("+fr.left+"px,"+fr.top+"px) scale("+fr.width/r.width+","+fr.height/r.height+")","translate("+r.left+"px,"+r.top+"px)"]},{duration:250,easing:"cubic-bezier(.2,0,0,1)",pseudoElement:"::view-transition-group(elisn-card)"}); }).catch(()=>{}); }
+    an=h.animate({transform:["translate("+fr.left+"px,"+fr.top+"px) scale("+fr.width/r.width+","+fr.height/r.height+")","translate("+r.left+"px,"+r.top+"px)"]},{duration:250,easing:"cubic-bezier(.2,0,0,1)",fill:"both",pseudoElement:"::view-transition-group(elisn-card)"}); }).catch(()=>{}); }
 // 원문·그림 창 닫기: 열 때 기억한 카드(_vtFrom)가 화면에 있으면 그 카드로 줄어들며, 아니면 그냥 닫는다
 function closeDlg(d){
   const f=d._vtFrom, sh=d.id==="dlg"?$("#dlgimg"):d.querySelector(".sheet"), r=f&&f.isConnected?f.getBoundingClientRect():null;
