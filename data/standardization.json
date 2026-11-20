@@ -3285,7 +3285,8 @@
     "doc": "표준화 모음 25년 2차",
     "page": 70
    },
-   "__k": "s|비상통화장치 호출방식 일원화|16.3|17.4.1검사 이후(17년 제4차)||1ppy839"
+   "__k": "s|비상통화장치 호출방식 일원화|16.3|17.4.1검사 이후(17년 제4차)||1ppy839",
+   "grp": 36
   },
   {
    "keyword": "비상통화",
@@ -7571,7 +7572,8 @@
    "src": {
     "doc": "붙임. 제1차 검사 신뢰도 제고를 위한 검사기준 표준화 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "상승과속",
@@ -7587,7 +7589,8 @@
    "bgsrc": {
     "doc": "붙임. 제2차 검사 신뢰도 제고를 위한 검사기준 표준화 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "표시",
@@ -7599,7 +7602,8 @@
    "src": {
     "doc": "붙임. 제1차 검사 신뢰도 제고를 위한 검사기준 표준화 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "소방구조용",
@@ -7611,7 +7615,9 @@
    "src": {
     "doc": "붙임. 제1차 검사 신뢰도 제고를 위한 검사기준 표준화 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "image": "images/std/std-16-1-bimyong-sushi-01.png",
+   "old": true
   },
   {
    "keyword": "비상통화",
@@ -7627,7 +7633,8 @@
    "bgsrc": {
     "doc": "붙임2. 승강기 기술자문 간담회 협의내용 및 업무처리 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "카",
@@ -7643,7 +7650,8 @@
    "bgsrc": {
     "doc": "붙임2. 승강기 기술자문 간담회 협의내용 및 업무처리 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "장애인용",
@@ -7659,7 +7667,8 @@
    "bgsrc": {
     "doc": "붙임2. 승강기 기술자문 간담회 협의내용 및 업무처리 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "소방구조용",
@@ -7675,7 +7684,8 @@
    "bgsrc": {
     "doc": "붙임2. 승강기 기술자문 간담회 협의내용 및 업무처리 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "비상통화",
@@ -7687,7 +7697,9 @@
    "src": {
     "doc": "붙임. 2017년도 제7차 검사 업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "grp": 36,
+   "old": true
   },
   {
    "keyword": "제어",
@@ -7700,7 +7712,8 @@
     "doc": "붙임. 2017년도 제7차 검사 업무 표준화.hwp"
    },
    "etc": true,
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "소방구조용",
@@ -7716,7 +7729,8 @@
    "bgsrc": {
     "doc": "2.승강기 기술자문 간담회(3차) 협의내용 및 결과.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "속도",
@@ -7728,7 +7742,8 @@
    "src": {
     "doc": "붙임. 2018년 제1차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "구동기",
@@ -7740,19 +7755,21 @@
    "src": {
     "doc": "붙임. 2018년 제3차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "비상구출",
    "title": "오티스 ACD4-MRL 모델 서비스툴 설정에 따른 비상운전 문제",
    "label": "",
-   "text": "‣ 최근 설치된 오티스 E/L ACD4-MRL 모델 관련 안내\n - (원인) 비상밧데리 전원 설정\n - (현상) 정전 시 전기적비상운전 작동(개방 버튼)을 위한 비상 밧데리의 전원을 사용될수 있도록 서비스툴로 코드 변경 필요, 전기적비상운전으로 변경한 상태에서는 자동구출운전장치 작동 안됨 (서비스툴 EN-0ARO = 000 또는 004)\n‣ 정전 시 전기적비상운전(브레이크 개방) 작동과 자동구출운전 작동이 별도의 서비스툴 사용없이 동시에 되는지 확인 필요 ⇒ 부적합한 경우 지적\n ※ 현재 오티스에서 문제점을 인식하고 신규 모델은 개선하였고 종전의 제품도 개선 조치 중임",
+   "text": "‣ 최근 설치된 오티스 E/L ACD4-MRL 모델 관련 안내\n - (원인) 비상밧데리 전원 설정\n - (현상) 정전 시 전기적비상운전 작동(개방 버튼)을 위한 비상 밧데리의 전원을 사용될수 있도록 서비스툴로 코드 변경 필요, 전기적비상운전으로 변경한 상태에서는 자동구출운전장치 작동 안됨 (서비스툴 EN-0ARO = 000 또는 004)\n‣ 정전 시 전기적비상운전(브레이크 개방) 작동과 자동구출운전 작동이 별도의 서비스툴 사용없이 동시에 되는지 확인 필요 ⇒ 부적합한 경우 지적\n ※ 현재 오티스에서 문제점을 인식하고 신규 모델은 개선하였고 종전의 제품도 개선 조치 중임\n‣ 서비스툴 설정값(EN-0ARO)별 동작: 000 = 전기적 비상운전(개방버튼작동) X / 자동구출운전 O, 004 = 전기적 비상운전(개방버튼작동) O / 자동구출운전 X",
    "from": "18년 제4차",
    "to": null,
    "src": {
     "doc": "붙임. 2018년 제4차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "비상구출",
@@ -7764,7 +7781,8 @@
    "src": {
     "doc": "붙임. 2018년 제4차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "덤웨이터",
@@ -7777,7 +7795,8 @@
     "doc": "2018년 제5차 검사업무 표준화.hwp"
    },
    "kind": "dumb",
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "검사기준 적용",
@@ -7793,7 +7812,8 @@
    "bgsrc": {
     "doc": "붙임. 2018년 제7차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "에스컬레이터",
@@ -7810,7 +7830,9 @@
     "doc": "붙임. 2018년 제8차 검사업무 표준화(공문).hwp"
    },
    "kind": "esc",
-   "lab": true
+   "lab": true,
+   "old": true,
+   "oldkind": true
   },
   {
    "keyword": "구동기",
@@ -7826,7 +7848,9 @@
    "bgsrc": {
     "doc": "붙임. 2018년 제8차 검사업무 표준화(공문).hwp"
    },
-   "lab": true
+   "lab": true,
+   "when": "'17.1.28. 이후 최초 정밀안전검사",
+   "old": true
   },
   {
    "keyword": "에스컬레이터",
@@ -7843,7 +7867,9 @@
     "doc": "붙임. 2018년 제8차 검사업무 표준화(공문).hwp"
    },
    "kind": "esc",
-   "lab": true
+   "lab": true,
+   "old": true,
+   "oldkind": true
   },
   {
    "keyword": "승강장문",
@@ -7860,7 +7886,8 @@
    "bgsrc": {
     "doc": "붙임. 2018년 제9차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "상승과속",
@@ -7876,7 +7903,8 @@
    "bgsrc": {
     "doc": "붙임. 2018년 제9차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "비상통화",
@@ -7888,7 +7916,8 @@
    "src": {
     "doc": "붙임. 2018년 제9차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "검사기준 적용",
@@ -7904,7 +7933,8 @@
    "bgsrc": {
     "doc": "붙임. 2018년 제9차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "검사기준 적용",
@@ -7920,7 +7950,8 @@
    "bgsrc": {
     "doc": "붙임. 2018년 제9차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "비상구출",
@@ -7936,7 +7967,8 @@
    "bgsrc": {
     "doc": "붙임. 2018년 제9차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "검사 접수",
@@ -7952,7 +7984,8 @@
    "bgsrc": {
     "doc": "붙임. 2018년 제9차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "승강장문",
@@ -7968,7 +8001,8 @@
    "bgsrc": {
     "doc": "붙임. 2018년 제9차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "균형추",
@@ -7984,7 +8018,8 @@
    "bgsrc": {
     "doc": "붙임. 2018년 제9차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "상승과속",
@@ -7996,7 +8031,8 @@
    "src": {
     "doc": "붙임. 2018년 제9차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "피트",
@@ -8012,7 +8048,11 @@
    "bgsrc": {
     "doc": "붙임. 2019년 제1차 검사업무 표준화.hwp"
    },
-   "lab": true
+   "lab": true,
+   "bgimgs": [
+    "images/std/std-19-1-wanchungi-bracket-01.jpg"
+   ],
+   "old": true
   },
   {
    "keyword": "승강장문",
@@ -8024,7 +8064,8 @@
    "src": {
     "doc": "검사업무 표준화 실무협의회 회의록(2월).hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "파이널 리미트 스위치",
@@ -8040,7 +8081,9 @@
    "bgsrc": {
     "doc": "검사업무 표준화 실무협의회 회의록(2월).hwp"
    },
-   "lab": true
+   "lab": true,
+   "when": "'19.3.28. 허가 이후",
+   "old": true
   },
   {
    "keyword": "표시",
@@ -8052,7 +8095,8 @@
    "src": {
     "doc": "검사업무 표준화 실무협의회 회의록(2월).hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "도르래",
@@ -8068,7 +8112,8 @@
    "bgsrc": {
     "doc": "20년도 제2차 검사업무 표준화 실무협의회 회의 결과 (최종).hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "비상구출",
@@ -8080,7 +8125,9 @@
    "src": {
     "doc": "20년도 제2차 검사업무 표준화 실무협의회 회의 결과 (최종).hwp"
    },
-   "lab": true
+   "lab": true,
+   "grp": 37,
+   "old": true
   },
   {
    "keyword": "에스컬레이터",
@@ -8093,7 +8140,9 @@
     "doc": "20년도 제2차 검사업무 표준화 실무협의회 회의 결과 (최종).hwp"
    },
    "kind": "esc",
-   "lab": true
+   "lab": true,
+   "old": true,
+   "oldkind": true
   },
   {
    "keyword": "검사 접수",
@@ -8109,7 +8158,8 @@
    "bgsrc": {
     "doc": "20년도 제2차 검사업무 표준화 실무협의회 회의 결과 (최종).hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "휠체어리프트",
@@ -8126,7 +8176,9 @@
     "doc": "20년도 제3차 검사업무 표준화 실무협의회 회의 결과.hwp"
    },
    "kind": "wlv",
-   "lab": true
+   "lab": true,
+   "old": true,
+   "oldkind": true
   },
   {
    "keyword": "표시",
@@ -8142,7 +8194,8 @@
    "bgsrc": {
     "doc": "20년도 제4차 검사업무 표준화 실무협의회 회의 결과.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "에스컬레이터",
@@ -8155,7 +8208,9 @@
     "doc": "20년도 제4차 검사업무 표준화 실무협의회 회의 결과.hwp"
    },
    "kind": "esc",
-   "lab": true
+   "lab": true,
+   "old": true,
+   "oldkind": true
   },
   {
    "keyword": "에스컬레이터",
@@ -8172,7 +8227,9 @@
     "doc": "20년도 제4차 검사업무 표준화 실무협의회 회의 결과.hwp"
    },
    "kind": "esc",
-   "lab": true
+   "lab": true,
+   "old": true,
+   "oldkind": true
   },
   {
    "keyword": "기술서류",
@@ -8184,7 +8241,8 @@
    "src": {
     "doc": "2018년 제1차 기술서류 업무 표준화 안내_2018.08.23.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8197,7 +8255,8 @@
     "doc": "2018년 제1차 기술서류 업무 표준화 안내_2018.08.23.hwp"
    },
    "kind": "esc",
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8213,7 +8272,8 @@
    "bgsrc": {
     "doc": "2018년 제1차 기술서류 업무 표준화 안내_2018.08.23.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8229,7 +8289,8 @@
    "bgsrc": {
     "doc": "2018년 제1차 기술서류 업무 표준화 안내_2018.08.23.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8241,7 +8302,9 @@
    "src": {
     "doc": "2018년 제1차 기술서류 업무 표준화 안내_2018.08.23.hwp"
    },
-   "lab": true
+   "lab": true,
+   "when": "'19.3.28. 설치 이후",
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8257,7 +8320,8 @@
    "bgsrc": {
     "doc": "2018년 제1차 기술서류 업무 표준화 안내_2018.08.23.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8274,7 +8338,8 @@
     "doc": "2018년 제1차 기술서류 업무 표준화 안내_2018.08.23.hwp"
    },
    "kind": "dumb",
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8291,7 +8356,8 @@
     "doc": "2018년 제1차 기술서류 업무 표준화 안내_2018.08.23.hwp"
    },
    "kind": "esc",
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8307,7 +8373,8 @@
    "bgsrc": {
     "doc": "2018년 제1차 기술서류 업무 표준화 안내_2018.08.23.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8323,7 +8390,8 @@
    "bgsrc": {
     "doc": "2018년 제2차 기술서류 업무 표준화 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8335,7 +8403,8 @@
    "src": {
     "doc": "2018년 제2차 기술서류 업무 표준화 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8351,7 +8420,8 @@
    "bgsrc": {
     "doc": "2018년 제2차 기술서류 업무 표준화 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8367,7 +8437,8 @@
    "bgsrc": {
     "doc": "2018년 제2차 기술서류 업무 표준화 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8383,7 +8454,8 @@
    "bgsrc": {
     "doc": "2018년 제2차 기술서류 업무 표준화 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8400,7 +8472,8 @@
     "doc": "2018년 제2차 기술서류 업무 표준화 안내.hwp"
    },
    "kind": "wlv",
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8416,7 +8489,8 @@
    "bgsrc": {
     "doc": "2018년 제2차 기술서류 업무 표준화 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8432,7 +8506,9 @@
    "bgsrc": {
     "doc": "2018년 제3차 승강기 기술서류 업무 표준화 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "when": "'18.3.28. 이후",
+   "old": true
   },
   {
    "keyword": "기술서류",
@@ -8448,7 +8524,8 @@
    "bgsrc": {
     "doc": "2018년 제3차 승강기 기술서류 업무 표준화 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "old": true
   },
   {
    "keyword": "비상구출",
@@ -8468,7 +8545,8 @@
     "page": 7
    },
    "etc": true,
-   "lab": true
+   "lab": true,
+   "grp": 37
   },
   {
    "keyword": "신기술",
@@ -8506,7 +8584,8 @@
     "page": 11
    },
    "etc": true,
-   "lab": true
+   "lab": true,
+   "grp": 38
   },
   {
    "keyword": "무적승강기",
@@ -8650,7 +8729,9 @@
    "bgsrc": {
     "doc": "붙임2. 설치검사 및 안전인증 관련 이슈사항 안내.hwp"
    },
-   "lab": true
+   "lab": true,
+   "grp": 38,
+   "old": true
   }
  ]
 }
