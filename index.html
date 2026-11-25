@@ -217,6 +217,7 @@ body.stdmode .date{opacity:.5} /* 기준적용일 칸은 제자리에 흐리게 
 .attfold .imgs button{display:block;width:100%;border:0;padding:0;background:none;box-shadow:none;border-radius:0;overflow:visible;text-align:left;cursor:zoom-in}
 .bgfold .sub-h{margin:14px 2px 0 15px;font-size:13.5px;font-weight:800;color:var(--ink)} /* 「배경」 안 작은 소제목(협의내용·붙임 이름) */
 .bgfold .sub-h+.text{margin-top:6px}
+.haefig{margin:10px 2px 0;padding:0}.haefig img{display:block;width:100%;max-width:100%;height:auto;background:#fff;border-radius:8px}.haefig figcaption{margin-top:4px;font-size:12.5px;color:var(--muted);line-height:1.5} /* 해설집 그림: 흰 바탕을 깔아 다크에서도 보임 */
 .haebody{margin-left:0!important}.haebody .sub-h{margin-left:2px}.haebody .text,.haebody .note{margin-left:2px;margin-top:6px} /* 「해설」 펼침: 바깥 접힘 여백(15px)이 이미 있어 안쪽은 다시 들이지 않음 */
 .oldtag{display:inline-block;margin-left:8px;padding:1px 9px;border-radius:999px;background:var(--warn-soft);color:var(--warn);font-size:12.5px;font-weight:800;white-space:nowrap;vertical-align:2px} /* 옛 표준화: 색 + 글자 (2026-11-17, lab) */
 .oldnote{font-size:13px;font-weight:600;color:var(--warn);margin:8px 2px 0}
@@ -817,7 +818,7 @@ html.vtimg::view-transition-group(elisn-card){animation:none;transform-origin:0 
     <section><h3>의견 남기기</h3><button type="button" class="chipbtn primary ft-btn" data-act="feedback"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>의견 남기기 →</button></section>
     <section class="wide"><h3>앱처럼 쓰기 (인터넷 없이)</h3><p id="installtxt">한 번 열어 두면 조항 자료와 원문이 기기에 저장돼, 기계실이나 공사 중인 건물처럼 신호가 없는 곳에서도 검색과 원문 보기가 돼요. 새 자료는 인터넷이 될 때 저절로 받아져요.<br>아래 버튼을 누르면 쓰는 기기에 맞는 설치 방법을 알려 줘요.</p><button type="button" class="chipbtn primary ft-btn" id="install" hidden>홈 화면에 추가</button><p class="installhow" id="installhow" hidden></p></section>
   </div>
-  <p class="ft-meta"><script>window.ELISN_VER="v2026.11.25.7"</script>버전 v2026.11.25.7 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
+  <p class="ft-meta"><script>window.ELISN_VER="v2026.11.25.9"</script>버전 v2026.11.25.9 · 현행 고시 행정안전부고시 제2022-18호(2022.3.2 시행) 기준</p>
 <script>/* 운영자 본인 방문 빼기: 주소의 #은 아래에서 곧 지워져 집계 파일의 #toggle-goatcounter가 못 읽는다 */if(location.hash==="#no-count"){localStorage.setItem("skipgc","t");alert("이 브라우저의 방문은 이제 통계에 안 세어요")}</script>
   <p class="ft-copy">Copyright ⓒ 2026 ELISN. Created by 김찬호.</p>
 </footer>
@@ -2469,8 +2470,17 @@ function showCardRef(b){ lawCur=()=>showCardRef(b);
 // 카드 아래 접힌 「해설」 (lab, 2026-11-25): 선배의 조언(전 승강기기술원장 해설집) · 해설서(2019) · 현장 경험. data/hae.json 은 처음 펼칠 때만 받는다
 let HAEP=null;
 const loadHae=()=>HAEP||(HAEP=fetch("data/hae.json").then(r=>{ if(!r.ok) throw new Error("hae"); return r.json(); }).catch(e=>{ HAEP=null; throw e; }));
-const haeHTML=h=>{ const sec=(t,A,s)=>A.length?`<div class="sub-h">${t}${s?`<small style="margin-left:6px;font-size:12px;font-weight:400;color:var(--muted)">${s}</small>`:""}</div>${A.map(v=>`<div class="text">${v}</div>`).join("")}`:"";
-  return sec("선배의 조언",h.t?[esc(h.t)]:[],"전 승강기기술원장 해설집")+sec("해설서",[...((h.s||{}).p||[]),...((h.s||{}).n||[])].map(esc),"엘리베이터 안전기준 해설서(2019)")
+// 해설집 글 속 그림 줄 "[그림:hae/NN.webp 가로x세로]"(해설링크.js 가 남김)는 그림으로 그린다. 바로 앞 줄이 "~예"로 끝나는 설명이면 그림 아래 작은 글(figcaption)로 옮긴다
+const haeT=t=>{ const out=[], ls=String(t).split("\n"); let g=[];
+  const flush=()=>{ if(g.length) out.push(`<div class="text">${esc(g.join("\n"))}</div>`); g=[]; };
+  for(const l of ls){ const m=l.match(/^\[그림:(hae\/\d+\.webp) (\d+)x(\d+)\]$/);
+    if(!m){ g.push(l); continue; }
+    let cap=""; if(g.length&&/예$/.test(g[g.length-1].trim())&&g[g.length-1].length<80) cap=g.pop().trim();
+    flush();
+    out.push(`<figure class="haefig"><img src="images/${m[1]}" width="${m[2]}" height="${m[3]}" loading="lazy" decoding="async" alt="${esc(cap||"해설집 그림")}">${cap?`<figcaption>${esc(cap)}</figcaption>`:""}</figure>`); }
+  flush(); return out; };
+const haeHTML=h=>{ const sec=(t,A,s)=>A.length?`<div class="sub-h">${t}${s?`<small style="margin-left:6px;font-size:12px;font-weight:400;color:var(--muted)">${s}</small>`:""}</div>${A.map(v=>v[0]==="<"?v:`<div class="text">${v}</div>`).join("")}`:"";
+  return sec("선배의 조언",h.t?haeT(h.t):[],"전 승강기기술원장 해설집")+sec("해설서",[...((h.s||{}).p||[]),...((h.s||{}).n||[])].map(esc),"엘리베이터 안전기준 해설서(2019)")
     +sec("현장 경험",(h.x||[]).map(e=>esc(e.t)+(e.w||e.d?`<div class="note">${esc(e.w?e.w+" · ":"")}${e.d?dot(e.d):""}</div>`:""))); };
 $("#out").addEventListener("toggle",async e=>{ const d=e.target; if(!d.classList||!d.classList.contains("haefold")||!d.open) return; // toggle 은 거품이 없어 capture
   const b=d.querySelector(".haebody"); if(b.firstChild&&!b.dataset.err) return; delete b.dataset.err; b.innerHTML=`<div class="note">불러오는 중…</div>`;
